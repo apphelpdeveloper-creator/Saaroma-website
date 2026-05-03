@@ -1,0 +1,505 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Delete Account — Saaroma</title>
+<meta name="description" content="Request deletion of your Saaroma account and data.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@300;400;500;600;700&family=DM+Serif+Display:ital@0;1&display=swap" rel="stylesheet">
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  :root {
+    --bg: #060409;
+    --surface: #0f0a1a;
+    --surface-alt: #161028;
+    --border: #2a1e42;
+    --gold: #e8b84b;
+    --gold-soft: #d4a43c;
+    --text-primary: #f4f0e8;
+    --text-secondary: #b8a8d4;
+    --text-muted: #7a6a8a;
+    --danger: #e85b5b;
+    --danger-soft: rgba(232, 91, 91, 0.1);
+  }
+
+  body {
+    font-family: 'DM Sans', sans-serif;
+    background: var(--bg);
+    color: var(--text-primary);
+    min-height: 100vh;
+    line-height: 1.7;
+  }
+
+  .bg-mesh {
+    position: fixed;
+    inset: 0;
+    z-index: 0;
+    background:
+      radial-gradient(ellipse 80% 50% at 20% 10%, rgba(123, 47, 190, 0.10) 0%, transparent 60%),
+      radial-gradient(ellipse 60% 40% at 80% 80%, rgba(45, 16, 88, 0.15) 0%, transparent 60%),
+      var(--bg);
+  }
+
+  .content { position: relative; z-index: 1; }
+
+  nav {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 24px 48px;
+    border-bottom: 1px solid rgba(42, 30, 66, 0.5);
+    backdrop-filter: blur(12px);
+    background: rgba(6, 4, 9, 0.7);
+  }
+
+  .nav-logo {
+    font-family: 'DM Serif Display', serif;
+    font-size: 24px;
+    color: var(--gold);
+    text-decoration: none;
+  }
+
+  .nav-back {
+    font-size: 14px;
+    color: var(--text-muted);
+    text-decoration: none;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    transition: color 0.2s;
+  }
+
+  .nav-back:hover { color: var(--gold); }
+
+  .container {
+    max-width: 640px;
+    margin: 0 auto;
+    padding: 80px 24px 120px;
+  }
+
+  .page-label {
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    color: var(--text-muted);
+    margin-bottom: 16px;
+  }
+
+  h1 {
+    font-family: 'DM Serif Display', serif;
+    font-size: clamp(32px, 5vw, 48px);
+    line-height: 1.1;
+    color: var(--text-primary);
+    margin-bottom: 16px;
+  }
+
+  .subtitle {
+    font-size: 16px;
+    font-weight: 300;
+    color: var(--text-secondary);
+    margin-bottom: 48px;
+    line-height: 1.7;
+  }
+
+  /* In-app method */
+  .method-card {
+    background: rgba(232, 184, 75, 0.06);
+    border: 1px solid rgba(232, 184, 75, 0.25);
+    border-radius: 16px;
+    padding: 28px;
+    margin-bottom: 32px;
+  }
+
+  .method-title {
+    font-size: 16px;
+    font-weight: 700;
+    color: var(--gold);
+    margin-bottom: 12px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+
+  .method-steps {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    counter-reset: steps;
+  }
+
+  .method-steps li {
+    display: flex;
+    align-items: flex-start;
+    gap: 12px;
+    font-size: 14px;
+    font-weight: 400;
+    color: var(--text-secondary);
+    counter-increment: steps;
+  }
+
+  .step-num {
+    width: 22px;
+    height: 22px;
+    border-radius: 50%;
+    background: rgba(232, 184, 75, 0.15);
+    border: 1px solid rgba(232, 184, 75, 0.3);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 11px;
+    font-weight: 700;
+    color: var(--gold);
+    flex-shrink: 0;
+    margin-top: 1px;
+  }
+
+  .divider {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    margin: 32px 0;
+    color: var(--text-muted);
+    font-size: 13px;
+  }
+
+  .divider::before,
+  .divider::after {
+    content: '';
+    flex: 1;
+    height: 1px;
+    background: var(--border);
+  }
+
+  /* Form */
+  .form-card {
+    background: rgba(22, 16, 40, 0.6);
+    border: 1px solid rgba(42, 30, 66, 0.8);
+    border-radius: 16px;
+    padding: 32px;
+    backdrop-filter: blur(12px);
+  }
+
+  .form-title {
+    font-size: 16px;
+    font-weight: 700;
+    color: var(--text-primary);
+    margin-bottom: 8px;
+  }
+
+  .form-subtitle {
+    font-size: 14px;
+    font-weight: 300;
+    color: var(--text-muted);
+    margin-bottom: 28px;
+  }
+
+  .form-group {
+    margin-bottom: 20px;
+  }
+
+  label {
+    display: block;
+    font-size: 13px;
+    font-weight: 600;
+    color: var(--text-secondary);
+    margin-bottom: 8px;
+    letter-spacing: 0.3px;
+  }
+
+  input, textarea, select {
+    width: 100%;
+    background: rgba(6, 4, 9, 0.6);
+    border: 1px solid var(--border);
+    border-radius: 10px;
+    padding: 12px 16px;
+    font-family: 'DM Sans', sans-serif;
+    font-size: 15px;
+    font-weight: 300;
+    color: var(--text-primary);
+    outline: none;
+    transition: border-color 0.2s;
+    -webkit-appearance: none;
+  }
+
+  input:focus, textarea:focus, select:focus {
+    border-color: rgba(232, 184, 75, 0.4);
+  }
+
+  input::placeholder, textarea::placeholder {
+    color: var(--text-muted);
+  }
+
+  textarea {
+    resize: vertical;
+    min-height: 100px;
+  }
+
+  select option {
+    background: var(--surface);
+    color: var(--text-primary);
+  }
+
+  .warning-box {
+    background: var(--danger-soft);
+    border: 1px solid rgba(232, 91, 91, 0.25);
+    border-radius: 10px;
+    padding: 14px 16px;
+    font-size: 13px;
+    font-weight: 400;
+    color: #f4a0a0;
+    margin-bottom: 24px;
+    line-height: 1.6;
+  }
+
+  .btn-danger {
+    width: 100%;
+    background: var(--danger);
+    color: white;
+    font-family: 'DM Sans', sans-serif;
+    font-weight: 700;
+    font-size: 15px;
+    padding: 14px 28px;
+    border-radius: 100px;
+    border: none;
+    cursor: pointer;
+    transition: all 0.2s;
+    margin-bottom: 12px;
+  }
+
+  .btn-danger:hover {
+    background: #d44;
+    transform: translateY(-1px);
+    box-shadow: 0 8px 24px rgba(232, 91, 91, 0.25);
+  }
+
+  .btn-cancel {
+    width: 100%;
+    background: transparent;
+    color: var(--text-muted);
+    font-family: 'DM Sans', sans-serif;
+    font-weight: 500;
+    font-size: 14px;
+    padding: 12px 28px;
+    border-radius: 100px;
+    border: 1px solid var(--border);
+    cursor: pointer;
+    transition: all 0.2s;
+    text-decoration: none;
+    display: block;
+    text-align: center;
+  }
+
+  .btn-cancel:hover {
+    border-color: var(--text-muted);
+    color: var(--text-secondary);
+  }
+
+  /* Success state */
+  .success-state {
+    display: none;
+    text-align: center;
+    padding: 48px 32px;
+  }
+
+  .success-icon {
+    font-size: 48px;
+    margin-bottom: 24px;
+  }
+
+  .success-title {
+    font-family: 'DM Serif Display', serif;
+    font-size: 28px;
+    margin-bottom: 16px;
+    color: var(--text-primary);
+  }
+
+  .success-body {
+    font-size: 15px;
+    font-weight: 300;
+    color: var(--text-secondary);
+    line-height: 1.7;
+    max-width: 400px;
+    margin: 0 auto 32px;
+  }
+
+  /* Recovery note */
+  .recovery-note {
+    background: rgba(22, 16, 40, 0.4);
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    padding: 20px;
+    margin-top: 32px;
+    font-size: 13px;
+    font-weight: 300;
+    color: var(--text-muted);
+    line-height: 1.7;
+  }
+
+  .recovery-note strong {
+    color: var(--text-secondary);
+    font-weight: 600;
+  }
+
+  footer {
+    border-top: 1px solid var(--border);
+    padding: 32px 48px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 16px;
+  }
+
+  .footer-logo {
+    font-family: 'DM Serif Display', serif;
+    font-size: 18px;
+    color: var(--gold);
+  }
+
+  .footer-links {
+    display: flex;
+    gap: 24px;
+    list-style: none;
+  }
+
+  .footer-links a {
+    font-size: 13px;
+    color: var(--text-muted);
+    text-decoration: none;
+    transition: color 0.2s;
+  }
+
+  .footer-links a:hover { color: var(--gold); }
+
+  @media (max-width: 768px) {
+    nav { padding: 20px 24px; }
+    footer { padding: 24px; flex-direction: column; }
+  }
+</style>
+</head>
+<body>
+
+<div class="bg-mesh"></div>
+
+<div class="content">
+  <nav>
+    <a href="/" class="nav-logo">Saaroma</a>
+    <a href="/" class="nav-back">← Back to home</a>
+  </nav>
+
+  <div class="container">
+    <div class="page-label">Account</div>
+    <h1>Delete your account</h1>
+    <p class="subtitle">We are sorry to see you go. Deleting your account removes all your data from the app. This process is designed to be careful, not rushed.</p>
+
+    <!-- In-app method -->
+    <div class="method-card">
+      <div class="method-title">
+        <span>📱</span>
+        Fastest way — delete directly in the app
+      </div>
+      <ol class="method-steps">
+        <li><span class="step-num">1</span>Open Saaroma on your device</li>
+        <li><span class="step-num">2</span>Tap the menu icon (☰) at the top left</li>
+        <li><span class="step-num">3</span>Scroll to the bottom and tap <strong>Delete account</strong></li>
+        <li><span class="step-num">4</span>Tap <strong>Schedule deletion</strong> to confirm</li>
+        <li><span class="step-num">5</span>Your account will be locked immediately and all data cleared after 7 days</li>
+      </ol>
+    </div>
+
+    <div class="divider">or submit a request below</div>
+
+    <!-- Request form -->
+    <div class="form-card" id="form-card">
+      <div class="form-title">Submit a deletion request</div>
+      <div class="form-subtitle">We will process your request within 30 days and confirm by email.</div>
+
+      <form id="delete-form">
+        <div class="form-group">
+          <label for="email">Email or phone number used to sign up</label>
+          <input type="text" id="email" name="email" placeholder="you@example.com or +91 98765 43210" required>
+        </div>
+
+        <div class="form-group">
+          <label for="reason">Reason for deletion (optional)</label>
+          <select id="reason" name="reason">
+            <option value="">Select a reason</option>
+            <option value="not-useful">App was not useful for me</option>
+            <option value="privacy">Privacy concerns</option>
+            <option value="switching">Switching to another app</option>
+            <option value="taking-break">Taking a break</option>
+            <option value="other">Other</option>
+          </select>
+        </div>
+
+        <div class="form-group">
+          <label for="message">Anything else you want to tell us (optional)</label>
+          <textarea id="message" name="message" placeholder="Your feedback helps us improve Saaroma..."></textarea>
+        </div>
+
+        <div class="warning-box">
+          ⚠️ Deleting your account is permanent after the 7-day recovery window. All journal entries, chat history, and personal data will be removed. This cannot be undone.
+        </div>
+
+        <button type="submit" class="btn-danger">Submit deletion request</button>
+        <a href="/" class="btn-cancel">Cancel — keep my account</a>
+      </form>
+
+      <!-- Success state -->
+      <div class="success-state" id="success-state">
+        <div class="success-icon">✦</div>
+        <div class="success-title">Request received</div>
+        <p class="success-body">We have received your deletion request. We will process it within 30 days and send a confirmation to your email or phone number.</p>
+        <a href="/" class="btn-cancel" style="max-width: 200px; margin: 0 auto;">Return home</a>
+      </div>
+    </div>
+
+    <div class="recovery-note">
+      <strong>7-day recovery window.</strong> After submitting a deletion request — either in the app or here — your account is locked immediately but your data is kept for 7 days. If you change your mind within that window, contact us at <a href="mailto:privacy@saaroma.ai" style="color: var(--gold);">privacy@saaroma.ai</a> to restore your account.
+    </div>
+  </div>
+
+  <footer>
+    <div class="footer-logo">Saaroma</div>
+    <ul class="footer-links">
+      <li><a href="/">Home</a></li>
+      <li><a href="privacy.html">Privacy Policy</a></li>
+      <li><a href="mailto:privacy@saaroma.ai">Contact</a></li>
+    </ul>
+    <div style="font-size: 12px; color: var(--text-muted);">© 2026 Saaroma</div>
+  </footer>
+</div>
+
+<script>
+  document.getElementById('delete-form').addEventListener('submit', function(e) {
+    e.preventDefault();
+
+    const email = document.getElementById('email').value.trim();
+    if (!email) {
+      alert('Please enter your email or phone number.');
+      return;
+    }
+
+    // Send to mailto as fallback (replace with your form backend)
+    const reason = document.getElementById('reason').value;
+    const message = document.getElementById('message').value;
+    const subject = encodeURIComponent('Account Deletion Request — Saaroma');
+    const body = encodeURIComponent(
+      `Account deletion request\n\nEmail/Phone: ${email}\nReason: ${reason || 'Not specified'}\nMessage: ${message || 'None'}\n\nPlease process this deletion request within 30 days.`
+    );
+
+    window.location.href = `mailto:privacy@saaroma.ai?subject=${subject}&body=${body}`;
+
+    // Show success state
+    document.getElementById('delete-form').style.display = 'none';
+    document.getElementById('success-state').style.display = 'block';
+  });
+</script>
+
+</body>
+</html>
