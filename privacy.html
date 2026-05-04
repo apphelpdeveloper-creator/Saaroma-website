@@ -4,351 +4,117 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Privacy Policy — Saaroma</title>
-<meta name="description" content="Saaroma's privacy policy — what we collect, how we use it, and how you stay in control.">
+<meta name="description" content="Saaroma privacy policy — what we collect, how we use it, and how you stay in control.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@300;400;500;600;700&family=DM+Serif+Display:ital@0;1&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:opsz,wght@9..40,300;9..40,400;9..40,500;9..40,600;9..40,700&display=swap" rel="stylesheet">
 <style>
-  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-
-  :root {
-    --bg: #060409;
-    --surface: #0f0a1a;
-    --surface-alt: #161028;
-    --border: #2a1e42;
-    --gold: #e8b84b;
-    --gold-soft: #d4a43c;
-    --text-primary: #f4f0e8;
-    --text-secondary: #b8a8d4;
-    --text-muted: #7a6a8a;
-  }
-
-  body {
-    font-family: 'DM Sans', sans-serif;
-    background: var(--bg);
-    color: var(--text-primary);
-    min-height: 100vh;
-    line-height: 1.7;
-  }
-
-  .bg-mesh {
-    position: fixed;
-    inset: 0;
-    z-index: 0;
-    background:
-      radial-gradient(ellipse 80% 50% at 20% 10%, rgba(123, 47, 190, 0.12) 0%, transparent 60%),
-      radial-gradient(ellipse 60% 40% at 80% 80%, rgba(45, 16, 88, 0.18) 0%, transparent 60%),
-      var(--bg);
-  }
-
-  .content { position: relative; z-index: 1; }
-
-  nav {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    padding: 24px 48px;
-    border-bottom: 1px solid rgba(42, 30, 66, 0.5);
-    backdrop-filter: blur(12px);
-    background: rgba(6, 4, 9, 0.7);
-  }
-
-  .nav-logo {
-    font-family: 'DM Serif Display', serif;
-    font-size: 24px;
-    color: var(--gold);
-    text-decoration: none;
-  }
-
-  .nav-back {
-    font-size: 14px;
-    color: var(--text-muted);
-    text-decoration: none;
-    display: flex;
-    align-items: center;
-    gap: 8px;
-    transition: color 0.2s;
-  }
-
-  .nav-back:hover { color: var(--gold); }
-
-  .container {
-    max-width: 760px;
-    margin: 0 auto;
-    padding: 80px 24px 120px;
-  }
-
-  .page-label {
-    font-size: 11px;
-    font-weight: 700;
-    letter-spacing: 2px;
-    text-transform: uppercase;
-    color: var(--gold);
-    margin-bottom: 16px;
-  }
-
-  h1 {
-    font-family: 'DM Serif Display', serif;
-    font-size: clamp(36px, 6vw, 56px);
-    line-height: 1.1;
-    color: var(--text-primary);
-    margin-bottom: 16px;
-  }
-
-  .updated {
-    font-size: 13px;
-    color: var(--text-muted);
-    margin-bottom: 48px;
-  }
-
-  .intro-card {
-    background: rgba(232, 184, 75, 0.06);
-    border: 1px solid rgba(232, 184, 75, 0.25);
-    border-radius: 16px;
-    padding: 28px;
-    margin-bottom: 48px;
-    font-size: 16px;
-    font-weight: 300;
-    color: var(--text-secondary);
-    line-height: 1.8;
-  }
-
-  .section {
-    margin-bottom: 48px;
-  }
-
-  .section-card {
-    background: rgba(22, 16, 40, 0.6);
-    border: 1px solid rgba(42, 30, 66, 0.8);
-    border-radius: 16px;
-    padding: 28px;
-    backdrop-filter: blur(12px);
-    position: relative;
-    overflow: hidden;
-  }
-
-  .section-card::before {
-    content: '';
-    position: absolute;
-    inset: 0;
-    background: linear-gradient(135deg, rgba(255,255,255,0.03) 0%, transparent 60%);
-    pointer-events: none;
-  }
-
-  .section-header {
-    display: flex;
-    align-items: center;
-    gap: 14px;
-    margin-bottom: 20px;
-  }
-
-  .section-icon {
-    width: 40px;
-    height: 40px;
-    border-radius: 10px;
-    background: rgba(232, 184, 75, 0.1);
-    border: 1px solid rgba(232, 184, 75, 0.2);
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    font-size: 18px;
-    flex-shrink: 0;
-  }
-
-  h2 {
-    font-size: 18px;
-    font-weight: 700;
-    color: var(--text-primary);
-  }
-
-  p {
-    font-size: 15px;
-    font-weight: 300;
-    color: var(--text-secondary);
-    line-height: 1.8;
-    margin-bottom: 12px;
-  }
-
-  p:last-child { margin-bottom: 0; }
-
-  ul {
-    list-style: none;
-    display: flex;
-    flex-direction: column;
-    gap: 10px;
-  }
-
-  ul li {
-    display: flex;
-    align-items: flex-start;
-    gap: 10px;
-    font-size: 15px;
-    font-weight: 300;
-    color: var(--text-secondary);
-    line-height: 1.6;
-  }
-
-  ul li::before {
-    content: '✦';
-    color: var(--gold);
-    font-size: 9px;
-    margin-top: 5px;
-    flex-shrink: 0;
-  }
-
-  .contact-link {
-    color: var(--gold);
-    text-decoration: none;
-    font-weight: 500;
-  }
-
-  .contact-link:hover { text-decoration: underline; }
-
-  footer {
-    border-top: 1px solid var(--border);
-    padding: 32px 48px;
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    flex-wrap: wrap;
-    gap: 16px;
-  }
-
-  .footer-logo {
-    font-family: 'DM Serif Display', serif;
-    font-size: 18px;
-    color: var(--gold);
-  }
-
-  .footer-links {
-    display: flex;
-    gap: 24px;
-    list-style: none;
-  }
-
-  .footer-links a {
-    font-size: 13px;
-    color: var(--text-muted);
-    text-decoration: none;
-    transition: color 0.2s;
-  }
-
-  .footer-links a:hover { color: var(--gold); }
-
-  @media (max-width: 768px) {
-    nav { padding: 20px 24px; }
-    footer { padding: 24px; flex-direction: column; }
-  }
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+:root {
+  --bg: #060409; --surface: #0f0a1a; --surface-alt: #161028;
+  --border: #2a1e42; --gold: #e8b84b; --gold-soft: #d4a43c;
+  --text-primary: #f4f0e8; --text-sec: #b8a8d4; --text-muted: #7a6a8a;
+}
+body { font-family: 'DM Sans', sans-serif; background: var(--bg); color: var(--text-primary); min-height: 100vh; line-height: 1.7; }
+.bg-mesh { position: fixed; inset: 0; z-index: 0; background: radial-gradient(ellipse 80% 50% at 20% 10%, rgba(123,47,190,.12) 0%, transparent 60%), radial-gradient(ellipse 60% 40% at 80% 80%, rgba(45,16,88,.18) 0%, transparent 60%), var(--bg); }
+.content { position: relative; z-index: 1; }
+nav { display: flex; align-items: center; justify-content: space-between; padding: 22px 48px; border-bottom: 1px solid rgba(42,30,66,.5); backdrop-filter: blur(14px); background: rgba(6,4,9,.72); }
+.nav-logo { font-size: 22px; font-weight: 700; color: var(--gold); text-decoration: none; }
+.nav-back { font-size: 14px; color: var(--text-muted); text-decoration: none; transition: color .2s; }
+.nav-back:hover { color: var(--gold); }
+.container { max-width: 740px; margin: 0 auto; padding: 72px 24px 100px; }
+.page-label { font-size: 11px; font-weight: 700; letter-spacing: 1.8px; text-transform: uppercase; color: var(--gold); margin-bottom: 14px; }
+h1 { font-size: clamp(32px,5.5vw,52px); font-weight: 700; line-height: 1.1; margin-bottom: 12px; }
+.updated { font-size: 13px; color: var(--text-muted); margin-bottom: 44px; }
+.intro-card { background: rgba(232,184,75,.06); border: 1px solid rgba(232,184,75,.22); border-radius: 16px; padding: 24px; margin-bottom: 44px; font-size: 15px; font-weight: 300; color: var(--text-sec); line-height: 1.8; }
+.sec { margin-bottom: 20px; }
+.glass { background: rgba(22,16,40,.6); border: 1px solid rgba(255,255,255,.08); border-radius: 16px; padding: 26px; backdrop-filter: blur(14px); position: relative; overflow: hidden; }
+.glass::before { content: ''; position: absolute; inset: 0; background: linear-gradient(135deg, rgba(255,255,255,.04) 0%, transparent 55%); pointer-events: none; }
+.sec-header { display: flex; align-items: center; gap: 12px; margin-bottom: 18px; }
+.sec-icon { width: 38px; height: 38px; border-radius: 10px; background: rgba(232,184,75,.1); border: 1px solid rgba(232,184,75,.2); display: flex; align-items: center; justify-content: center; font-size: 17px; flex-shrink: 0; }
+h2 { font-size: 17px; font-weight: 700; }
+p { font-size: 14px; font-weight: 300; color: var(--text-sec); line-height: 1.8; margin-bottom: 10px; }
+p:last-child { margin-bottom: 0; }
+ul { list-style: none; display: flex; flex-direction: column; gap: 10px; }
+ul li { display: flex; align-items: flex-start; gap: 10px; font-size: 14px; font-weight: 300; color: var(--text-sec); line-height: 1.6; }
+ul li::before { content: '\2736'; color: var(--gold); font-size: 9px; margin-top: 5px; flex-shrink: 0; }
+a.link { color: var(--gold); text-decoration: none; font-weight: 500; }
+a.link:hover { text-decoration: underline; }
+footer { border-top: 1px solid var(--border); padding: 32px 48px; display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 16px; }
+.footer-logo { font-size: 20px; font-weight: 700; color: var(--gold); }
+.footer-links { display: flex; gap: 22px; list-style: none; }
+.footer-links a { font-size: 13px; color: var(--text-muted); text-decoration: none; transition: color .2s; }
+.footer-links a:hover { color: var(--gold); }
+@media (max-width: 768px) { nav { padding: 18px 20px; } footer { padding: 24px 20px; flex-direction: column; } }
 </style>
 </head>
 <body>
-
 <div class="bg-mesh"></div>
-
 <div class="content">
   <nav>
     <a href="/" class="nav-logo">Saaroma</a>
     <a href="/" class="nav-back">← Back to home</a>
   </nav>
-
   <div class="container">
     <div class="page-label">Legal</div>
     <h1>Privacy Policy</h1>
     <div class="updated">Last updated: May 2026</div>
+    <div class="intro-card">Saaroma is built on one principle — what you share here stays here. This policy explains exactly what we collect, what we do with it, and how you stay in control. We have written it in plain language so you do not have to decode legal jargon.</div>
 
-    <div class="intro-card">
-      Saaroma is built on one principle — what you share here stays here. This policy explains exactly what we collect, what we do with it, and how you stay in control. We have written it in plain language so you do not have to decode legal jargon.
-    </div>
+    <div class="sec"><div class="glass">
+      <div class="sec-header"><div class="sec-icon">📦</div><h2>What we collect</h2></div>
+      <ul>
+        <li>Your name or nickname — stored on your device only</li>
+        <li>Your phone number or email — used once to verify your identity, never stored after verification</li>
+        <li>Your journal entries and mood ratings — stored privately on your device using encrypted storage</li>
+        <li>Your chat conversations with Saaroma — stored on your device and sent to our AI service to generate responses</li>
+        <li>Your companion name, age range, and profession — stored on your device only</li>
+        <li>Your practice session activity — stored on your device only</li>
+      </ul>
+    </div></div>
 
-    <div class="section">
-      <div class="section-card">
-        <div class="section-header">
-          <div class="section-icon">📦</div>
-          <h2>What we collect</h2>
-        </div>
-        <ul>
-          <li>Your name or nickname — stored on your device only</li>
-          <li>Your phone number or email — used once to verify your identity, never stored after verification</li>
-          <li>Your journal entries and mood ratings — stored privately on your device using encrypted storage</li>
-          <li>Your chat conversations with Saaroma — stored on your device and sent to our AI service to generate responses</li>
-          <li>Your companion name, age range, and profession — stored on your device only</li>
-          <li>Your practice session activity — stored on your device only</li>
-        </ul>
-      </div>
-    </div>
+    <div class="sec"><div class="glass">
+      <div class="sec-header"><div class="sec-icon">⚙️</div><h2>How we use your data</h2></div>
+      <p>Your data is used only to make Saaroma work for you. Your journal entries and chat messages are sent to our AI service — powered by Anthropic Claude — to generate personalised responses. We do not use your data for advertising, analytics, or any purpose beyond making your experience better.</p>
+      <p>We do not build a profile of you. We do not sell your data. We do not share it with advertisers.</p>
+    </div></div>
 
-    <div class="section">
-      <div class="section-card">
-        <div class="section-header">
-          <div class="section-icon">⚙️</div>
-          <h2>How we use your data</h2>
-        </div>
-        <p>Your data is used only to make Saaroma work for you. Your journal entries and chat messages are sent to our AI service — powered by Anthropic Claude — to generate personalised responses. We do not use your data for advertising, analytics, or any purpose beyond making your experience better.</p>
-        <p>We do not build a profile of you. We do not sell your data. We do not share it with advertisers.</p>
-      </div>
-    </div>
+    <div class="sec"><div class="glass">
+      <div class="sec-header"><div class="sec-icon">☁️</div><h2>Third party services</h2></div>
+      <p>Saaroma uses Anthropic's Claude AI to generate companion responses. When you send a message, it is transmitted to Anthropic's servers to generate a reply. Anthropic's privacy policy applies to this processing.</p>
+      <p>We send only what is needed — your message and a small amount of context. We do not send your name, phone number, or any identifying information to Anthropic.</p>
+      <p>Read Anthropic's privacy policy at <a href="https://www.anthropic.com/privacy" class="link" target="_blank">anthropic.com/privacy</a>.</p>
+    </div></div>
 
-    <div class="section">
-      <div class="section-card">
-        <div class="section-header">
-          <div class="section-icon">☁️</div>
-          <h2>Third party services</h2>
-        </div>
-        <p>Saaroma uses Anthropic's Claude AI to generate companion responses. When you send a message, it is transmitted to Anthropic's servers to generate a reply. Anthropic's privacy policy applies to this processing.</p>
-        <p>We send only what is needed — your message and a small amount of context. We do not send your name, phone number, or any identifying information to Anthropic.</p>
-        <p>You can read Anthropic's privacy policy at <a href="https://www.anthropic.com/privacy" class="contact-link" target="_blank">anthropic.com/privacy</a>.</p>
-      </div>
-    </div>
+    <div class="sec"><div class="glass">
+      <div class="sec-header"><div class="sec-icon">🛡️</div><h2>You are in control</h2></div>
+      <ul>
+        <li>Delete your account at any time from the menu inside the app — this removes all your data from the device</li>
+        <li>Clear your chat history at any time from the chat screen</li>
+        <li>Your journal entries are stored only on your device — uninstalling the app removes them</li>
+        <li>We do not sell or share your personal data with any third party for advertising</li>
+        <li>Request deletion of any data at <a href="delete.html" class="link">saaroma.ai/delete</a></li>
+      </ul>
+    </div></div>
 
-    <div class="section">
-      <div class="section-card">
-        <div class="section-header">
-          <div class="section-icon">🛡️</div>
-          <h2>You are in control</h2>
-        </div>
-        <ul>
-          <li>Delete your account at any time from the menu inside the app — this removes all your data from the device</li>
-          <li>Clear your chat history at any time from the chat screen</li>
-          <li>Your journal entries are stored only on your device — uninstalling the app removes them</li>
-          <li>We do not sell or share your personal data with any third party for advertising</li>
-          <li>Request deletion of any data associated with your account at <a href="/delete" class="contact-link">saaroma.ai/delete</a></li>
-        </ul>
-      </div>
-    </div>
+    <div class="sec"><div class="glass">
+      <div class="sec-header"><div class="sec-icon">🕐</div><h2>How long we keep your data</h2></div>
+      <p>Your data lives on your device for as long as you use the app. When you delete your account or uninstall the app, your data is removed from your device.</p>
+      <p>We do not keep copies on external servers beyond what is needed to generate your AI responses in real time. AI response data is not stored after the response is delivered.</p>
+    </div></div>
 
-    <div class="section">
-      <div class="section-card">
-        <div class="section-header">
-          <div class="section-icon">🕐</div>
-          <h2>How long we keep your data</h2>
-        </div>
-        <p>Your data lives on your device for as long as you use the app. When you delete your account or uninstall the app, your data is removed from your device.</p>
-        <p>We do not keep copies on external servers beyond what is needed to generate your AI responses in real time. AI response data is not stored after the response is delivered.</p>
-      </div>
-    </div>
+    <div class="sec"><div class="glass">
+      <div class="sec-header"><div class="sec-icon">🔒</div><h2>Security</h2></div>
+      <p>Your local data is stored using encrypted private storage on your device. It is not accessible to other apps and is not transmitted to any server except as described in this policy.</p>
+      <p>All communication between the app and our backend uses HTTPS encryption.</p>
+    </div></div>
 
-    <div class="section">
-      <div class="section-card">
-        <div class="section-header">
-          <div class="section-icon">🔒</div>
-          <h2>Security</h2>
-        </div>
-        <p>Your local data is stored using encrypted private storage on your device. It is not accessible to other apps and is not transmitted to any server except as described in this policy.</p>
-        <p>All communication between the app and our backend uses HTTPS encryption.</p>
-      </div>
-    </div>
-
-    <div class="section">
-      <div class="section-card">
-        <div class="section-header">
-          <div class="section-icon">✉️</div>
-          <h2>Questions about your privacy</h2>
-        </div>
-        <p>If you have any questions about how Saaroma handles your data, or if you would like to make a data request, please contact us:</p>
-        <p><a href="mailto:privacy@saaroma.ai" class="contact-link">privacy@saaroma.ai</a></p>
-        <p>We will respond within 30 days.</p>
-      </div>
-    </div>
+    <div class="sec"><div class="glass">
+      <div class="sec-header"><div class="sec-icon">✉️</div><h2>Questions about your privacy</h2></div>
+      <p>If you have any questions about how Saaroma handles your data, or if you would like to make a data request, please contact us:</p>
+      <p><a href="mailto:support@saaroma.ai" class="link">support@saaroma.ai</a></p>
+      <p>We will respond within 30 days.</p>
+    </div></div>
   </div>
 
   <footer>
@@ -356,11 +122,10 @@
     <ul class="footer-links">
       <li><a href="/">Home</a></li>
       <li><a href="delete.html">Delete Account</a></li>
-      <li><a href="mailto:privacy@saaroma.ai">Contact</a></li>
+      <li><a href="mailto:support@saaroma.ai">Contact</a></li>
     </ul>
-    <div style="font-size: 12px; color: var(--text-muted);">© 2026 Saaroma</div>
+    <div style="font-size:12px;color:var(--text-muted);">© 2026 Saaroma</div>
   </footer>
 </div>
-
 </body>
 </html>

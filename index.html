@@ -4,642 +4,193 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Saaroma — Peace, Perspective, Practice</title>
-<meta name="description" content="Saaroma is your private AI companion for emotional wellness. Journal, reflect, and grow — with a companion that genuinely listens.">
+<meta name="description" content="Saaroma is your private AI companion for emotional wellness. Journal, reflect, and grow with a companion that genuinely listens.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@300;400;500;600;700&family=DM+Serif+Display:ital@0;1&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:opsz,wght@9..40,300;9..40,400;9..40,500;9..40,600;9..40,700&display=swap" rel="stylesheet">
 <style>
-  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+:root {
+  --bg: #060409; --surface: #0f0a1a; --surface-alt: #161028;
+  --border: #2a1e42; --gold: #e8b84b; --gold-soft: #d4a43c;
+  --text-primary: #f4f0e8; --text-sec: #b8a8d4; --text-muted: #7a6a8a;
+}
+html { scroll-behavior: smooth; }
+body { font-family: 'DM Sans', sans-serif; background: var(--bg); color: var(--text-primary); overflow-x: hidden; min-height: 100vh; }
+.bg-mesh { position: fixed; inset: 0; z-index: 0; background: radial-gradient(ellipse 90% 55% at 15% 8%, rgba(123,47,190,.16) 0%, transparent 60%), radial-gradient(ellipse 70% 45% at 85% 85%, rgba(45,16,88,.22) 0%, transparent 60%), radial-gradient(ellipse 60% 40% at 50% 50%, rgba(30,21,48,.8) 0%, var(--bg) 70%); animation: meshDrift 24s ease-in-out infinite alternate; }
+@keyframes meshDrift { from { opacity: 1; } to { opacity: .88; } }
+.stars { position: fixed; inset: 0; z-index: 0; pointer-events: none; }
+.star { position: absolute; width: 1.5px; height: 1.5px; border-radius: 50%; background: var(--text-primary); animation: twinkle var(--dur) ease-in-out infinite alternate; opacity: var(--op); }
+@keyframes twinkle { to { opacity: calc(var(--op) * .25); transform: scale(.5); } }
+.content { position: relative; z-index: 1; }
+nav { display: flex; align-items: center; justify-content: space-between; padding: 22px 48px; border-bottom: 1px solid rgba(42,30,66,.5); backdrop-filter: blur(14px); position: sticky; top: 0; z-index: 100; background: rgba(6,4,9,.72); }
+.nav-logo { font-size: 22px; font-weight: 700; color: var(--gold); text-decoration: none; }
+.nav-links { display: flex; gap: 28px; list-style: none; }
+.nav-links a { color: var(--text-sec); text-decoration: none; font-size: 14px; font-weight: 500; transition: color .2s; }
+.nav-links a:hover { color: var(--gold); }
+.hero { min-height: 88vh; display: flex; flex-direction: column; align-items: center; justify-content: center; text-align: center; padding: 80px 24px 60px; }
+.hero-pill { display: inline-flex; align-items: center; gap: 8px; border: 1px solid rgba(232,184,75,.3); border-radius: 100px; padding: 6px 16px; font-size: 11px; font-weight: 700; color: var(--gold); letter-spacing: 1.2px; text-transform: uppercase; margin-bottom: 32px; background: rgba(232,184,75,.06); }
+.hero-pill::before { content: ''; width: 6px; height: 6px; border-radius: 50%; background: var(--gold); animation: pulse 2s ease-in-out infinite; }
+@keyframes pulse { 0%,100% { opacity: 1; transform: scale(1); } 50% { opacity: .4; transform: scale(.6); } }
+.hero h1 { font-size: clamp(44px,8vw,90px); font-weight: 700; line-height: 1.06; margin-bottom: 8px; animation: fadeUp .7s ease both; }
+.hero h1 span { color: var(--gold); }
+.hero-sub { font-size: clamp(15px,2.2vw,20px); font-weight: 300; color: var(--text-sec); max-width: 520px; line-height: 1.7; margin: 22px auto 44px; animation: fadeUp .7s .1s ease both; }
+@keyframes fadeUp { from { opacity: 0; transform: translateY(20px); } to { opacity: 1; transform: translateY(0); } }
+.hero-btns { display: flex; gap: 14px; flex-wrap: wrap; justify-content: center; animation: fadeUp .7s .2s ease both; }
+.btn-gold { display: inline-flex; align-items: center; gap: 8px; background: var(--gold); color: #060409; font-family: 'DM Sans', sans-serif; font-weight: 700; font-size: 14px; padding: 13px 26px; border-radius: 100px; text-decoration: none; border: none; cursor: pointer; transition: all .2s; }
+.btn-gold:hover { background: var(--gold-soft); transform: translateY(-2px); box-shadow: 0 8px 28px rgba(232,184,75,.28); }
+.btn-outline { display: inline-flex; align-items: center; background: transparent; color: var(--text-sec); font-family: 'DM Sans', sans-serif; font-weight: 500; font-size: 14px; padding: 13px 26px; border-radius: 100px; text-decoration: none; border: 1px solid var(--border); transition: all .2s; }
+.btn-outline:hover { border-color: var(--gold); color: var(--gold); transform: translateY(-2px); }
+.strip { display: flex; align-items: center; justify-content: center; gap: 28px; padding: 18px 48px; margin-top: 56px; border-top: 1px solid rgba(42,30,66,.4); border-bottom: 1px solid rgba(42,30,66,.4); }
+.strip-item { font-size: 12px; font-weight: 600; color: var(--text-muted); letter-spacing: .8px; text-transform: uppercase; }
+.strip-dot { width: 3px; height: 3px; border-radius: 50%; background: var(--gold); opacity: .5; }
+.section { padding: 96px 48px; max-width: 1160px; margin: 0 auto; }
+.sec-label { font-size: 11px; font-weight: 700; letter-spacing: 1.8px; text-transform: uppercase; color: var(--gold); margin-bottom: 14px; }
+.sec-title { font-size: clamp(30px,4.5vw,52px); font-weight: 700; line-height: 1.15; margin-bottom: 56px; max-width: 560px; }
+.glass { background: rgba(22,16,40,.6); border: 1px solid rgba(255,255,255,.08); border-radius: 18px; padding: 28px; backdrop-filter: blur(14px); position: relative; overflow: hidden; transition: all .3s; }
+.glass::before { content: ''; position: absolute; inset: 0; background: linear-gradient(135deg, rgba(255,255,255,.05) 0%, transparent 55%); pointer-events: none; }
+.glass:hover { border-color: rgba(232,184,75,.25); transform: translateY(-3px); box-shadow: 0 20px 50px rgba(0,0,0,.4); }
+.features-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(270px,1fr)); gap: 20px; }
+.feat-icon { width: 44px; height: 44px; border-radius: 11px; background: rgba(232,184,75,.1); border: 1px solid rgba(232,184,75,.2); display: flex; align-items: center; justify-content: center; font-size: 20px; margin-bottom: 18px; }
+.feat-title { font-size: 17px; font-weight: 700; margin-bottom: 8px; }
+.feat-body { font-size: 14px; font-weight: 300; color: var(--text-sec); line-height: 1.75; }
 
-  :root {
-    --bg: #060409;
-    --surface: #0f0a1a;
-    --surface-alt: #161028;
-    --border: #2a1e42;
-    --gold: #e8b84b;
-    --gold-soft: #d4a43c;
-    --gold-glow: rgba(232, 184, 75, 0.12);
-    --text-primary: #f4f0e8;
-    --text-secondary: #b8a8d4;
-    --text-muted: #7a6a8a;
-    --purple-mid: #2d1058;
-    --purple-light: #7b2fbe;
-  }
+/* 6 month banner */
+.commitment-band { padding: 0 48px 80px; max-width: 1160px; margin: 0 auto; }
+.commitment-card { background: rgba(232,184,75,.06); border: 1px solid rgba(232,184,75,.22); border-radius: 20px; padding: 40px 48px; display: flex; align-items: center; gap: 40px; }
+.commitment-icon { font-size: 48px; flex-shrink: 0; }
+.commitment-title { font-size: 22px; font-weight: 700; margin-bottom: 10px; color: var(--text-primary); }
+.commitment-body { font-size: 15px; font-weight: 300; color: var(--text-sec); line-height: 1.8; }
+.commitment-body strong { color: var(--gold); font-weight: 600; }
 
-  html { scroll-behavior: smooth; }
-
-  body {
-    font-family: 'DM Sans', sans-serif;
-    background: var(--bg);
-    color: var(--text-primary);
-    overflow-x: hidden;
-    min-height: 100vh;
-  }
-
-  /* Animated mesh background */
-  .bg-mesh {
-    position: fixed;
-    inset: 0;
-    z-index: 0;
-    background:
-      radial-gradient(ellipse 80% 50% at 20% 10%, rgba(123, 47, 190, 0.18) 0%, transparent 60%),
-      radial-gradient(ellipse 60% 40% at 80% 80%, rgba(45, 16, 88, 0.25) 0%, transparent 60%),
-      radial-gradient(ellipse 100% 60% at 50% 30%, rgba(30, 21, 48, 0.9) 0%, var(--bg) 70%);
-    animation: meshShift 20s ease-in-out infinite alternate;
-  }
-
-  @keyframes meshShift {
-    0% { background-position: 0% 0%, 100% 100%, 50% 50%; }
-    100% { background-position: 30% 20%, 70% 60%, 60% 40%; }
-  }
-
-  /* Stars */
-  .stars {
-    position: fixed;
-    inset: 0;
-    z-index: 0;
-    overflow: hidden;
-  }
-
-  .star {
-    position: absolute;
-    width: 2px;
-    height: 2px;
-    border-radius: 50%;
-    background: var(--text-primary);
-    animation: twinkle var(--duration) ease-in-out infinite alternate;
-    opacity: var(--opacity);
-  }
-
-  @keyframes twinkle {
-    0% { opacity: var(--opacity); transform: scale(1); }
-    100% { opacity: calc(var(--opacity) * 0.3); transform: scale(0.5); }
-  }
-
-  /* Content */
-  .content { position: relative; z-index: 1; }
-
-  /* Nav */
-  nav {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    padding: 24px 48px;
-    border-bottom: 1px solid rgba(42, 30, 66, 0.5);
-    backdrop-filter: blur(12px);
-    position: sticky;
-    top: 0;
-    z-index: 100;
-    background: rgba(6, 4, 9, 0.7);
-  }
-
-  .nav-logo {
-    font-family: 'DM Serif Display', serif;
-    font-size: 24px;
-    color: var(--gold);
-    text-decoration: none;
-    letter-spacing: 0.5px;
-  }
-
-  .nav-links {
-    display: flex;
-    gap: 32px;
-    list-style: none;
-  }
-
-  .nav-links a {
-    color: var(--text-secondary);
-    text-decoration: none;
-    font-size: 14px;
-    font-weight: 500;
-    transition: color 0.2s;
-  }
-
-  .nav-links a:hover { color: var(--gold); }
-
-  /* Hero */
-  .hero {
-    min-height: 90vh;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    text-align: center;
-    padding: 80px 24px;
-  }
-
-  .hero-tag {
-    display: inline-flex;
-    align-items: center;
-    gap: 8px;
-    border: 1px solid rgba(232, 184, 75, 0.3);
-    border-radius: 100px;
-    padding: 6px 16px;
-    font-size: 12px;
-    font-weight: 600;
-    color: var(--gold);
-    letter-spacing: 1px;
-    text-transform: uppercase;
-    margin-bottom: 32px;
-    background: rgba(232, 184, 75, 0.06);
-  }
-
-  .hero-tag::before {
-    content: '';
-    width: 6px;
-    height: 6px;
-    border-radius: 50%;
-    background: var(--gold);
-    animation: pulse 2s ease-in-out infinite;
-  }
-
-  @keyframes pulse {
-    0%, 100% { opacity: 1; transform: scale(1); }
-    50% { opacity: 0.5; transform: scale(0.7); }
-  }
-
-  .hero h1 {
-    font-family: 'DM Serif Display', serif;
-    font-size: clamp(48px, 8vw, 96px);
-    line-height: 1.05;
-    color: var(--text-primary);
-    margin-bottom: 8px;
-    animation: fadeUp 0.8s ease both;
-  }
-
-  .hero h1 em {
-    font-style: italic;
-    color: var(--gold);
-  }
-
-  .hero-sub {
-    font-size: clamp(16px, 2.5vw, 22px);
-    color: var(--text-secondary);
-    font-weight: 300;
-    max-width: 560px;
-    line-height: 1.6;
-    margin: 24px auto 48px;
-    animation: fadeUp 0.8s 0.1s ease both;
-  }
-
-  @keyframes fadeUp {
-    from { opacity: 0; transform: translateY(24px); }
-    to { opacity: 1; transform: translateY(0); }
-  }
-
-  .hero-buttons {
-    display: flex;
-    gap: 16px;
-    flex-wrap: wrap;
-    justify-content: center;
-    animation: fadeUp 0.8s 0.2s ease both;
-  }
-
-  .btn-primary {
-    display: inline-flex;
-    align-items: center;
-    gap: 8px;
-    background: var(--gold);
-    color: #060409;
-    font-family: 'DM Sans', sans-serif;
-    font-weight: 700;
-    font-size: 15px;
-    padding: 14px 28px;
-    border-radius: 100px;
-    text-decoration: none;
-    transition: all 0.2s;
-    border: none;
-    cursor: pointer;
-  }
-
-  .btn-primary:hover {
-    background: var(--gold-soft);
-    transform: translateY(-2px);
-    box-shadow: 0 8px 32px rgba(232, 184, 75, 0.3);
-  }
-
-  .btn-secondary {
-    display: inline-flex;
-    align-items: center;
-    gap: 8px;
-    background: transparent;
-    color: var(--text-secondary);
-    font-family: 'DM Sans', sans-serif;
-    font-weight: 500;
-    font-size: 15px;
-    padding: 14px 28px;
-    border-radius: 100px;
-    text-decoration: none;
-    border: 1px solid var(--border);
-    transition: all 0.2s;
-    cursor: pointer;
-  }
-
-  .btn-secondary:hover {
-    border-color: var(--gold);
-    color: var(--gold);
-    transform: translateY(-2px);
-  }
-
-  /* Tagline strip */
-  .tagline-strip {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    gap: 32px;
-    padding: 20px 48px;
-    border-top: 1px solid rgba(42, 30, 66, 0.5);
-    border-bottom: 1px solid rgba(42, 30, 66, 0.5);
-    margin-top: 48px;
-  }
-
-  .tagline-item {
-    display: flex;
-    align-items: center;
-    gap: 8px;
-    font-size: 13px;
-    font-weight: 500;
-    color: var(--text-muted);
-  }
-
-  .tagline-dot {
-    width: 4px;
-    height: 4px;
-    border-radius: 50%;
-    background: var(--gold);
-    opacity: 0.5;
-  }
-
-  /* Features */
-  .section {
-    padding: 100px 48px;
-    max-width: 1200px;
-    margin: 0 auto;
-  }
-
-  .section-label {
-    font-size: 11px;
-    font-weight: 700;
-    letter-spacing: 2px;
-    text-transform: uppercase;
-    color: var(--gold);
-    margin-bottom: 16px;
-  }
-
-  .section-title {
-    font-family: 'DM Serif Display', serif;
-    font-size: clamp(32px, 5vw, 56px);
-    line-height: 1.15;
-    color: var(--text-primary);
-    margin-bottom: 64px;
-    max-width: 600px;
-  }
-
-  .features-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-    gap: 24px;
-  }
-
-  .feature-card {
-    background: rgba(22, 16, 40, 0.6);
-    border: 1px solid rgba(42, 30, 66, 0.8);
-    border-radius: 20px;
-    padding: 32px;
-    backdrop-filter: blur(12px);
-    transition: all 0.3s;
-    position: relative;
-    overflow: hidden;
-  }
-
-  .feature-card::before {
-    content: '';
-    position: absolute;
-    inset: 0;
-    background: linear-gradient(135deg, rgba(255,255,255,0.04) 0%, transparent 60%);
-    pointer-events: none;
-  }
-
-  .feature-card:hover {
-    border-color: rgba(232, 184, 75, 0.3);
-    transform: translateY(-4px);
-    box-shadow: 0 20px 60px rgba(0, 0, 0, 0.4);
-  }
-
-  .feature-icon {
-    width: 48px;
-    height: 48px;
-    border-radius: 12px;
-    background: rgba(232, 184, 75, 0.1);
-    border: 1px solid rgba(232, 184, 75, 0.2);
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    font-size: 22px;
-    margin-bottom: 20px;
-  }
-
-  .feature-title {
-    font-size: 18px;
-    font-weight: 700;
-    color: var(--text-primary);
-    margin-bottom: 10px;
-  }
-
-  .feature-body {
-    font-size: 14px;
-    font-weight: 300;
-    color: var(--text-secondary);
-    line-height: 1.7;
-  }
-
-  /* Promise section */
-  .promise-section {
-    padding: 100px 48px;
-    background: rgba(15, 10, 26, 0.5);
-    border-top: 1px solid var(--border);
-    border-bottom: 1px solid var(--border);
-  }
-
-  .promise-inner {
-    max-width: 1200px;
-    margin: 0 auto;
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 80px;
-    align-items: center;
-  }
-
-  .promise-text h2 {
-    font-family: 'DM Serif Display', serif;
-    font-size: clamp(32px, 4vw, 48px);
-    line-height: 1.2;
-    margin-bottom: 24px;
-  }
-
-  .promise-text p {
-    font-size: 16px;
-    font-weight: 300;
-    color: var(--text-secondary);
-    line-height: 1.8;
-    margin-bottom: 16px;
-  }
-
-  .promise-list {
-    list-style: none;
-    display: flex;
-    flex-direction: column;
-    gap: 16px;
-  }
-
-  .promise-list li {
-    display: flex;
-    align-items: flex-start;
-    gap: 12px;
-    font-size: 15px;
-    font-weight: 400;
-    color: var(--text-secondary);
-  }
-
-  .promise-list li::before {
-    content: '✦';
-    color: var(--gold);
-    font-size: 10px;
-    margin-top: 4px;
-    flex-shrink: 0;
-  }
-
-  /* CTA */
-  .cta-section {
-    padding: 120px 48px;
-    text-align: center;
-    max-width: 800px;
-    margin: 0 auto;
-  }
-
-  .cta-section h2 {
-    font-family: 'DM Serif Display', serif;
-    font-size: clamp(36px, 6vw, 64px);
-    line-height: 1.1;
-    margin-bottom: 24px;
-  }
-
-  .cta-section h2 em {
-    font-style: italic;
-    color: var(--gold);
-  }
-
-  .cta-section p {
-    font-size: 18px;
-    font-weight: 300;
-    color: var(--text-secondary);
-    margin-bottom: 48px;
-    line-height: 1.7;
-  }
-
-  /* Footer */
-  footer {
-    padding: 48px;
-    border-top: 1px solid var(--border);
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    flex-wrap: gap;
-  }
-
-  .footer-logo {
-    font-family: 'DM Serif Display', serif;
-    font-size: 20px;
-    color: var(--gold);
-  }
-
-  .footer-tagline {
-    font-size: 12px;
-    color: var(--text-muted);
-    margin-top: 4px;
-  }
-
-  .footer-links {
-    display: flex;
-    gap: 24px;
-    list-style: none;
-  }
-
-  .footer-links a {
-    font-size: 13px;
-    color: var(--text-muted);
-    text-decoration: none;
-    transition: color 0.2s;
-  }
-
-  .footer-links a:hover { color: var(--gold); }
-
-  .footer-copy {
-    font-size: 12px;
-    color: var(--text-muted);
-  }
-
-  /* Mobile */
-  @media (max-width: 768px) {
-    nav { padding: 20px 24px; }
-    .nav-links { display: none; }
-    .section { padding: 60px 24px; }
-    .promise-section { padding: 60px 24px; }
-    .promise-inner { grid-template-columns: 1fr; gap: 40px; }
-    .cta-section { padding: 80px 24px; }
-    footer { padding: 32px 24px; flex-direction: column; gap: 24px; text-align: center; }
-    .tagline-strip { display: none; }
-  }
+.promise-band { padding: 96px 48px; background: rgba(15,10,26,.55); border-top: 1px solid var(--border); border-bottom: 1px solid var(--border); }
+.promise-inner { max-width: 1160px; margin: 0 auto; display: grid; grid-template-columns: 1fr 1fr; gap: 72px; align-items: center; }
+.promise-inner h2 { font-size: clamp(28px,3.8vw,46px); font-weight: 700; line-height: 1.2; margin-bottom: 20px; }
+.promise-inner p { font-size: 15px; font-weight: 300; color: var(--text-sec); line-height: 1.85; margin-bottom: 14px; }
+.tick-list { list-style: none; display: flex; flex-direction: column; gap: 12px; margin-top: 20px; }
+.tick-list li { display: flex; align-items: flex-start; gap: 10px; font-size: 14px; font-weight: 300; color: var(--text-sec); line-height: 1.6; }
+.tick-list li::before { content: '\2736'; color: var(--gold); font-size: 9px; margin-top: 5px; flex-shrink: 0; }
+.policy-link { color: var(--gold); font-size: 14px; font-weight: 600; text-decoration: none; display: inline-block; margin-top: 20px; }
+.policy-link:hover { text-decoration: underline; }
+.cta { padding: 112px 48px; text-align: center; max-width: 740px; margin: 0 auto; }
+.cta h2 { font-size: clamp(32px,5.5vw,60px); font-weight: 700; line-height: 1.1; margin-bottom: 20px; }
+.cta h2 span { color: var(--gold); }
+.cta p { font-size: 17px; font-weight: 300; color: var(--text-sec); margin-bottom: 44px; line-height: 1.7; }
+footer { padding: 40px 48px; border-top: 1px solid var(--border); display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 20px; }
+.footer-logo { font-size: 20px; font-weight: 700; color: var(--gold); }
+.footer-tag { font-size: 12px; color: var(--text-muted); margin-top: 3px; }
+.footer-links { display: flex; gap: 22px; list-style: none; }
+.footer-links a { font-size: 13px; color: var(--text-muted); text-decoration: none; transition: color .2s; }
+.footer-links a:hover { color: var(--gold); }
+.footer-copy { font-size: 12px; color: var(--text-muted); }
+@media (max-width: 768px) {
+  nav { padding: 18px 20px; } .nav-links { display: none; }
+  .section, .promise-band, .cta, .commitment-band { padding: 60px 20px; }
+  .promise-inner { grid-template-columns: 1fr; gap: 36px; }
+  .commitment-card { flex-direction: column; gap: 20px; padding: 28px; text-align: center; }
+  footer { padding: 28px 20px; flex-direction: column; text-align: center; }
+  .strip { display: none; }
+}
 </style>
 </head>
 <body>
-
 <div class="bg-mesh"></div>
-
-<!-- Stars -->
 <div class="stars" id="stars"></div>
-
 <div class="content">
-
-  <!-- Nav -->
   <nav>
     <a href="/" class="nav-logo">Saaroma</a>
     <ul class="nav-links">
       <li><a href="#features">Features</a></li>
+      <li><a href="#commitment">Commitment</a></li>
       <li><a href="#privacy">Privacy</a></li>
       <li><a href="privacy.html">Privacy Policy</a></li>
     </ul>
   </nav>
 
-  <!-- Hero -->
   <section class="hero">
-    <div class="hero-tag">AI Companion App</div>
-    <h1>Your companion<br>for <em>inner clarity</em></h1>
+    <div class="hero-pill">AI Companion App</div>
+    <h1>Your companion<br>for <span>inner clarity</span></h1>
     <p class="hero-sub">Saaroma listens, reflects, and walks with you — through the heavy days and the light ones. A private space, just for you.</p>
-    <div class="hero-buttons">
-      <a href="#" class="btn-primary">
-        <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M3.18 23.76c.3.17.64.24.99.24.45 0 .91-.13 1.33-.4L21 14.03c.75-.48 1-.98 1-1.53s-.25-1.05-1-1.53L5.5.4C4.7-.11 3.87-.14 3.18.24 2.49.62 2 1.38 2 2.24v19.52c0 .86.49 1.62 1.18 2z"/></svg>
-        Download on Android
-      </a>
-      <a href="#features" class="btn-secondary">Learn more</a>
+    <div class="hero-btns">
+      <a href="#" class="btn-gold">Download on Android</a>
+      <a href="#features" class="btn-outline">Learn more</a>
     </div>
-
-    <div class="tagline-strip">
-      <span class="tagline-item">Peace</span>
-      <span class="tagline-dot"></span>
-      <span class="tagline-item">Perspective</span>
-      <span class="tagline-dot"></span>
-      <span class="tagline-item">Practice</span>
+    <div class="strip">
+      <span class="strip-item">Peace</span><span class="strip-dot"></span>
+      <span class="strip-item">Perspective</span><span class="strip-dot"></span>
+      <span class="strip-item">Practice</span>
     </div>
   </section>
 
-  <!-- Features -->
   <section class="section" id="features">
-    <div class="section-label">What Saaroma offers</div>
-    <h2 class="section-title">Everything you need to feel heard</h2>
-
+    <div class="sec-label">What Saaroma offers</div>
+    <h2 class="sec-title">Everything you need to feel heard</h2>
     <div class="features-grid">
-      <div class="feature-card">
-        <div class="feature-icon">💬</div>
-        <div class="feature-title">Companion Chat</div>
-        <div class="feature-body">Talk to Saaroma like a warm, intelligent friend. It listens first, asks the right questions, and never rushes you toward answers.</div>
-      </div>
-      <div class="feature-card">
-        <div class="feature-icon">📓</div>
-        <div class="feature-title">Private Journal</div>
-        <div class="feature-body">Write about your day, track your mood, and build a private record of your inner life. Auto-saves as you type.</div>
-      </div>
-      <div class="feature-card">
-        <div class="feature-icon">🧘</div>
-        <div class="feature-title">Guided Practice</div>
-        <div class="feature-body">Four evidence-based sessions — one-minute reset, breathing pause, grounding, and one small action — to bring you back to yourself.</div>
-      </div>
-      <div class="feature-card">
-        <div class="feature-icon">✦</div>
-        <div class="feature-title">Weekly Score</div>
-        <div class="feature-body">Every Sunday, Saaroma reads your week and delivers a personal reflection — what went well, what was heavy, and one focus for next week.</div>
-      </div>
-      <div class="feature-card">
-        <div class="feature-icon">🔒</div>
-        <div class="feature-title">Completely Private</div>
-        <div class="feature-body">Your data lives on your device. Saaroma does not sell your information, does not show you ads, and does not build a profile of you.</div>
-      </div>
-      <div class="feature-card">
-        <div class="feature-icon">🌍</div>
-        <div class="feature-title">Culturally Aware</div>
-        <div class="feature-body">Saaroma understands the pressures of family expectations, career stress, and relationships across cultures — without you having to explain.</div>
-      </div>
+      <div class="glass"><div class="feat-icon">💬</div><div class="feat-title">Companion Chat</div><div class="feat-body">Talk to Saaroma like a warm, intelligent friend. It listens first, asks the right questions, and never rushes you toward answers.</div></div>
+      <div class="glass"><div class="feat-icon">📓</div><div class="feat-title">Private Journal</div><div class="feat-body">Write about your day, track your mood, and build a private record of your inner life. Auto-saves as you type.</div></div>
+      <div class="glass"><div class="feat-icon">🧘</div><div class="feat-title">Guided Practice</div><div class="feat-body">Four evidence-based sessions — one-minute reset, breathing pause, grounding, and one small action — to bring you back to yourself.</div></div>
+      <div class="glass"><div class="feat-icon">✦</div><div class="feat-title">Weekly Score</div><div class="feat-body">Every Sunday, Saaroma reads your week and delivers a personal reflection — what went well, what was heavy, and one focus for next week.</div></div>
+      <div class="glass"><div class="feat-icon">🔒</div><div class="feat-title">Completely Private</div><div class="feat-body">Your data lives on your device. Saaroma does not sell your information, does not show you ads, and does not build a profile of you.</div></div>
+      <div class="glass"><div class="feat-icon">🌍</div><div class="feat-title">Culturally Aware</div><div class="feat-body">Saaroma understands family pressure, career stress, and relationship dynamics across cultures — without you having to explain the context.</div></div>
     </div>
   </section>
 
-  <!-- Promise -->
-  <section class="promise-section" id="privacy">
+  <!-- 6 month commitment -->
+  <div class="commitment-band" id="commitment">
+    <div class="commitment-card">
+      <div class="commitment-icon">🌱</div>
+      <div>
+        <div class="commitment-title">A companion that grows with you</div>
+        <div class="commitment-body">Saaroma is not a quick fix — it is a practice. Like any meaningful relationship, it deepens over time. <strong>We recommend using Saaroma consistently for at least 6 months</strong> to experience its full benefit. Users who journal regularly and engage with the weekly reflection report the greatest sense of clarity and calm. The more you show up, the more Saaroma understands you.</div>
+      </div>
+    </div>
+  </div>
+
+  <section class="promise-band" id="privacy">
     <div class="promise-inner">
-      <div class="promise-text">
-        <div class="section-label">Our promise</div>
+      <div>
+        <div class="sec-label">Our promise</div>
         <h2>Your private space should stay private</h2>
         <p>Saaroma is built on one principle — what you share here stays here.</p>
-        <ul class="promise-list">
+        <ul class="tick-list">
           <li>Your journal and chat history live only on your device</li>
           <li>We do not sell or share your personal data</li>
           <li>No ads. No tracking. No profiling.</li>
           <li>Delete your account and all data at any time</li>
           <li>AI responses powered by Anthropic Claude — no personal data shared</li>
         </ul>
+        <a href="privacy.html" class="policy-link">Read our full privacy policy →</a>
       </div>
-      <div>
-        <div class="feature-card" style="max-width: 400px;">
-          <div class="feature-icon">🛡️</div>
-          <div class="feature-title">Private by default</div>
-          <div class="feature-body" style="margin-bottom: 20px;">Everything you write, say, or feel in Saaroma is stored privately on your device using encrypted storage. It is not meant to become a public profile of you.</div>
-          <a href="privacy.html" style="color: var(--gold); font-size: 14px; font-weight: 600; text-decoration: none;">Read our full privacy policy →</a>
-        </div>
+      <div class="glass" style="max-width:400px;">
+        <div class="feat-icon">🛡️</div>
+        <div class="feat-title">Private by default</div>
+        <div class="feat-body">Everything you write, say, or feel in Saaroma is stored privately on your device using encrypted storage. It is not meant to become a public profile of you.</div>
       </div>
     </div>
   </section>
 
-  <!-- CTA -->
-  <section class="cta-section">
-    <h2>Ready to feel <em>heard</em>?</h2>
-    <p>Download Saaroma and start your first conversation. No sign-up required to explore.</p>
-    <div class="hero-buttons">
-      <a href="#" class="btn-primary">
-        <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M3.18 23.76c.3.17.64.24.99.24.45 0 .91-.13 1.33-.4L21 14.03c.75-.48 1-.98 1-1.53s-.25-1.05-1-1.53L5.5.4C4.7-.11 3.87-.14 3.18.24 2.49.62 2 1.38 2 2.24v19.52c0 .86.49 1.62 1.18 2z"/></svg>
-        Download on Android
-      </a>
-    </div>
+  <section class="cta">
+    <h2>Ready to feel <span>heard</span>?</h2>
+    <p>Download Saaroma and start your first conversation. A warm companion is waiting.</p>
+    <div class="hero-btns"><a href="#" class="btn-gold">Download on Android</a></div>
   </section>
 
-  <!-- Footer -->
   <footer>
-    <div>
-      <div class="footer-logo">Saaroma</div>
-      <div class="footer-tagline">Peace, Perspective, Practice</div>
-    </div>
+    <div><div class="footer-logo">Saaroma</div><div class="footer-tag">Peace, Perspective, Practice</div></div>
     <ul class="footer-links">
       <li><a href="privacy.html">Privacy Policy</a></li>
       <li><a href="delete.html">Delete Account</a></li>
-      <li><a href="mailto:privacy@saaroma.ai">Contact</a></li>
+      <li><a href="mailto:support@saaroma.ai">Contact</a></li>
     </ul>
     <div class="footer-copy">© 2026 Saaroma. All rights reserved.</div>
   </footer>
-
 </div>
-
 <script>
-  // Generate stars
-  const starsContainer = document.getElementById('stars');
-  for (let i = 0; i < 80; i++) {
-    const star = document.createElement('div');
-    star.className = 'star';
-    star.style.cssText = `
-      left: ${Math.random() * 100}%;
-      top: ${Math.random() * 60}%;
-      --opacity: ${0.2 + Math.random() * 0.6};
-      --duration: ${3 + Math.random() * 4}s;
-      animation-delay: ${Math.random() * 4}s;
-    `;
-    starsContainer.appendChild(star);
+  const s = document.getElementById('stars');
+  for (let i = 0; i < 70; i++) {
+    const el = document.createElement('div'); el.className = 'star';
+    el.style.cssText = `left:${Math.random()*100}%;top:${Math.random()*55}%;--op:${.15+Math.random()*.6};--dur:${3+Math.random()*4}s;animation-delay:${Math.random()*5}s`;
+    s.appendChild(el);
   }
 </script>
 </body>
