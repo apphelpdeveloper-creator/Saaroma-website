@@ -52,8 +52,9 @@ nav { display: flex; align-items: center; justify-content: space-between; paddin
 .modes-inner .sec-label { display: block; margin-bottom: 14px; }
 .modes-inner h2 { font-size: clamp(26px, 4vw, 42px); font-weight: 700; margin-bottom: 48px; }
 .modes-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; }
-.mode-card { background: rgba(22,16,40,.6); border: 1px solid rgba(255,255,255,.08); border-radius: 18px; padding: 28px; backdrop-filter: blur(14px); transition: all .3s; }
+.mode-card { background: rgba(22,16,40,.6); border: 1px solid rgba(255,255,255,.08); border-radius: 18px; padding: 28px; backdrop-filter: blur(14px); transition: all .3s; display: flex; flex-direction: column; }
 .mode-card:hover { border-color: rgba(232,184,75,.25); transform: translateY(-3px); }
+.mode-card .mode-desc { flex: 1; }
 .mode-emoji { font-size: 32px; margin-bottom: 16px; }
 .mode-name { font-size: 17px; font-weight: 700; margin-bottom: 8px; }
 .mode-tag { font-size: 11px; font-weight: 600; letter-spacing: 1px; text-transform: uppercase; color: var(--gold); margin-bottom: 14px; }
@@ -226,7 +227,7 @@ footer { padding: 40px 48px; border-top: 1px solid var(--border); display: flex;
 
   <div class="cta">
     <h2>Ready to <span>try it?</span></h2>
-    <p>Download Saaroma and have your first conversation. No account needed to get started.</p>
+    <p>Download Saaroma and start your first conversation. A warm companion is waiting.</p>
     <a href="index.html" class="btn-gold">Download Saaroma</a>
   </div>
 
