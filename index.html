@@ -54,15 +54,12 @@ nav { display: flex; align-items: center; justify-content: space-between; paddin
 .feat-icon { width: 44px; height: 44px; border-radius: 11px; background: rgba(232,184,75,.1); border: 1px solid rgba(232,184,75,.2); display: flex; align-items: center; justify-content: center; font-size: 20px; margin-bottom: 18px; }
 .feat-title { font-size: 17px; font-weight: 700; margin-bottom: 8px; }
 .feat-body { font-size: 14px; font-weight: 300; color: var(--text-sec); line-height: 1.75; }
-
-/* 6 month banner */
 .commitment-band { padding: 0 48px 80px; max-width: 1160px; margin: 0 auto; }
 .commitment-card { background: rgba(232,184,75,.06); border: 1px solid rgba(232,184,75,.22); border-radius: 20px; padding: 40px 48px; display: flex; align-items: center; gap: 40px; }
 .commitment-icon { font-size: 48px; flex-shrink: 0; }
 .commitment-title { font-size: 22px; font-weight: 700; margin-bottom: 10px; color: var(--text-primary); }
 .commitment-body { font-size: 15px; font-weight: 300; color: var(--text-sec); line-height: 1.8; }
 .commitment-body strong { color: var(--gold); font-weight: 600; }
-
 .promise-band { padding: 96px 48px; background: rgba(15,10,26,.55); border-top: 1px solid var(--border); border-bottom: 1px solid var(--border); }
 .promise-inner { max-width: 1160px; margin: 0 auto; display: grid; grid-template-columns: 1fr 1fr; gap: 72px; align-items: center; }
 .promise-inner h2 { font-size: clamp(28px,3.8vw,46px); font-weight: 700; line-height: 1.2; margin-bottom: 20px; }
@@ -79,7 +76,7 @@ nav { display: flex; align-items: center; justify-content: space-between; paddin
 footer { padding: 40px 48px; border-top: 1px solid var(--border); display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 20px; }
 .footer-logo { font-size: 20px; font-weight: 700; color: var(--gold); }
 .footer-tag { font-size: 12px; color: var(--text-muted); margin-top: 3px; }
-.footer-links { display: flex; gap: 22px; list-style: none; }
+.footer-links { display: flex; gap: 22px; list-style: none; flex-wrap: wrap; }
 .footer-links a { font-size: 13px; color: var(--text-muted); text-decoration: none; transition: color .2s; }
 .footer-links a:hover { color: var(--gold); }
 .footer-copy { font-size: 12px; color: var(--text-muted); }
@@ -100,10 +97,10 @@ footer { padding: 40px 48px; border-top: 1px solid var(--border); display: flex;
   <nav>
     <a href="/" class="nav-logo">Saaroma</a>
     <ul class="nav-links">
-      <li><a href="#features">Features</a></li>
-      <li><a href="#commitment">Commitment</a></li>
-      <li><a href="#privacy">Privacy</a></li>
-      <li><a href="privacy.html">Privacy Policy</a></li>
+      <li><a href="about.html">About</a></li>
+      <li><a href="how-it-works.html">How it works</a></li>
+      <li><a href="privacy.html">Privacy</a></li>
+      <li><a href="disclaimer.html">Disclaimer</a></li>
     </ul>
   </nav>
 
@@ -113,7 +110,7 @@ footer { padding: 40px 48px; border-top: 1px solid var(--border); display: flex;
     <p class="hero-sub">Saaroma listens, reflects, and walks with you — through the heavy days and the light ones. A private space, just for you.</p>
     <div class="hero-btns">
       <a href="#" class="btn-gold">Download on Android</a>
-      <a href="#features" class="btn-outline">Learn more</a>
+      <a href="about.html" class="btn-outline">Our story</a>
     </div>
     <div class="strip">
       <span class="strip-item">Peace</span><span class="strip-dot"></span>
@@ -135,7 +132,6 @@ footer { padding: 40px 48px; border-top: 1px solid var(--border); display: flex;
     </div>
   </section>
 
-  <!-- 6 month commitment -->
   <div class="commitment-band" id="commitment">
     <div class="commitment-card">
       <div class="commitment-icon">🌱</div>
@@ -178,7 +174,10 @@ footer { padding: 40px 48px; border-top: 1px solid var(--border); display: flex;
   <footer>
     <div><div class="footer-logo">Saaroma</div><div class="footer-tag">Peace, Perspective, Practice</div></div>
     <ul class="footer-links">
+      <li><a href="about.html">About</a></li>
+      <li><a href="how-it-works.html">How it works</a></li>
       <li><a href="privacy.html">Privacy Policy</a></li>
+      <li><a href="disclaimer.html">Disclaimer</a></li>
       <li><a href="delete.html">Delete Account</a></li>
       <li><a href="mailto:support@saaroma.ai">Contact</a></li>
     </ul>

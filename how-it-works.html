@@ -1,0 +1,255 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>How Saaroma Works</title>
+<meta name="description" content="Saaroma listens, remembers, and grows with you. Here's exactly how.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:opsz,wght@9..40,300;9..40,400;9..40,500;9..40,600;9..40,700&display=swap" rel="stylesheet">
+<style>
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+:root {
+  --bg: #060409; --surface: #0f0a1a; --surface-alt: #161028;
+  --border: #2a1e42; --gold: #e8b84b; --gold-soft: #d4a43c;
+  --text-primary: #f4f0e8; --text-sec: #b8a8d4; --text-muted: #7a6a8a;
+}
+html { scroll-behavior: smooth; }
+body { font-family: 'DM Sans', sans-serif; background: var(--bg); color: var(--text-primary); overflow-x: hidden; min-height: 100vh; }
+.bg-mesh { position: fixed; inset: 0; z-index: 0; background: radial-gradient(ellipse 90% 55% at 15% 8%, rgba(123,47,190,.16) 0%, transparent 60%), radial-gradient(ellipse 70% 45% at 85% 85%, rgba(45,16,88,.22) 0%, transparent 60%), radial-gradient(ellipse 60% 40% at 50% 50%, rgba(30,21,48,.8) 0%, var(--bg) 70%); }
+.stars { position: fixed; inset: 0; z-index: 0; pointer-events: none; }
+.star { position: absolute; width: 1.5px; height: 1.5px; border-radius: 50%; background: var(--text-primary); animation: twinkle var(--dur) ease-in-out infinite alternate; opacity: var(--op); }
+@keyframes twinkle { to { opacity: calc(var(--op) * .25); transform: scale(.5); } }
+.content { position: relative; z-index: 1; }
+@keyframes fadeUp { from { opacity: 0; transform: translateY(20px); } to { opacity: 1; transform: translateY(0); } }
+
+nav { display: flex; align-items: center; justify-content: space-between; padding: 22px 48px; border-bottom: 1px solid rgba(42,30,66,.5); backdrop-filter: blur(14px); position: sticky; top: 0; z-index: 100; background: rgba(6,4,9,.72); }
+.nav-logo { font-size: 22px; font-weight: 700; color: var(--gold); text-decoration: none; }
+.nav-links { display: flex; gap: 28px; list-style: none; }
+.nav-links a { color: var(--text-sec); text-decoration: none; font-size: 14px; font-weight: 500; transition: color .2s; }
+.nav-links a:hover, .nav-links a.active { color: var(--gold); }
+
+.hero { padding: 100px 48px 60px; max-width: 800px; margin: 0 auto; text-align: center; }
+.sec-label { font-size: 11px; font-weight: 700; letter-spacing: 1.8px; text-transform: uppercase; color: var(--gold); margin-bottom: 20px; display: block; }
+.hero h1 { font-size: clamp(36px, 6vw, 64px); font-weight: 700; line-height: 1.1; margin-bottom: 20px; animation: fadeUp .7s ease both; }
+.hero h1 em { color: var(--gold); font-style: normal; }
+.hero p { font-size: clamp(15px, 2vw, 18px); font-weight: 300; color: var(--text-sec); line-height: 1.8; animation: fadeUp .7s .1s ease both; }
+
+/* Steps */
+.steps { max-width: 900px; margin: 80px auto; padding: 0 48px; }
+.step { display: grid; grid-template-columns: 80px 1fr; gap: 32px; margin-bottom: 64px; align-items: start; }
+.step-num { width: 80px; height: 80px; border-radius: 50%; background: rgba(232,184,75,.08); border: 1px solid rgba(232,184,75,.25); display: flex; align-items: center; justify-content: center; font-size: 28px; font-weight: 700; color: var(--gold); flex-shrink: 0; }
+.step-body h2 { font-size: clamp(20px, 3vw, 28px); font-weight: 700; margin-bottom: 12px; }
+.step-body h2 em { color: var(--gold); font-style: normal; }
+.step-body p { font-size: 15px; font-weight: 300; color: var(--text-sec); line-height: 1.85; margin-bottom: 12px; }
+.step-body p:last-child { margin: 0; }
+.step-connector { width: 1px; height: 40px; background: linear-gradient(to bottom, rgba(232,184,75,.3), transparent); margin: 0 0 24px 39px; }
+
+/* Modes */
+.modes { background: rgba(15,10,26,.6); border-top: 1px solid var(--border); border-bottom: 1px solid var(--border); padding: 80px 48px; margin: 40px 0; }
+.modes-inner { max-width: 900px; margin: 0 auto; }
+.modes-inner .sec-label { display: block; margin-bottom: 14px; }
+.modes-inner h2 { font-size: clamp(26px, 4vw, 42px); font-weight: 700; margin-bottom: 48px; }
+.modes-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; }
+.mode-card { background: rgba(22,16,40,.6); border: 1px solid rgba(255,255,255,.08); border-radius: 18px; padding: 28px; backdrop-filter: blur(14px); transition: all .3s; }
+.mode-card:hover { border-color: rgba(232,184,75,.25); transform: translateY(-3px); }
+.mode-emoji { font-size: 32px; margin-bottom: 16px; }
+.mode-name { font-size: 17px; font-weight: 700; margin-bottom: 8px; }
+.mode-tag { font-size: 11px; font-weight: 600; letter-spacing: 1px; text-transform: uppercase; color: var(--gold); margin-bottom: 14px; }
+.mode-desc { font-size: 14px; font-weight: 300; color: var(--text-sec); line-height: 1.75; }
+.mode-example { margin-top: 16px; padding: 12px 16px; background: rgba(232,184,75,.05); border-radius: 10px; border-left: 2px solid rgba(232,184,75,.3); font-size: 13px; font-style: italic; color: var(--text-sec); line-height: 1.6; }
+
+/* Memory */
+.memory { max-width: 900px; margin: 0 auto; padding: 80px 48px; }
+.memory h2 { font-size: clamp(26px, 4vw, 42px); font-weight: 700; margin-bottom: 16px; }
+.memory h2 em { color: var(--gold); font-style: normal; }
+.memory .lead { font-size: 16px; font-weight: 300; color: var(--text-sec); line-height: 1.85; margin-bottom: 48px; max-width: 640px; }
+.memory-cards { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; }
+.memory-card { background: rgba(22,16,40,.6); border: 1px solid rgba(255,255,255,.06); border-radius: 16px; padding: 24px; }
+.memory-card .label { font-size: 10px; font-weight: 700; letter-spacing: 1.2px; text-transform: uppercase; color: var(--gold); margin-bottom: 10px; }
+.memory-card h3 { font-size: 15px; font-weight: 700; margin-bottom: 8px; }
+.memory-card p { font-size: 13px; font-weight: 300; color: var(--text-sec); line-height: 1.7; }
+
+/* CTA */
+.cta { text-align: center; padding: 80px 48px; }
+.cta h2 { font-size: clamp(28px, 4vw, 46px); font-weight: 700; margin-bottom: 16px; }
+.cta h2 span { color: var(--gold); }
+.cta p { font-size: 16px; font-weight: 300; color: var(--text-sec); margin-bottom: 36px; line-height: 1.7; max-width: 480px; margin-left: auto; margin-right: auto; }
+.btn-gold { display: inline-flex; align-items: center; gap: 8px; background: var(--gold); color: #060409; font-family: 'DM Sans', sans-serif; font-weight: 700; font-size: 14px; padding: 13px 26px; border-radius: 100px; text-decoration: none; transition: all .2s; }
+.btn-gold:hover { background: var(--gold-soft); transform: translateY(-2px); box-shadow: 0 8px 28px rgba(232,184,75,.28); }
+
+footer { padding: 40px 48px; border-top: 1px solid var(--border); display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 20px; }
+.footer-logo { font-size: 20px; font-weight: 700; color: var(--gold); }
+.footer-tag { font-size: 12px; color: var(--text-muted); margin-top: 3px; }
+.footer-links { display: flex; gap: 22px; list-style: none; flex-wrap: wrap; }
+.footer-links a { font-size: 13px; color: var(--text-muted); text-decoration: none; transition: color .2s; }
+.footer-links a:hover { color: var(--gold); }
+.footer-copy { font-size: 12px; color: var(--text-muted); }
+
+@media (max-width: 768px) {
+  nav { padding: 18px 20px; } .nav-links { display: none; }
+  .hero, .steps, .memory, .cta { padding-left: 20px; padding-right: 20px; }
+  .modes { padding: 60px 20px; }
+  .modes-grid, .memory-cards { grid-template-columns: 1fr; }
+  .step { grid-template-columns: 60px 1fr; gap: 20px; }
+  .step-num { width: 60px; height: 60px; font-size: 22px; }
+  footer { padding: 28px 20px; flex-direction: column; text-align: center; }
+}
+</style>
+</head>
+<body>
+<div class="bg-mesh"></div>
+<div class="stars" id="stars"></div>
+<div class="content">
+
+  <nav>
+    <a href="index.html" class="nav-logo">Saaroma</a>
+    <ul class="nav-links">
+      <li><a href="about.html">About</a></li>
+      <li><a href="how-it-works.html" class="active">How it works</a></li>
+      <li><a href="privacy.html">Privacy</a></li>
+      <li><a href="disclaimer.html">Disclaimer</a></li>
+    </ul>
+  </nav>
+
+  <div class="hero">
+    <span class="sec-label">How it works</span>
+    <h1>Not just another <em>chat app</em></h1>
+    <p>Saaroma is designed to feel like a conversation with someone who actually knows you — because over time, it does. Here's what makes it different.</p>
+  </div>
+
+  <div class="steps">
+    <div class="step">
+      <div class="step-num">1</div>
+      <div class="step-body">
+        <h2>You talk. <em>Saaroma listens first.</em></h2>
+        <p>Most apps jump straight to advice. Saaroma doesn't. For the first few exchanges, it focuses entirely on understanding what's actually going on — not what it thinks you should do about it.</p>
+        <p>This isn't a feature. It's a principle. Feeling heard is the first step. Everything else comes after.</p>
+      </div>
+    </div>
+    <div class="step-connector"></div>
+
+    <div class="step">
+      <div class="step-num">2</div>
+      <div class="step-body">
+        <h2>It reads the room. <em>Every time.</em></h2>
+        <p>Saaroma has three modes — and it chooses based on how you're showing up. Stressed and overwhelmed? It slows down and stays present. Ready to think it through? It helps you do that. Need to laugh a little? It can do that too.</p>
+        <p>You don't have to tell it which mode to use. It figures it out.</p>
+      </div>
+    </div>
+    <div class="step-connector"></div>
+
+    <div class="step">
+      <div class="step-num">3</div>
+      <div class="step-body">
+        <h2>It remembers <em>what matters.</em></h2>
+        <p>Every conversation adds to a private understanding of who you are — your patterns, your recurring themes, the things you keep coming back to. Stored only on your device, never shared.</p>
+        <p>When you come back after a few days, Saaroma picks up where you left off. Not with a generic greeting — with something real. Like "hey — that work situation, is it still going on?"</p>
+      </div>
+    </div>
+    <div class="step-connector"></div>
+
+    <div class="step">
+      <div class="step-num">4</div>
+      <div class="step-body">
+        <h2>It helps you <em>practice.</em></h2>
+        <p>Talking helps. But sometimes you need to do something. Saaroma includes four short practices — a one-minute reset, a breathing pause, a grounding exercise, and a one small action prompt — designed to bring you back to yourself in under five minutes.</p>
+        <p>No long courses. No homework. Just something small you can actually do right now.</p>
+      </div>
+    </div>
+    <div class="step-connector"></div>
+
+    <div class="step">
+      <div class="step-num">5</div>
+      <div class="step-body">
+        <h2>Every week, <em>it reflects back.</em></h2>
+        <p>Every Sunday, Saaroma reads your week — your journal entries, your mood patterns, your conversations — and writes you a personal reflection. What went well. What was heavy. One thing to focus on next week.</p>
+        <p>Not a report card. Just a mirror. The kind that helps.</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- Modes -->
+  <div class="modes">
+    <div class="modes-inner">
+      <span class="sec-label">Three conversation modes</span>
+      <h2>Saaroma reads the moment</h2>
+      <div class="modes-grid">
+        <div class="mode-card">
+          <div class="mode-emoji">🤝</div>
+          <div class="mode-name">With-You Mode</div>
+          <div class="mode-tag">Presence</div>
+          <div class="mode-desc">For when you're carrying something heavy and just need someone to be there. No advice. No fixing. Just acknowledgment and presence.</div>
+          <div class="mode-example">"yeah. that kind of tired doesn't always have words. I'm here."</div>
+        </div>
+        <div class="mode-card">
+          <div class="mode-emoji">😌</div>
+          <div class="mode-name">Light Mode</div>
+          <div class="mode-tag">Ease</div>
+          <div class="mode-desc">For when things are okay and you want a lighter conversation — some warmth, maybe a little humor, without it feeling like a therapy session.</div>
+          <div class="mode-example">"haha nothing is wrong with you, this is just a Tuesday thing."</div>
+        </div>
+        <div class="mode-card">
+          <div class="mode-emoji">🧭</div>
+          <div class="mode-name">Helping Mode</div>
+          <div class="mode-tag">Clarity</div>
+          <div class="mode-desc">For when you're ready to think something through. Saaroma helps you find the question underneath the problem — not just the obvious next step.</div>
+          <div class="mode-example">"hmm yeah, that avoidance usually means something. is it because..."</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Memory -->
+  <div class="memory">
+    <h2>Three layers of <em>memory</em></h2>
+    <p class="lead">Saaroma's memory isn't a database of everything you've said. It's a layered system designed to understand you — without storing more than it needs to.</p>
+    <div class="memory-cards">
+      <div class="memory-card">
+        <div class="label">Layer 1</div>
+        <h3>Working memory</h3>
+        <p>The last 10 messages of the current conversation. What you're talking about right now.</p>
+      </div>
+      <div class="memory-card">
+        <div class="label">Layer 2</div>
+        <h3>Session memory</h3>
+        <p>Your profile — who you are, how you like to communicate, what matters to you. Built during onboarding and refined over time.</p>
+      </div>
+      <div class="memory-card">
+        <div class="label">Layer 3</div>
+        <h3>Long-term memory</h3>
+        <p>Every 20 messages, Saaroma generates a private summary of recurring themes, patterns, and progress. Stored only on your device.</p>
+      </div>
+    </div>
+  </div>
+
+  <div class="cta">
+    <h2>Ready to <span>try it?</span></h2>
+    <p>Download Saaroma and have your first conversation. No account needed to get started.</p>
+    <a href="index.html" class="btn-gold">Download Saaroma</a>
+  </div>
+
+  <footer>
+    <div><div class="footer-logo">Saaroma</div><div class="footer-tag">Peace, Perspective, Practice</div></div>
+    <ul class="footer-links">
+      <li><a href="about.html">About</a></li>
+      <li><a href="how-it-works.html">How it works</a></li>
+      <li><a href="privacy.html">Privacy Policy</a></li>
+      <li><a href="disclaimer.html">Disclaimer</a></li>
+      <li><a href="delete.html">Delete Account</a></li>
+      <li><a href="mailto:support@saaroma.ai">Contact</a></li>
+    </ul>
+    <div class="footer-copy">© 2026 Saaroma. All rights reserved.</div>
+  </footer>
+</div>
+<script>
+  const s = document.getElementById('stars');
+  for (let i = 0; i < 70; i++) {
+    const el = document.createElement('div'); el.className = 'star';
+    el.style.cssText = `left:${Math.random()*100}%;top:${Math.random()*55}%;--op:${.15+Math.random()*.6};--dur:${3+Math.random()*4}s;animation-delay:${Math.random()*5}s`;
+    s.appendChild(el);
+  }
+</script>
+</body>
+</html>

@@ -1,0 +1,237 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>About Saaroma — Why We Built This</title>
+<meta name="description" content="The story behind Saaroma — built for the millions who moved away, felt lost, and needed someone to talk to.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:opsz,wght@9..40,300;9..40,400;9..40,500;9..40,600;9..40,700&display=swap" rel="stylesheet">
+<style>
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+:root {
+  --bg: #060409; --surface: #0f0a1a; --surface-alt: #161028;
+  --border: #2a1e42; --gold: #e8b84b; --gold-soft: #d4a43c;
+  --text-primary: #f4f0e8; --text-sec: #b8a8d4; --text-muted: #7a6a8a;
+}
+html { scroll-behavior: smooth; }
+body { font-family: 'DM Sans', sans-serif; background: var(--bg); color: var(--text-primary); overflow-x: hidden; min-height: 100vh; }
+.bg-mesh { position: fixed; inset: 0; z-index: 0; background: radial-gradient(ellipse 90% 55% at 15% 8%, rgba(123,47,190,.16) 0%, transparent 60%), radial-gradient(ellipse 70% 45% at 85% 85%, rgba(45,16,88,.22) 0%, transparent 60%), radial-gradient(ellipse 60% 40% at 50% 50%, rgba(30,21,48,.8) 0%, var(--bg) 70%); animation: meshDrift 24s ease-in-out infinite alternate; }
+@keyframes meshDrift { from { opacity: 1; } to { opacity: .88; } }
+.stars { position: fixed; inset: 0; z-index: 0; pointer-events: none; }
+.star { position: absolute; width: 1.5px; height: 1.5px; border-radius: 50%; background: var(--text-primary); animation: twinkle var(--dur) ease-in-out infinite alternate; opacity: var(--op); }
+@keyframes twinkle { to { opacity: calc(var(--op) * .25); transform: scale(.5); } }
+.content { position: relative; z-index: 1; }
+
+nav { display: flex; align-items: center; justify-content: space-between; padding: 22px 48px; border-bottom: 1px solid rgba(42,30,66,.5); backdrop-filter: blur(14px); position: sticky; top: 0; z-index: 100; background: rgba(6,4,9,.72); }
+.nav-logo { font-size: 22px; font-weight: 700; color: var(--gold); text-decoration: none; }
+.nav-links { display: flex; gap: 28px; list-style: none; }
+.nav-links a { color: var(--text-sec); text-decoration: none; font-size: 14px; font-weight: 500; transition: color .2s; }
+.nav-links a:hover, .nav-links a.active { color: var(--gold); }
+
+/* Hero */
+.about-hero { padding: 100px 48px 60px; max-width: 900px; margin: 0 auto; text-align: center; }
+.sec-label { font-size: 11px; font-weight: 700; letter-spacing: 1.8px; text-transform: uppercase; color: var(--gold); margin-bottom: 20px; display: block; }
+.about-hero h1 { font-size: clamp(38px, 7vw, 72px); font-weight: 700; line-height: 1.1; margin-bottom: 24px; animation: fadeUp .7s ease both; }
+.about-hero h1 em { color: var(--gold); font-style: normal; }
+.about-hero .lead { font-size: clamp(16px, 2.2vw, 20px); font-weight: 300; color: var(--text-sec); line-height: 1.75; max-width: 680px; margin: 0 auto; animation: fadeUp .7s .1s ease both; }
+@keyframes fadeUp { from { opacity: 0; transform: translateY(20px); } to { opacity: 1; transform: translateY(0); } }
+
+/* Stats strip */
+.stats-strip { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1px; background: var(--border); margin: 64px 48px; border-radius: 20px; overflow: hidden; border: 1px solid var(--border); }
+.stat-cell { background: rgba(15,10,26,.8); padding: 40px 32px; text-align: center; backdrop-filter: blur(10px); }
+.stat-number { font-size: clamp(36px, 5vw, 58px); font-weight: 700; color: var(--gold); line-height: 1; margin-bottom: 10px; }
+.stat-label { font-size: 13px; font-weight: 300; color: var(--text-sec); line-height: 1.5; max-width: 180px; margin: 0 auto; }
+.stat-source { font-size: 10px; color: var(--text-muted); margin-top: 6px; letter-spacing: .5px; }
+
+/* Story */
+.story { max-width: 820px; margin: 0 auto; padding: 0 48px 80px; }
+.story-section { margin-bottom: 72px; }
+.story-section h2 { font-size: clamp(24px, 3.5vw, 38px); font-weight: 700; line-height: 1.2; margin-bottom: 20px; }
+.story-section h2 em { color: var(--gold); font-style: normal; }
+.story-section p { font-size: 16px; font-weight: 300; color: var(--text-sec); line-height: 1.9; margin-bottom: 18px; }
+.story-section p strong { color: var(--text-primary); font-weight: 600; }
+
+/* Pull quote */
+.pull-quote { border-left: 3px solid var(--gold); padding: 24px 32px; margin: 40px 0; background: rgba(232,184,75,.04); border-radius: 0 12px 12px 0; }
+.pull-quote p { font-size: 18px; font-weight: 400; color: var(--text-primary); line-height: 1.7; font-style: italic; margin: 0; }
+.pull-quote cite { display: block; margin-top: 12px; font-size: 12px; color: var(--text-muted); font-style: normal; letter-spacing: .8px; text-transform: uppercase; font-weight: 600; }
+
+/* Timeline */
+.timeline { margin: 48px 0; }
+.timeline-item { display: flex; gap: 24px; margin-bottom: 36px; }
+.timeline-dot { flex-shrink: 0; width: 44px; height: 44px; border-radius: 50%; background: rgba(232,184,75,.1); border: 1px solid rgba(232,184,75,.3); display: flex; align-items: center; justify-content: center; font-size: 18px; margin-top: 2px; }
+.timeline-content h3 { font-size: 17px; font-weight: 700; margin-bottom: 6px; }
+.timeline-content p { font-size: 14px; font-weight: 300; color: var(--text-sec); line-height: 1.75; margin: 0; }
+
+/* Founder note */
+.founder-note { background: rgba(22,16,40,.6); border: 1px solid rgba(255,255,255,.08); border-radius: 20px; padding: 40px; backdrop-filter: blur(14px); margin: 64px 48px; max-width: 820px; margin-left: auto; margin-right: auto; position: relative; overflow: hidden; }
+.founder-note::before { content: '\201C'; position: absolute; top: -20px; left: 24px; font-size: 160px; color: rgba(232,184,75,.08); font-family: Georgia, serif; line-height: 1; pointer-events: none; }
+.founder-note p { font-size: 16px; font-weight: 300; color: var(--text-sec); line-height: 1.9; margin-bottom: 16px; position: relative; z-index: 1; }
+.founder-note p:last-of-type { margin-bottom: 24px; }
+.founder-sig { font-size: 15px; font-weight: 700; color: var(--gold); }
+.founder-title { font-size: 12px; color: var(--text-muted); margin-top: 3px; }
+
+/* CTA */
+.about-cta { text-align: center; padding: 80px 48px; }
+.about-cta h2 { font-size: clamp(28px, 4vw, 46px); font-weight: 700; margin-bottom: 16px; }
+.about-cta h2 span { color: var(--gold); }
+.about-cta p { font-size: 16px; font-weight: 300; color: var(--text-sec); margin-bottom: 36px; line-height: 1.7; max-width: 480px; margin-left: auto; margin-right: auto; }
+.btn-gold { display: inline-flex; align-items: center; gap: 8px; background: var(--gold); color: #060409; font-family: 'DM Sans', sans-serif; font-weight: 700; font-size: 14px; padding: 13px 26px; border-radius: 100px; text-decoration: none; border: none; cursor: pointer; transition: all .2s; }
+.btn-gold:hover { background: var(--gold-soft); transform: translateY(-2px); box-shadow: 0 8px 28px rgba(232,184,75,.28); }
+
+footer { padding: 40px 48px; border-top: 1px solid var(--border); display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 20px; }
+.footer-logo { font-size: 20px; font-weight: 700; color: var(--gold); }
+.footer-tag { font-size: 12px; color: var(--text-muted); margin-top: 3px; }
+.footer-links { display: flex; gap: 22px; list-style: none; flex-wrap: wrap; }
+.footer-links a { font-size: 13px; color: var(--text-muted); text-decoration: none; transition: color .2s; }
+.footer-links a:hover { color: var(--gold); }
+.footer-copy { font-size: 12px; color: var(--text-muted); }
+
+@media (max-width: 768px) {
+  nav { padding: 18px 20px; } .nav-links { display: none; }
+  .about-hero, .story, .about-cta { padding-left: 20px; padding-right: 20px; }
+  .stats-strip { grid-template-columns: 1fr; margin: 40px 20px; }
+  .founder-note { margin: 40px 20px; padding: 28px; }
+  footer { padding: 28px 20px; flex-direction: column; text-align: center; }
+}
+</style>
+</head>
+<body>
+<div class="bg-mesh"></div>
+<div class="stars" id="stars"></div>
+<div class="content">
+
+  <nav>
+    <a href="index.html" class="nav-logo">Saaroma</a>
+    <ul class="nav-links">
+      <li><a href="about.html" class="active">About</a></li>
+      <li><a href="how-it-works.html">How it works</a></li>
+      <li><a href="privacy.html">Privacy</a></li>
+      <li><a href="disclaimer.html">Disclaimer</a></li>
+    </ul>
+  </nav>
+
+  <div class="about-hero">
+    <span class="sec-label">Our Story</span>
+    <h1>Built for everyone who moved away and <em>forgot how to talk</em> about it</h1>
+    <p class="lead">Saaroma didn't start as a product idea. It started as an observation — millions of people, disconnected from the people who knew them best, quietly drowning.</p>
+  </div>
+
+  <!-- Stats -->
+  <div class="stats-strip">
+    <div class="stat-cell">
+      <div class="stat-number">1 in 5</div>
+      <div class="stat-label">adults feels lonely every single day</div>
+      <div class="stat-source">Gallup, 2024</div>
+    </div>
+    <div class="stat-cell">
+      <div class="stat-number">69%</div>
+      <div class="stat-label">said they needed more emotional support than they received last year</div>
+      <div class="stat-source">APA Stress in America, 2025</div>
+    </div>
+    <div class="stat-cell">
+      <div class="stat-number">61%</div>
+      <div class="stat-label">of young adults aged 18–22 report significant feelings of loneliness</div>
+      <div class="stat-source">Cigna Loneliness Index</div>
+    </div>
+  </div>
+
+  <!-- Story -->
+  <div class="story">
+    <div class="story-section">
+      <h2>The world moved us apart.<br><em>Nobody told us what to do next.</em></h2>
+      <p>People leave home to find work, opportunity, a better life. They move to a new city, a new country, sometimes a new continent. The move is exciting — for about three weeks. Then comes the silence.</p>
+      <p>They're surrounded by people at work, but nobody knows them. They call home, but the conversations feel different now — there's a gap that grows every month. They see their friends on Instagram having a great time, and feel more alone than ever. They don't want to be a burden. So they carry it alone.</p>
+      <p><strong>This is not a problem. This is the defining experience of an entire generation.</strong></p>
+    </div>
+
+    <div class="pull-quote">
+      <p>"Isolation is being by yourself. Loneliness is not liking it. What's missing is the feeling of closeness, trust, and the affection of genuine friends — even if you're surrounded by people."</p>
+      <cite>— U.S. Surgeon General Dr. Vivek Murthy, 2023 Loneliness Advisory</cite>
+    </div>
+
+    <div class="story-section">
+      <h2>Clarity doesn't come from advice.<br><em>It comes from being heard.</em></h2>
+      <p>We noticed something in the research: people don't struggle because they lack information. They struggle because they lack a space where they can think out loud — without judgment, without fear of burdening someone, without having to explain their entire backstory first.</p>
+      <p>When people feel genuinely heard, something shifts. The fog lifts a little. They start to see their situation more clearly. Not because someone gave them an answer — but because they were able to say it out loud to someone who was actually listening.</p>
+      <p><strong>Saaroma is that space.</strong></p>
+    </div>
+
+    <div class="story-section">
+      <h2>One year.<br><em>Just to build the brain.</em></h2>
+      <p>Most AI apps take a few prompts and call it a day. We spent a year doing something different.</p>
+
+      <div class="timeline">
+        <div class="timeline-item">
+          <div class="timeline-dot">📚</div>
+          <div class="timeline-content">
+            <h3>Research & sourcing</h3>
+            <p>We sourced and processed dozens of books on emotional wellbeing, stress, peace, conflict handling, personality development, and mindfulness. Not to quote them — but to build a companion that has genuinely absorbed this wisdom and can use it naturally, the way a well-read friend does.</p>
+          </div>
+        </div>
+        <div class="timeline-item">
+          <div class="timeline-dot">🧠</div>
+          <div class="timeline-content">
+            <h3>Personality engineering</h3>
+            <p>We didn't want Saaroma to sound like a chatbot. We designed three distinct conversation modes — presence (for when you just need to be heard), lightness (for when you need to laugh a little), and helping (for when you're ready to think it through). Saaroma reads the moment and chooses.</p>
+          </div>
+        </div>
+        <div class="timeline-item">
+          <div class="timeline-dot">🔒</div>
+          <div class="timeline-content">
+            <h3>Memory with privacy</h3>
+            <p>Saaroma remembers what matters to you — not because it stores everything on a server somewhere, but because it builds a private understanding of who you are, stored only on your device. When you come back, it picks up where you left off. Like a friend who actually remembered.</p>
+          </div>
+        </div>
+        <div class="timeline-item">
+          <div class="timeline-dot">🌍</div>
+          <div class="timeline-content">
+            <h3>Built for real lives</h3>
+            <p>We built Saaroma to understand the context of real life — family pressure, cultural expectations, work stress, the quiet guilt of feeling disconnected. You shouldn't have to explain your background before you can feel heard.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Founder note -->
+  <div class="founder-note">
+    <p>I've watched people I care about move to new cities, new countries — and slowly become quieter. Not because nothing was happening. Because there was nobody to say it to.</p>
+    <p>Therapists are expensive and hard to access. Friends are busy. Family doesn't always understand. And there's a particular kind of loneliness that comes from being surrounded by people who don't know your story.</p>
+    <p>Saaroma was built to be that first conversation — the one that happens before you're ready to talk to anyone else. Warm, private, and actually remembers you.</p>
+    <p>We're not trying to replace human connection. We're trying to make sure the absence of it doesn't swallow people whole.</p>
+    <div class="founder-sig">Tarkesh Tiwari</div>
+    <div class="founder-title">Founder, Saaroma</div>
+  </div>
+
+  <div class="about-cta">
+    <h2>Ready to feel <span>heard</span>?</h2>
+    <p>A warm companion is waiting. No signup wall. No judgment. Just conversation.</p>
+    <a href="index.html" class="btn-gold">Download Saaroma</a>
+  </div>
+
+  <footer>
+    <div><div class="footer-logo">Saaroma</div><div class="footer-tag">Peace, Perspective, Practice</div></div>
+    <ul class="footer-links">
+      <li><a href="about.html">About</a></li>
+      <li><a href="how-it-works.html">How it works</a></li>
+      <li><a href="privacy.html">Privacy Policy</a></li>
+      <li><a href="disclaimer.html">Disclaimer</a></li>
+      <li><a href="delete.html">Delete Account</a></li>
+      <li><a href="mailto:support@saaroma.ai">Contact</a></li>
+    </ul>
+    <div class="footer-copy">© 2026 Saaroma. All rights reserved.</div>
+  </footer>
+</div>
+<script>
+  const s = document.getElementById('stars');
+  for (let i = 0; i < 70; i++) {
+    const el = document.createElement('div'); el.className = 'star';
+    el.style.cssText = `left:${Math.random()*100}%;top:${Math.random()*55}%;--op:${.15+Math.random()*.6};--dur:${3+Math.random()*4}s;animation-delay:${Math.random()*5}s`;
+    s.appendChild(el);
+  }
+</script>
+</body>
+</html>
