@@ -58,16 +58,16 @@ footer { border-top: 1px solid var(--border); padding: 32px 48px; display: flex;
   <div class="container">
     <div class="page-label">Legal</div>
     <h1>Privacy Policy</h1>
-    <div class="updated">Last updated: May 2026</div>
+    <div class="updated">Last updated: June 2026</div>
     <div class="intro-card">Saaroma is built on one principle — what you share here stays here. This policy explains exactly what we collect, what we do with it, and how you stay in control. We have written it in plain language so you do not have to decode legal jargon.</div>
 
     <div class="sec"><div class="glass">
       <div class="sec-header"><div class="sec-icon">📦</div><h2>What we collect</h2></div>
       <ul>
         <li>Your name or nickname — stored on your device only</li>
-        <li>Your phone number or email — used once to verify your identity, never stored after verification</li>
+        <li>Your phone number — used to verify your identity and stored securely in Firebase Authentication</li>
         <li>Your journal entries and mood ratings — stored privately on your device using encrypted storage</li>
-        <li>Your chat conversations with Saaroma — stored on your device and sent to our AI service to generate responses</li>
+        <li>Your chat conversations with Saaroma — stored on your device, sent to our AI service to generate responses, and backed up securely to our cloud (Firebase Firestore) to power your memory across sessions</li>
         <li>Your companion name, age range, and profession — stored on your device only</li>
         <li>Your practice session activity — stored on your device only</li>
       </ul>
@@ -75,15 +75,16 @@ footer { border-top: 1px solid var(--border); padding: 32px 48px; display: flex;
 
     <div class="sec"><div class="glass">
       <div class="sec-header"><div class="sec-icon">⚙️</div><h2>How we use your data</h2></div>
-      <p>Your data is used only to make Saaroma work for you. Your journal entries and chat messages are sent to our AI service — powered by Anthropic Claude — to generate personalised responses. We do not use your data for advertising, analytics, or any purpose beyond making your experience better.</p>
+      <p>Your data is used only to make Saaroma work for you. Your chat messages are processed by OpenAI (GPT-4o mini) to generate responses. Memory summaries are processed by Anthropic Claude. Conversation history is backed up to our secure cloud so Saaroma can remember you across sessions. We do not use your data for advertising, analytics, or any purpose beyond making your experience better.</p>
       <p>We do not build a profile of you. We do not sell your data. We do not share it with advertisers.</p>
     </div></div>
 
     <div class="sec"><div class="glass">
       <div class="sec-header"><div class="sec-icon">☁️</div><h2>Third party services</h2></div>
-      <p>Saaroma uses Anthropic's Claude AI to generate companion responses. When you send a message, it is transmitted to Anthropic's servers to generate a reply. Anthropic's privacy policy applies to this processing.</p>
-      <p>We send only what is needed — your message and a small amount of context. We do not send your name, phone number, or any identifying information to Anthropic.</p>
-      <p>Read Anthropic's privacy policy at <a href="https://www.anthropic.com/privacy" class="link" target="_blank">anthropic.com/privacy</a>.</p>
+      <p>Saaroma uses the following third party services to operate:</p>
+      <p><strong style="color:var(--text-primary)">OpenAI</strong> — processes your chat messages to generate responses. We do not send your name or phone number to OpenAI. Read OpenAI's privacy policy at <a href="https://openai.com/privacy" class="link" target="_blank">openai.com/privacy</a>.</p>
+      <p><strong style="color:var(--text-primary)">Anthropic</strong> — processes memory summaries only. We do not send your name or phone number to Anthropic. Read Anthropic's privacy policy at <a href="https://www.anthropic.com/privacy" class="link" target="_blank">anthropic.com/privacy</a>.</p>
+      <p><strong style="color:var(--text-primary)">Google Firebase</strong> — stores your authentication credentials, backs up your conversation history securely, and captures anonymous crash reports to keep the app stable. Firebase is ISO 27001, SOC 1, SOC 2, and SOC 3 certified. Read Google's privacy policy at <a href="https://policies.google.com/privacy" class="link" target="_blank">policies.google.com/privacy</a>.</p>
     </div></div>
 
     <div class="sec"><div class="glass">
@@ -100,20 +101,21 @@ footer { border-top: 1px solid var(--border); padding: 32px 48px; display: flex;
     <div class="sec"><div class="glass">
       <div class="sec-header"><div class="sec-icon">🕐</div><h2>How long we keep your data</h2></div>
       <p>Your data lives on your device for as long as you use the app. When you delete your account or uninstall the app, your data is removed from your device.</p>
-      <p>We do not keep copies on external servers beyond what is needed to generate your AI responses in real time. AI response data is not stored after the response is delivered.</p>
+      <p>Conversation data backed up to our cloud is retained for up to 12 months after your last active session, then permanently deleted. You can request immediate deletion at any time by contacting support@saaroma.ai.</p>
     </div></div>
 
     <div class="sec"><div class="glass">
       <div class="sec-header"><div class="sec-icon">🔒</div><h2>Security</h2></div>
       <p>Your local data is stored using encrypted private storage on your device. It is not accessible to other apps and is not transmitted to any server except as described in this policy.</p>
       <p>All communication between the app and our backend uses HTTPS encryption.</p>
+      <p>Cloud data is stored in Google Firebase, which is independently audited and certified to ISO 27001, SOC 1, SOC 2, and SOC 3 standards. Only the Saaroma team has access to conversation data, and only for the purpose of improving the service. We will never sell it, share it, or use it for advertising.</p>
     </div></div>
 
     <div class="sec"><div class="glass">
       <div class="sec-header"><div class="sec-icon">✉️</div><h2>Questions about your privacy</h2></div>
       <p>If you have any questions about how Saaroma handles your data, or if you would like to make a data request, please contact us:</p>
       <p><a href="mailto:support@saaroma.ai" class="link">support@saaroma.ai</a></p>
-      <p>We will respond within 30 days.</p>
+      <p>We will respond within 7 days.</p>
     </div></div>
   </div>
 
