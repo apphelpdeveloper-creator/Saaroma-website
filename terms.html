@@ -20,8 +20,11 @@ body { font-family: 'DM Sans', sans-serif; background: var(--bg); color: var(--t
 .content { position: relative; z-index: 1; }
 nav { display: flex; align-items: center; justify-content: space-between; padding: 22px 48px; border-bottom: 1px solid rgba(42,30,66,.5); backdrop-filter: blur(14px); background: rgba(6,4,9,.72); }
 .nav-logo { font-size: 22px; font-weight: 700; color: var(--gold); text-decoration: none; }
-.nav-back { font-size: 14px; color: var(--text-muted); text-decoration: none; transition: color .2s; }
-.nav-back:hover { color: var(--gold); }
+.nav-links { display: flex; gap: 28px; list-style: none; }
+.nav-links a { color: var(--text-sec); text-decoration: none; font-size: 14px; font-weight: 500; transition: color .2s; }
+.nav-links a:hover, .nav-links a.active { color: var(--gold); }
+.footer-tag { font-size: 12px; color: var(--text-muted); margin-top: 3px; }
+.footer-copy { font-size: 12px; color: var(--text-muted); }
 .container { max-width: 740px; margin: 0 auto; padding: 72px 24px 100px; }
 .page-label { font-size: 11px; font-weight: 700; letter-spacing: 1.8px; text-transform: uppercase; color: var(--gold); margin-bottom: 14px; }
 h1 { font-size: clamp(32px,5.5vw,52px); font-weight: 700; line-height: 1.1; margin-bottom: 12px; }
@@ -53,7 +56,13 @@ footer { border-top: 1px solid var(--border); padding: 32px 48px; display: flex;
 <div class="content">
   <nav>
     <a href="/" class="nav-logo">Saaroma</a>
-    <a href="/" class="nav-back">← Back to home</a>
+    <ul class="nav-links">
+      <li><a href="about.html">About</a></li>
+      <li><a href="how-it-works.html">How it works</a></li>
+      <li><a href="terms.html" class="active">Terms</a></li>
+      <li><a href="privacy.html">Privacy</a></li>
+      <li><a href="disclaimer.html">Disclaimer</a></li>
+    </ul>
   </nav>
   <div class="container">
     <div class="page-label">Legal</div>
@@ -121,16 +130,17 @@ footer { border-top: 1px solid var(--border); padding: 32px 48px; display: flex;
   </div>
 
   <footer>
-    <div class="footer-logo">Saaroma</div>
+    <div><div class="footer-logo">Saaroma</div><div class="footer-tag">Peace, Perspective, Practice</div></div>
     <ul class="footer-links">
-      <li><a href="/">Home</a></li>
+      <li><a href="about.html">About</a></li>
+      <li><a href="how-it-works.html">How it works</a></li>
       <li><a href="terms.html">Terms of Service</a></li>
       <li><a href="privacy.html">Privacy Policy</a></li>
       <li><a href="disclaimer.html">Disclaimer</a></li>
       <li><a href="delete.html">Delete Account</a></li>
       <li><a href="mailto:support@saaroma.ai">Contact</a></li>
     </ul>
-    <div style="font-size:12px;color:var(--text-muted);">© 2026 Saaroma</div>
+    <div class="footer-copy">© 2026 Saaroma. All rights reserved.</div>
   </footer>
 </div>
 </body>
