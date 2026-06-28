@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Delete Account — Saaroma</title>
+<title>Delete Account | Saaroma</title>
 <meta name="description" content="Request deletion of your Saaroma account and all associated data.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -90,20 +90,20 @@ footer { border-top: 1px solid var(--border); padding: 32px 48px; display: flex;
   <div class="container">
     <div class="page-label">Account</div>
     <h1>Delete your account</h1>
-    <p class="subtitle">We are sorry to see you go. Before you leave, we want to share something important.</p>
+    <p class="subtitle">We are sorry to see you go. Before you do, there is one small thing worth saying.</p>
 
     <!-- 6 month nudge -->
     <div class="nudge-card">
       <div class="nudge-icon">🌱</div>
       <div>
         <div class="nudge-title">Saaroma works best over time</div>
-        <div class="nudge-body">Like any meaningful relationship, the connection with Saaroma deepens the more you show up. <strong>We recommend using Saaroma consistently for at least 6 months</strong> to experience its full benefit. If things feel slow, consider taking a short break instead of deleting — your history and progress will be waiting for you.</div>
+        <div class="nudge-body">Like any real relationship, Saaroma deepens the more you show up. <strong>We recommend giving it a consistent run of at least 6 months</strong> before you decide. If things feel slow right now, a short break works too, and your history and progress will be waiting when you come back.</div>
       </div>
     </div>
 
     <!-- In-app method -->
     <div class="method-card">
-      <div class="method-title">📱 Fastest way — delete directly in the app</div>
+      <div class="method-title">📱 Fastest way, right inside the app</div>
       <ol class="steps">
         <li><span class="step-n">1</span>Open Saaroma on your device</li>
         <li><span class="step-n">2</span>Tap the menu icon (☰) at the top left</li>
@@ -145,7 +145,7 @@ footer { border-top: 1px solid var(--border); padding: 32px 48px; display: flex;
         </div>
         <div class="warn">⚠️ Deleting your account is permanent after the 7-day recovery window. All journal entries, chat history, and personal data will be removed. This cannot be undone.</div>
         <button type="submit" class="btn-danger" id="submit-btn">Submit deletion request</button>
-        <a href="/" class="btn-cancel">Cancel — keep my account</a>
+        <a href="/" class="btn-cancel">Cancel, keep my account</a>
       </form>
 
       <div class="success" id="success">
@@ -193,7 +193,7 @@ footer { border-top: 1px solid var(--border); padding: 32px 48px; display: flex;
           contact: contact,
           reason: document.getElementById('reason').value || 'Not specified',
           message: document.getElementById('message').value || 'None',
-          _subject: 'Account Deletion Request — Saaroma'
+          _subject: 'Account Deletion Request, Saaroma'
         })
       });
       if (res.ok) {

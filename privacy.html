@@ -3,8 +3,8 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Privacy Policy — Saaroma</title>
-<meta name="description" content="Saaroma privacy policy — what we collect, how we use it, and how you stay in control.">
+<title>Privacy Policy | Saaroma</title>
+<meta name="description" content="Saaroma privacy policy. What we keep, what we genuinely cannot see, and how you stay in control.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=DM+Sans:opsz,wght@9..40,300;9..40,400;9..40,500;9..40,600;9..40,700&display=swap" rel="stylesheet">
@@ -76,60 +76,79 @@ footer { padding: 40px 48px; border-top: 1px solid var(--border); display: flex;
   <div class="hero">
     <span class="sec-label">Privacy</span>
     <h1>What you share here stays here.</h1>
-    <p>Saaroma is built on one principle — your private space should stay private. This page explains exactly what we collect, what we do with it, and how you stay in control.</p>
+    <p>Saaroma is built on one principle. Your private space should stay private, even from us. This page explains, in plain words, what we keep, what we genuinely cannot see, and how you stay in control.</p>
   </div>
 
   <div class="body">
+    <div class="highlight-card">
+      <h2>The short version</h2>
+      <p>Your journal, your moods, and your chats live on your device. The long term memory Saaroma builds about you is locked with a key that only you hold, so even we cannot read it. We do not sell or share your personal information, and you can erase everything at any time.</p>
+    </div>
+
     <div class="section-card">
-      <h2>What we collect</h2>
+      <h2>What stays on your device</h2>
+      <p>Most of what you put into Saaroma never leaves your phone. It is kept in encrypted storage on your device.</p>
       <ul>
-        <li>Your name or nickname — stored on your device only</li>
-        <li>Your phone number — used to verify your identity, stored securely in Firebase Authentication</li>
-        <li>Your journal entries and mood ratings — stored privately on your device using encrypted storage</li>
-        <li>Your chat conversations — stored on your device, sent to our AI service to generate responses, and backed up securely to our cloud to power your memory across sessions</li>
-        <li>Your companion name, age range, and profession — stored on your device only</li>
-        <li>Your practice session activity — stored on your device only</li>
+        <li>Your name or nickname, your companion's name, your age range and profession</li>
+        <li>Your journal entries and mood ratings</li>
+        <li>Your chat history</li>
+        <li>Your practice activity</li>
       </ul>
     </div>
 
-    <div class="section-card">
-      <h2>How we use your data</h2>
-      <p>Your data is used only to make Saaroma work for you. Chat messages are processed by OpenAI to generate responses. Memory summaries are processed by Anthropic. Conversation history is backed up to our secure cloud so Saaroma remembers you across sessions.</p>
-      <p>We do not use your data for advertising, analytics, or any purpose beyond making your experience better. We do not build a profile of you. We do not sell your data.</p>
+    <div class="highlight-card">
+      <h2>Your long term memory, and why even we cannot read it</h2>
+      <p>So Saaroma can remember you across sessions, and bring your history back if you get a new phone, it builds a private long term memory of what matters to you. This is the one personal thing we store in the cloud, and we store it in a form we are unable to open.</p>
+      <p>It is encrypted on your device, end to end, with a key that is created on your phone and never leaves it. Only the locked, unreadable version is ever uploaded. We cannot read it. No one at Saaroma can. If you set up a new phone, your recovery key is what unlocks it again, and only you have that key.</p>
     </div>
 
     <div class="section-card">
-      <h2>Third party services</h2>
-      <p><strong style="color:var(--text-primary)">OpenAI</strong> — processes your chat messages to generate responses. Your name and phone number are never shared with OpenAI. See <a href="https://openai.com/privacy" style="color:var(--gold);" target="_blank">openai.com/privacy</a>.</p>
-      <p><strong style="color:var(--text-primary)">Anthropic</strong> — processes memory summaries only. Your name and phone number are never shared. See <a href="https://www.anthropic.com/privacy" style="color:var(--gold);" target="_blank">anthropic.com/privacy</a>.</p>
-      <p><strong style="color:var(--text-primary)">Google Firebase</strong> — stores your authentication credentials, backs up conversation history, and captures anonymous crash reports. Firebase is ISO 27001, SOC 1, SOC 2, and SOC 3 certified. See <a href="https://policies.google.com/privacy" style="color:var(--gold);" target="_blank">policies.google.com/privacy</a>.</p>
+      <h2>How your replies are written</h2>
+      <p>When you chat, your message is sent to OpenAI to write a response. To keep replies personal, your device unlocks what is needed from your memory and sends it along with your message. Saaroma also uses Anthropic to write short memory summaries and gentle check ins.</p>
+      <p>Your name and phone number are never shared with OpenAI or Anthropic. They process your text only to produce a reply. None of it is used to advertise to you, to build a profile, or for any purpose beyond answering you well.</p>
+    </div>
+
+    <div class="section-card">
+      <h2>Signing in</h2>
+      <p>You sign in with your phone number or email, verified by a one time code through Google Firebase Authentication. That is what your account is tied to, and it is kept separate from your journal and your memory.</p>
+    </div>
+
+    <div class="section-card">
+      <h2>The companies that help run Saaroma</h2>
+      <p><strong style="color:var(--text-primary)">OpenAI</strong> writes your chat replies from the text your device sends. Your name and number are never shared. See <a href="https://openai.com/privacy" style="color:var(--gold);" target="_blank">openai.com/privacy</a>.</p>
+      <p><strong style="color:var(--text-primary)">Anthropic</strong> writes short memory summaries and check ins. Your name and number are never shared. See <a href="https://www.anthropic.com/privacy" style="color:var(--gold);" target="_blank">anthropic.com/privacy</a>.</p>
+      <p><strong style="color:var(--text-primary)">Google Firebase</strong> handles sign in, holds the encrypted memory that only you can unlock, and collects anonymous crash reports so we can fix problems. Firebase is ISO 27001, SOC 1, SOC 2, and SOC 3 certified. See <a href="https://policies.google.com/privacy" style="color:var(--gold);" target="_blank">policies.google.com/privacy</a>.</p>
     </div>
 
     <div class="section-card">
       <h2>You are in control</h2>
       <ul>
-        <li>Delete your account at any time from the menu — removes all data from device and cloud</li>
-        <li>Clear your chat history at any time from the chat screen</li>
-        <li>Your journal entries are stored only on your device</li>
-        <li>Request deletion of all cloud data by emailing support@saaroma.ai</li>
-        <li>We do not sell or share your personal data with advertisers</li>
+        <li>Clear your chat history any time from the chat screen</li>
+        <li>Delete your account from the menu, which erases everything, on your device and the encrypted copy in the cloud</li>
+        <li>After you ask to delete, there is a 7 day window to change your mind, then it is gone for good</li>
+        <li>Email support@saaroma.ai any time with a privacy question or a data request</li>
       </ul>
     </div>
 
     <div class="section-card">
-      <h2>How long we keep your data</h2>
-      <p>Device data is removed when you delete your account or uninstall the app. Cloud conversation data is retained for up to 12 months after your last active session, then permanently deleted. You can request immediate deletion at any time.</p>
+      <h2>What we never do</h2>
+      <p>We never sell your information. We never share it with advertisers. We do not show ads, we do not track you across other apps, and we do not build a marketing profile of who you are. The private things you tell Saaroma are not a product.</p>
+    </div>
+
+    <div class="section-card">
+      <h2>How long we keep things</h2>
+      <p>Anything on your device is gone the moment you delete your account or uninstall the app. The encrypted memory in the cloud stays so you can always restore it, and it is deleted when you delete your account. You can ask us to delete everything at any time.</p>
     </div>
 
     <div class="section-card">
       <h2>Security</h2>
-      <p>All local data uses AES-256 encrypted storage. All data in transit uses HTTPS encryption. Cloud data is stored in Google Firebase, independently audited and certified. Only the Saaroma team has access to conversation data, and only to improve the service.</p>
+      <p>Everything kept on your device uses AES-256 encrypted storage. Everything that travels over the internet uses HTTPS. Your long term memory is encrypted end to end, with a key that lives only on your phone, so the copy we hold in the cloud is genuinely something we cannot read.</p>
     </div>
 
     <div class="highlight-card">
       <h2>Questions about your privacy</h2>
-      <p>Read our full privacy policy at <a href="https://saaroma.ai/privacy.html" style="color:var(--gold);">saaroma.ai/privacy.html</a></p>
-      <p>For any questions or data requests, contact us at <a href="mailto:support@saaroma.ai" style="color:var(--gold);">support@saaroma.ai</a></p>
+      <p>This is our full privacy policy, and it always lives at <a href="https://saaroma.ai/privacy.html" style="color:var(--gold);">saaroma.ai/privacy.html</a></p>
+      <p>For any question or data request, write to us at <a href="mailto:support@saaroma.ai" style="color:var(--gold);">support@saaroma.ai</a></p>
       <p>We respond within 7 days.</p>
     </div>
   </div>

@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Saaroma — Peace, Perspective, Practice</title>
+<title>Saaroma | Peace, Perspective, Practice</title>
 <meta name="description" content="Saaroma is your private AI companion for emotional wellness. Journal, reflect, and grow with a companion that genuinely listens.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -41,6 +41,16 @@ nav { display: flex; align-items: center; justify-content: space-between; paddin
 .btn-gold:hover { background: var(--gold-soft); transform: translateY(-2px); box-shadow: 0 8px 28px rgba(232,184,75,.28); }
 .btn-outline { display: inline-flex; align-items: center; background: transparent; color: var(--text-sec); font-family: 'DM Sans', sans-serif; font-weight: 500; font-size: 14px; padding: 13px 26px; border-radius: 100px; text-decoration: none; border: 1px solid var(--border); transition: all .2s; }
 .btn-outline:hover { border-color: var(--gold); color: var(--gold); transform: translateY(-2px); }
+.store-row { display: flex; gap: 18px; align-items: center; justify-content: center; flex-wrap: wrap; }
+.btn-soon { display: inline-flex; align-items: center; gap: 9px; background: rgba(232,184,75,.08); color: var(--gold); font-family: 'DM Sans', sans-serif; font-weight: 700; font-size: 14px; padding: 13px 24px; border-radius: 100px; border: 1px solid rgba(232,184,75,.3); cursor: default; }
+.btn-soon .dot { width: 7px; height: 7px; border-radius: 50%; background: var(--gold); animation: pulse 2s ease-in-out infinite; }
+.dl-row { display: flex; gap: 20px; align-items: stretch; justify-content: center; flex-wrap: wrap; }
+.qr-slot { display: flex; flex-direction: column; align-items: center; gap: 14px; background: rgba(22,16,40,.6); border: 1px solid rgba(255,255,255,.08); border-radius: 18px; padding: 24px 30px; backdrop-filter: blur(14px); }
+.qr-ph { width: 116px; height: 116px; border-radius: 14px; border: 1.5px dashed rgba(232,184,75,.4); background: rgba(232,184,75,.05); display: flex; align-items: center; justify-content: center; font-size: 30px; opacity: .85; }
+.qr-img { width: 116px; height: 116px; border-radius: 14px; display: block; }
+.qr-label { text-align: center; }
+.qr-platform { font-size: 15px; font-weight: 700; color: var(--text-primary); }
+.qr-status { font-size: 12px; font-weight: 400; color: var(--gold); margin-top: 4px; }
 .strip { display: flex; align-items: center; justify-content: center; gap: 28px; padding: 18px 48px; margin-top: 56px; border-top: 1px solid rgba(42,30,66,.4); border-bottom: 1px solid rgba(42,30,66,.4); }
 .strip-item { font-size: 12px; font-weight: 600; color: var(--text-muted); letter-spacing: .8px; text-transform: uppercase; }
 .strip-dot { width: 3px; height: 3px; border-radius: 50%; background: var(--gold); opacity: .5; }
@@ -108,9 +118,9 @@ footer { padding: 40px 48px; border-top: 1px solid var(--border); display: flex;
   <section class="hero">
     <div class="hero-pill">AI Companion App</div>
     <h1>Your companion<br>for <span>inner clarity</span></h1>
-    <p class="hero-sub">Saaroma listens, reflects, and walks with you — through the heavy days and the light ones. A private space, just for you.</p>
+    <p class="hero-sub">Saaroma listens, reflects, and walks with you through the heavy days and the light ones. A private space that is just yours.</p>
     <div class="hero-btns">
-      <a href="#" class="btn-gold">Download on Android</a>
+      <span class="btn-soon"><span class="dot"></span>Coming soon to the App Store</span>
       <a href="about.html" class="btn-outline">Our story</a>
     </div>
     <div class="strip">
@@ -124,12 +134,12 @@ footer { padding: 40px 48px; border-top: 1px solid var(--border); display: flex;
     <div class="sec-label">What Saaroma offers</div>
     <h2 class="sec-title">Everything you need to feel heard</h2>
     <div class="features-grid">
-      <div class="glass"><div class="feat-icon">💬</div><div class="feat-title">Companion Chat</div><div class="feat-body">Talk to Saaroma like a warm, intelligent friend. It listens first, asks the right questions, and never rushes you toward answers.</div></div>
-      <div class="glass"><div class="feat-icon">📓</div><div class="feat-title">Private Journal</div><div class="feat-body">Write about your day, track your mood, and build a private record of your inner life. Auto-saves as you type.</div></div>
-      <div class="glass"><div class="feat-icon">🧘</div><div class="feat-title">Guided Practice</div><div class="feat-body">Four evidence-based sessions — one-minute reset, breathing pause, grounding, and one small action — to bring you back to yourself.</div></div>
-      <div class="glass"><div class="feat-icon">✦</div><div class="feat-title">Weekly Score</div><div class="feat-body">Every Sunday, Saaroma reads your week and delivers a personal reflection — what went well, what was heavy, and one focus for next week.</div></div>
-      <div class="glass"><div class="feat-icon">🔒</div><div class="feat-title">Completely Private</div><div class="feat-body">Your data lives on your device. Saaroma does not sell your information, does not show you ads, and does not build a profile of you.</div></div>
-      <div class="glass"><div class="feat-icon">🌍</div><div class="feat-title">Culturally Aware</div><div class="feat-body">Saaroma understands family pressure, career stress, and relationship dynamics across cultures — without you having to explain the context.</div></div>
+      <div class="glass"><div class="feat-icon">💬</div><div class="feat-title">Companion Chat</div><div class="feat-body">Talk to Saaroma like a warm, sharp friend. It listens first, asks the right questions, and never rushes you toward an answer you did not ask for.</div></div>
+      <div class="glass"><div class="feat-icon">📓</div><div class="feat-title">Private Journal</div><div class="feat-body">Write about your day and track how you feel. It saves as you type, and your journal stays on your device.</div></div>
+      <div class="glass"><div class="feat-icon">🧘</div><div class="feat-title">Guided Practice</div><div class="feat-body">Four short sessions, a one minute reset, a breathing pause, grounding, and one small action, to bring you back to yourself.</div></div>
+      <div class="glass"><div class="feat-icon">✦</div><div class="feat-title">Weekly Score</div><div class="feat-body">Every Sunday, Saaroma reads your week and writes you a personal reflection. What went well, what was heavy, and one thing to focus on next.</div></div>
+      <div class="glass"><div class="feat-icon">🔒</div><div class="feat-title">Yours alone</div><div class="feat-body">Your long term memory is encrypted so only you can read it, not even us. No selling your information, no ads, and no profile built about you.</div></div>
+      <div class="glass"><div class="feat-icon">🌍</div><div class="feat-title">Culturally Aware</div><div class="feat-body">Saaroma gets family pressure, career stress, and the weight that comes with different cultures, without you having to explain the backstory first.</div></div>
     </div>
   </section>
 
@@ -138,7 +148,7 @@ footer { padding: 40px 48px; border-top: 1px solid var(--border); display: flex;
       <div class="commitment-icon">🌱</div>
       <div>
         <div class="commitment-title">A companion that grows with you</div>
-        <div class="commitment-body">Saaroma is not a quick fix — it is a practice. Like any meaningful relationship, it deepens over time. <strong>We recommend using Saaroma consistently for at least 6 months</strong> to experience its full benefit. Users who journal regularly and engage with the weekly reflection report the greatest sense of clarity and calm. The more you show up, the more Saaroma understands you.</div>
+        <div class="commitment-body">Saaroma is not a quick fix, it is a practice. Like any real relationship, it deepens over time. <strong>We recommend using Saaroma consistently for at least 6 months</strong> to feel its full benefit. The people who journal regularly and sit with the weekly reflection tend to find the most clarity and calm. The more you show up, the more Saaroma understands you.</div>
       </div>
     </div>
   </div>
@@ -147,29 +157,40 @@ footer { padding: 40px 48px; border-top: 1px solid var(--border); display: flex;
     <div class="promise-inner">
       <div>
         <div class="sec-label">Our promise</div>
-        <h2>Your private space should stay private</h2>
-        <p>Saaroma is built on one principle — what you share here stays here.</p>
+        <h2>What you share here stays yours</h2>
+        <p>Saaroma is built on one principle. The private things you say should stay private, even from us.</p>
         <ul class="tick-list">
-          <li>Your journal and chat history live only on your device</li>
-          <li>We do not sell or share your personal data</li>
-          <li>No ads. No tracking. No profiling.</li>
-          <li>Delete your account and all data at any time</li>
-          <li>AI responses powered by OpenAI and Anthropic — your identifying information is never shared</li>
+          <li>Your journal and mood notes stay on your device</li>
+          <li>Your long term memory is encrypted end to end, so only you can read it, not even us</li>
+          <li>To write a reply, your messages go to OpenAI and Anthropic. Your name and number are never shared with them.</li>
+          <li>We never sell or share your personal information, and there are no ads</li>
+          <li>Delete your account and everything goes, on your device and in the cloud</li>
         </ul>
         <a href="privacy.html" class="policy-link">Read our full privacy policy →</a>
       </div>
       <div class="glass" style="max-width:400px;">
         <div class="feat-icon">🛡️</div>
         <div class="feat-title">Private by default</div>
-        <div class="feat-body">Everything you write, say, or feel in Saaroma is stored privately on your device using encrypted storage. It is not meant to become a public profile of you.</div>
+        <div class="feat-body">The memory Saaroma keeps of you is locked with a key that only lives on your device. It is not stored anywhere we can read it, and it is never turned into a profile, sold, or shared.</div>
       </div>
     </div>
   </section>
 
   <section class="cta">
     <h2>Ready to feel <span>heard</span>?</h2>
-    <p>Download Saaroma and start your first conversation. A warm companion is waiting.</p>
-    <div class="hero-btns"><a href="#" class="btn-gold">Download on Android</a></div>
+    <p>Saaroma is coming to the App Store soon, with Android to follow. Scan to download the moment the codes go live.</p>
+    <div class="dl-row">
+      <div class="qr-slot">
+        <!-- At launch, swap the .qr-ph below for: <img class="qr-img" src="appstore-qr.png" alt="Scan to download Saaroma on the App Store"> -->
+        <div class="qr-ph">📲</div>
+        <div class="qr-label"><div class="qr-platform">App Store</div><div class="qr-status">Coming soon</div></div>
+      </div>
+      <div class="qr-slot">
+        <!-- At launch, swap the .qr-ph below for: <img class="qr-img" src="googleplay-qr.png" alt="Scan to download Saaroma on Google Play"> -->
+        <div class="qr-ph">📲</div>
+        <div class="qr-label"><div class="qr-platform">Google Play</div><div class="qr-status">Coming soon</div></div>
+      </div>
+    </div>
   </section>
 
   <footer>

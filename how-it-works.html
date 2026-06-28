@@ -79,6 +79,8 @@ nav { display: flex; align-items: center; justify-content: space-between; paddin
 .cta p { font-size: 16px; font-weight: 300; color: var(--text-sec); margin-bottom: 36px; line-height: 1.7; max-width: 480px; margin-left: auto; margin-right: auto; }
 .btn-gold { display: inline-flex; align-items: center; gap: 8px; background: var(--gold); color: #060409; font-family: 'DM Sans', sans-serif; font-weight: 700; font-size: 14px; padding: 13px 26px; border-radius: 100px; text-decoration: none; transition: all .2s; }
 .btn-gold:hover { background: var(--gold-soft); transform: translateY(-2px); box-shadow: 0 8px 28px rgba(232,184,75,.28); }
+.btn-soon { display: inline-flex; align-items: center; gap: 9px; background: rgba(232,184,75,.08); color: var(--gold); font-family: 'DM Sans', sans-serif; font-weight: 700; font-size: 14px; padding: 13px 24px; border-radius: 100px; border: 1px solid rgba(232,184,75,.3); }
+.btn-soon .dot { width: 7px; height: 7px; border-radius: 50%; background: var(--gold); }
 
 footer { padding: 40px 48px; border-top: 1px solid var(--border); display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 20px; }
 .footer-logo { font-size: 20px; font-weight: 700; color: var(--gold); }
@@ -118,7 +120,7 @@ footer { padding: 40px 48px; border-top: 1px solid var(--border); display: flex;
   <div class="hero">
     <span class="sec-label">How it works</span>
     <h1>Not just another <em>chat app</em></h1>
-    <p>Saaroma is designed to feel like a conversation with someone who actually knows you — because over time, it does. Here's what makes it different.</p>
+    <p>Saaroma is built to feel like talking to someone who actually knows you, because over time, it does. Here is what makes it different.</p>
   </div>
 
   <div class="steps">
@@ -126,8 +128,8 @@ footer { padding: 40px 48px; border-top: 1px solid var(--border); display: flex;
       <div class="step-num">1</div>
       <div class="step-body">
         <h2>You talk. <em>Saaroma listens first.</em></h2>
-        <p>Most apps jump straight to advice. Saaroma doesn't. For the first few exchanges, it focuses entirely on understanding what's actually going on — not what it thinks you should do about it.</p>
-        <p>This isn't a feature. It's a principle. Feeling heard is the first step. Everything else comes after.</p>
+        <p>Most apps jump straight to advice. Saaroma does not. For the first few exchanges it puts everything into understanding what is actually going on, not what it thinks you should do about it.</p>
+        <p>This is not a feature, it is a principle. Feeling heard comes first. Everything else comes after.</p>
       </div>
     </div>
     <div class="step-connector"></div>
@@ -136,8 +138,8 @@ footer { padding: 40px 48px; border-top: 1px solid var(--border); display: flex;
       <div class="step-num">2</div>
       <div class="step-body">
         <h2>It reads the room. <em>Every time.</em></h2>
-        <p>Saaroma has three modes — and it chooses based on how you're showing up. Stressed and overwhelmed? It slows down and stays present. Ready to think it through? It helps you do that. Need to laugh a little? It can do that too.</p>
-        <p>You don't have to tell it which mode to use. It figures it out.</p>
+        <p>Saaroma has three modes, and it chooses based on how you are showing up. Stressed and overwhelmed? It slows down and stays with you. Ready to think it through? It helps you do that. Need to laugh a little? It can do that too.</p>
+        <p>You never have to pick a mode. It figures out what you need.</p>
       </div>
     </div>
     <div class="step-connector"></div>
@@ -146,8 +148,8 @@ footer { padding: 40px 48px; border-top: 1px solid var(--border); display: flex;
       <div class="step-num">3</div>
       <div class="step-body">
         <h2>It remembers <em>what matters.</em></h2>
-        <p>Every conversation adds to a private understanding of who you are — your patterns, your recurring themes, the things you keep coming back to. Stored only on your device, never shared.</p>
-        <p>When you come back after a few days, Saaroma picks up where you left off. Not with a generic greeting — with something real. Like "hey — that work situation, is it still going on?"</p>
+        <p>Every conversation adds to a private understanding of who you are, your patterns, your recurring themes, the things you keep circling back to. That memory is encrypted with a key only you hold, so only you can ever read it, not even us.</p>
+        <p>When you come back after a few days, Saaroma picks up where you left off. Not with a generic greeting, but with something real. Like "hey, that work situation, is it still going on?"</p>
       </div>
     </div>
     <div class="step-connector"></div>
@@ -156,7 +158,7 @@ footer { padding: 40px 48px; border-top: 1px solid var(--border); display: flex;
       <div class="step-num">4</div>
       <div class="step-body">
         <h2>It helps you <em>practice.</em></h2>
-        <p>Talking helps. But sometimes you need to do something. Saaroma includes four short practices — a one-minute reset, a breathing pause, a grounding exercise, and a one small action prompt — designed to bring you back to yourself in under five minutes.</p>
+        <p>Talking helps. But sometimes you need to do something with your hands and your breath. Saaroma has four short practices, a one minute reset, a breathing pause, a grounding exercise, and one small action, made to bring you back to yourself in under five minutes.</p>
         <p>No long courses. No homework. Just something small you can actually do right now.</p>
       </div>
     </div>
@@ -166,8 +168,8 @@ footer { padding: 40px 48px; border-top: 1px solid var(--border); display: flex;
       <div class="step-num">5</div>
       <div class="step-body">
         <h2>Every week, <em>it reflects back.</em></h2>
-        <p>Every Sunday, Saaroma reads your week — your journal entries, your mood patterns, your conversations — and writes you a personal reflection. What went well. What was heavy. One thing to focus on next week.</p>
-        <p>Not a report card. Just a mirror. The kind that helps.</p>
+        <p>Every Sunday, Saaroma reads your week, your journal entries, your mood, your conversations, and writes you a personal reflection. What went well. What was heavy. One thing to focus on next.</p>
+        <p>Not a report card. Just a mirror, the kind that actually helps.</p>
       </div>
     </div>
   </div>
@@ -189,14 +191,14 @@ footer { padding: 40px 48px; border-top: 1px solid var(--border); display: flex;
           <div class="mode-emoji">😌</div>
           <div class="mode-name">Light Mode</div>
           <div class="mode-tag">Ease</div>
-          <div class="mode-desc">For when things are okay and you want a lighter conversation — some warmth, maybe a little humor, without it feeling like a therapy session.</div>
+          <div class="mode-desc">For when things are okay and you want a lighter conversation, some warmth, maybe a little humor, without it feeling like a therapy session.</div>
           <div class="mode-example">"haha nothing is wrong with you, this is just a Tuesday thing."</div>
         </div>
         <div class="mode-card">
           <div class="mode-emoji">🧭</div>
           <div class="mode-name">Helping Mode</div>
           <div class="mode-tag">Clarity</div>
-          <div class="mode-desc">For when you're ready to think something through. Saaroma helps you find the question underneath the problem — not just the obvious next step.</div>
+          <div class="mode-desc">For when you're ready to think something through. Saaroma helps you find the question underneath the problem, not just the obvious next step.</div>
           <div class="mode-example">"hmm yeah, that avoidance usually means something. is it because..."</div>
         </div>
       </div>
@@ -205,31 +207,31 @@ footer { padding: 40px 48px; border-top: 1px solid var(--border); display: flex;
 
   <!-- Memory -->
   <div class="memory">
-    <h2>Three layers of <em>memory</em></h2>
-    <p class="lead">Saaroma's memory isn't a database of everything you've said. It's a layered system designed to understand you — without storing more than it needs to.</p>
+    <h2>How it actually <em>remembers you</em></h2>
+    <p class="lead">Saaroma's memory is not a recording of everything you have ever said. It works in layers, each one there to understand you a little better, without keeping more than it needs.</p>
     <div class="memory-cards">
       <div class="memory-card">
-        <div class="label">Layer 1</div>
-        <h3>Working memory</h3>
-        <p>The last 10 messages of the current conversation. What you're talking about right now.</p>
+        <div class="label">In the moment</div>
+        <h3>The conversation you are in</h3>
+        <p>The thread you are talking through right now, so it stays with what you actually said and does not lose the plot.</p>
       </div>
       <div class="memory-card">
-        <div class="label">Layer 2</div>
-        <h3>Session memory</h3>
-        <p>Your profile — who you are, how you like to communicate, what matters to you. Built during onboarding and refined over time.</p>
+        <div class="label">Who you are</div>
+        <h3>A sense of you</h3>
+        <p>How you like to be talked to, what matters to you, the shape of your life. It starts when you set up and gets truer the more you talk.</p>
       </div>
       <div class="memory-card">
-        <div class="label">Layer 3</div>
-        <h3>Long-term memory</h3>
-        <p>Every 20 messages, Saaroma generates a private summary of recurring themes, patterns, and progress. Stored only on your device.</p>
+        <div class="label">Over time</div>
+        <h3>Your long term memory</h3>
+        <p>As you talk, Saaroma quietly builds a private summary of the themes and patterns that keep coming up. It is encrypted end to end, so only you can ever read it.</p>
       </div>
     </div>
   </div>
 
   <div class="cta">
     <h2>Ready to <span>try it?</span></h2>
-    <p>Download Saaroma and start your first conversation. A warm companion is waiting.</p>
-    <a href="index.html" class="btn-gold">Download Saaroma</a>
+    <p>Saaroma is coming to the App Store soon. When it lands, your first conversation will be waiting.</p>
+    <span class="btn-soon"><span class="dot"></span>Coming soon to the App Store</span>
   </div>
 
   <footer>
