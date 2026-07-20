@@ -4,7 +4,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Our Story | Saaroma</title>
-<meta name="description" content="Why we built Saaroma: a private place to be heard, without judgment and without your words ever being told.">
+<meta name="description" content="The story behind Saaroma. Built for everyone who was told you can talk to me anytime, and never quite found the moment.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=DM+Sans:opsz,wght@9..40,300;9..40,400;9..40,500;9..40,600;9..40,700&display=swap" rel="stylesheet">
@@ -17,11 +17,11 @@
 }
 html { scroll-behavior: smooth; }
 body { font-family: 'DM Sans', sans-serif; background: var(--bg); color: var(--text-primary); overflow-x: hidden; min-height: 100vh; }
-.bg-mesh { position: fixed; inset: 0; z-index: 0; background: radial-gradient(ellipse 90% 55% at 15% 8%, rgba(123,47,190,.16) 0%, transparent 60%), radial-gradient(ellipse 70% 45% at 85% 85%, rgba(45,16,88,.22) 0%, transparent 60%), radial-gradient(ellipse 60% 40% at 50% 50%, rgba(30,21,48,.8) 0%, var(--bg) 70%); }
+.bg-mesh { position: fixed; inset: 0; z-index: 0; background: radial-gradient(ellipse 90% 55% at 15% 8%, rgba(123,47,190,.16) 0%, transparent 60%), radial-gradient(ellipse 70% 45% at 85% 85%, rgba(45,16,88,.22) 0%, transparent 60%), radial-gradient(ellipse 60% 40% at 50% 50%, rgba(30,21,48,.8) 0%, var(--bg) 70%); animation: meshDrift 24s ease-in-out infinite alternate; }
+@keyframes meshDrift { from { opacity: 1; } to { opacity: .88; } }
 .stars { position: fixed; inset: 0; z-index: 0; pointer-events: none; }
 .star { position: absolute; width: 1.5px; height: 1.5px; border-radius: 50%; background: var(--text-primary); animation: twinkle var(--dur) ease-in-out infinite alternate; opacity: var(--op); }
 @keyframes twinkle { to { opacity: calc(var(--op) * .25); transform: scale(.5); } }
-@keyframes fadeUp { from { opacity: 0; transform: translateY(20px); } to { opacity: 1; transform: translateY(0); } }
 @media (prefers-reduced-motion: reduce) { *, *::before, *::after { animation: none !important; } }
 .content { position: relative; z-index: 1; }
 
@@ -31,18 +31,52 @@ nav { display: flex; align-items: center; justify-content: space-between; paddin
 .nav-links a { color: var(--text-sec); text-decoration: none; font-size: 14px; font-weight: 500; transition: color .2s; }
 .nav-links a:hover, .nav-links a.active { color: var(--gold); }
 
-.hero { padding: 100px 48px 40px; max-width: 760px; margin: 0 auto; text-align: center; }
+/* Hero */
+.about-hero { padding: 100px 48px 60px; max-width: 900px; margin: 0 auto; text-align: center; }
 .sec-label { font-size: 11px; font-weight: 700; letter-spacing: 1.8px; text-transform: uppercase; color: var(--gold); margin-bottom: 20px; display: block; }
-.hero h1 { font-size: clamp(34px, 5.5vw, 58px); font-weight: 700; line-height: 1.12; margin-bottom: 20px; animation: fadeUp .7s ease both; }
-.hero p { font-size: clamp(15px, 2vw, 18px); font-weight: 300; color: var(--text-sec); line-height: 1.85; animation: fadeUp .7s .1s ease both; }
+.about-hero h1 { font-size: clamp(38px, 7vw, 72px); font-weight: 700; line-height: 1.1; margin-bottom: 24px; animation: fadeUp .7s ease both; }
+.about-hero h1 em { color: var(--gold); font-style: normal; }
+.about-hero .lead { font-size: clamp(16px, 2.2vw, 20px); font-weight: 300; color: var(--text-sec); line-height: 1.75; max-width: 680px; margin: 0 auto; animation: fadeUp .7s .1s ease both; }
+@keyframes fadeUp { from { opacity: 0; transform: translateY(20px); } to { opacity: 1; transform: translateY(0); } }
 
-.body { max-width: 720px; margin: 40px auto; padding: 0 48px 90px; }
-.body p { font-size: 16px; font-weight: 300; color: var(--text-sec); line-height: 1.95; margin-bottom: 22px; }
-.body p strong { color: var(--text-primary); font-weight: 600; }
-.pull { font-size: clamp(20px, 3vw, 26px); font-weight: 600; line-height: 1.4; color: var(--text-primary); margin: 40px 0; padding-left: 22px; border-left: 2px solid var(--gold); }
-.note-card { background: rgba(232,184,75,.06); border: 1px solid rgba(232,184,75,.2); border-radius: 18px; padding: 28px 32px; margin-top: 44px; }
-.note-card h2 { font-size: 16px; font-weight: 700; color: var(--gold); margin-bottom: 10px; }
-.note-card p { font-size: 14px; margin: 0; line-height: 1.85; }
+/* Stats strip */
+.stats-strip { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1px; background: var(--border); margin: 64px 48px; border-radius: 20px; overflow: hidden; border: 1px solid var(--border); }
+.stat-cell { background: rgba(15,10,26,.8); padding: 40px 32px; text-align: center; backdrop-filter: blur(10px); }
+.stat-number { font-size: clamp(36px, 5vw, 58px); font-weight: 700; color: var(--gold); line-height: 1; margin-bottom: 10px; }
+.stat-label { font-size: 13px; font-weight: 300; color: var(--text-sec); line-height: 1.5; max-width: 180px; margin: 0 auto; }
+.stat-source { font-size: 10px; color: var(--text-muted); margin-top: 6px; letter-spacing: .5px; }
+
+/* Story */
+.story { max-width: 820px; margin: 0 auto; padding: 0 48px 80px; }
+.story-section { margin-bottom: 72px; }
+.story-section h2 { font-size: clamp(24px, 3.5vw, 38px); font-weight: 700; line-height: 1.2; margin-bottom: 20px; }
+.story-section h2 em { color: var(--gold); font-style: normal; }
+.story-section p { font-size: 16px; font-weight: 300; color: var(--text-sec); line-height: 1.9; margin-bottom: 18px; }
+.story-section p strong { color: var(--text-primary); font-weight: 600; }
+
+/* Pull quote */
+.pull-quote { border-left: 3px solid var(--gold); padding: 24px 32px; margin: 40px 0; background: rgba(232,184,75,.04); border-radius: 0 12px 12px 0; }
+.pull-quote p { font-size: 18px; font-weight: 400; color: var(--text-primary); line-height: 1.7; font-style: italic; margin: 0; }
+.pull-quote cite { display: block; margin-top: 12px; font-size: 12px; color: var(--text-muted); font-style: normal; letter-spacing: .8px; text-transform: uppercase; font-weight: 600; }
+
+/* Founder note */
+.founder-note { background: rgba(22,16,40,.6); border: 1px solid rgba(255,255,255,.08); border-radius: 20px; padding: 40px; backdrop-filter: blur(14px); margin: 64px 48px; max-width: 820px; margin-left: auto; margin-right: auto; position: relative; overflow: hidden; }
+.founder-note::before { content: '\201C'; position: absolute; top: -20px; left: 24px; font-size: 160px; color: rgba(232,184,75,.08); font-family: Georgia, serif; line-height: 1; pointer-events: none; }
+.founder-note p { font-size: 16px; font-weight: 300; color: var(--text-sec); line-height: 1.9; margin-bottom: 16px; position: relative; z-index: 1; }
+.founder-note p:last-of-type { margin-bottom: 24px; }
+.founder-label { display: block; font-size: 11px; font-weight: 700; letter-spacing: 1.8px; text-transform: uppercase; color: var(--gold); margin-bottom: 22px; position: relative; z-index: 1; }
+.founder-sig { font-size: 15px; font-weight: 700; color: var(--gold); }
+.founder-title { font-size: 12px; color: var(--text-muted); margin-top: 3px; }
+.founder-quote { font-size: 17px; font-weight: 400; font-style: italic; color: var(--text-primary); line-height: 1.7; margin-top: 22px; padding-top: 20px; border-top: 1px solid rgba(232,184,75,.18); position: relative; z-index: 1; }
+.founder-quote em { color: var(--gold); font-style: italic; }
+
+/* CTA */
+.about-cta { text-align: center; padding: 80px 48px; }
+.about-cta h2 { font-size: clamp(28px, 4vw, 46px); font-weight: 700; margin-bottom: 16px; }
+.about-cta h2 span { color: var(--gold); }
+.about-cta p { font-size: 16px; font-weight: 300; color: var(--text-sec); margin-bottom: 36px; line-height: 1.7; max-width: 480px; margin-left: auto; margin-right: auto; }
+.btn-app { display: inline-flex; align-items: center; gap: 9px; background: var(--gold); color: var(--bg); font-family: 'DM Sans', sans-serif; font-weight: 700; font-size: 14px; padding: 13px 26px; border-radius: 100px; text-decoration: none; border: 1px solid var(--gold); transition: all .2s; }
+.btn-app:hover { transform: translateY(-2px); box-shadow: 0 8px 24px rgba(232,184,75,.28); }
 
 footer { padding: 40px 48px; border-top: 1px solid var(--border); display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 20px; }
 .footer-logo { font-size: 20px; font-weight: 700; color: var(--gold); }
@@ -54,7 +88,9 @@ footer { padding: 40px 48px; border-top: 1px solid var(--border); display: flex;
 
 @media (max-width: 768px) {
   nav { padding: 18px 20px; } .nav-links { display: none; }
-  .hero, .body { padding-left: 20px; padding-right: 20px; }
+  .about-hero, .story, .about-cta { padding-left: 20px; padding-right: 20px; }
+  .stats-strip { grid-template-columns: 1fr; margin: 40px 20px; }
+  .founder-note { margin: 40px 20px; padding: 28px; }
   footer { padding: 28px 20px; flex-direction: column; text-align: center; }
 }
 </style>
@@ -76,25 +112,69 @@ footer { padding: 40px 48px; border-top: 1px solid var(--border); display: flex;
     </ul>
   </nav>
 
-  <div class="hero">
+  <div class="about-hero">
     <span class="sec-label">Our Story</span>
-    <h1>Why we built Saaroma</h1>
-    <p>Most of us know how to be alone. What quietly wears us down is something else &mdash; having no one who truly knows our story.</p>
+    <h1>Everyone says <em>you can talk to me anytime</em></h1>
+    <p class="lead">And still, the moment to actually open up never quite arrives. Saaroma began in that gap, the strange distance between being surrounded by people and having nowhere to put the things that are hard to say.</p>
   </div>
 
-  <div class="body">
-    <p>It can happen in a full house, a busy office, a crowded group chat. Everything looks fine from the outside, while the realest things go unsaid. Not because we have no one, but because being fully honest with the people close to us can cost something &mdash; a worry, a judgment, a story repeated somewhere it should not be.</p>
-
-    <p class="pull">We wanted one place where &ldquo;I&rsquo;m fine&rdquo; is not the required answer.</p>
-
-    <p>So we built Saaroma: a friend in your pocket who truly listens, never judges, and never tells. A calm, private space that remembers what matters to you, sits with the heavy things, and helps you find a little perspective and a little peace &mdash; on your terms, at 2am or any hour.</p>
-
-    <p>Privacy is not a feature we added later. It is the whole reason Saaroma exists. Your journal stays on your device, your long-term memory is encrypted so only you can read it &mdash; <strong>not even us</strong> &mdash; and nothing you say is ever sold, studied, or told.</p>
-
-    <div class="note-card">
-      <h2>More of the story, soon</h2>
-      <p>This is the short version. The fuller story &mdash; where Saaroma began and the people behind it &mdash; is on its way. In the meantime, you can read <a href="about.html" style="color:var(--gold);">what Saaroma is about</a>, or reach us any time at <a href="mailto:support@saaroma.ai" style="color:var(--gold);">support@saaroma.ai</a>.</p>
+  <!-- Stats -->
+  <div class="stats-strip">
+    <div class="stat-cell">
+      <div class="stat-number">1 in 5</div>
+      <div class="stat-label">adults feel lonely on any given day</div>
+      <div class="stat-source">Gallup, 2024</div>
     </div>
+    <div class="stat-cell">
+      <div class="stat-number">69%</div>
+      <div class="stat-label">say they needed more emotional support than they got this past year</div>
+      <div class="stat-source">APA Stress in America, 2025</div>
+    </div>
+    <div class="stat-cell">
+      <div class="stat-number">61%</div>
+      <div class="stat-label">of adults aged 18 to 22 feel seriously lonely, more than any other age group</div>
+      <div class="stat-source">Cigna Loneliness Index</div>
+    </div>
+  </div>
+
+  <!-- Story -->
+  <div class="story">
+    <div class="story-section">
+      <h2>The hard part was never the empty room.<br><em>It was having no one to tell.</em></h2>
+      <p>Most of us know how to be alone. What quietly wears people down is something different: having no one who truly knows your story. It can happen in a full house, a busy office, a crowded group chat. Everything looks fine from the outside, while the realest things go unsaid.</p>
+    </div>
+
+    <div class="pull-quote">
+      <p>"Isolation is being by yourself. Loneliness is not liking it. What is missing is the feeling of closeness and trust, the company of people who truly know you, even when you are surrounded by others."</p>
+      <cite>U.S. Surgeon General Dr. Vivek Murthy, 2023 Advisory on Loneliness</cite>
+    </div>
+
+    <div class="story-section">
+      <h2>Clarity almost never comes from advice.<br><em>It comes from being heard.</em></h2>
+      <p>People rarely go quiet because they are short on good advice. They go quiet because they have nowhere to say the thing out loud, without it being fixed, judged, or repeated later.</p>
+      <p>Most apps rush past the listening. Before you have finished the sentence, they are already solving. Saaroma is built the other way around: it hears you first, fully. The tools are there, but they come later, and only when you are ready for them.</p>
+      <p><strong>And underneath all of it sits one quiet fear. What if I say this and it gets out.</strong> That fear is the reason so many of us keep the hardest things to ourselves. So we built Saaroma around the opposite of that fear.</p>
+    </div>
+  </div>
+
+  <!-- A Note from the Founder -->
+  <div class="founder-note">
+    <span class="founder-label">A note from the founder</span>
+    <p>Somewhere along the way I understood the difference between being alone and being lonely. Isolation is just being by yourself. Loneliness is something else, it can find you in a full house, in a busy office, at a table of friends. It is the absence of being truly known. You can be surrounded by people and still have no one to say the real thing to.</p>
+    <p>I knew that gap from the inside. For years, kind people told me, I am here, you can talk to me anytime. They meant it. But anytime is a strange promise. There is always a busier week on their end, a heavier day, a reason to say I am good instead of the real thing. And the few times I did say the real thing, it sometimes traveled quietly and found its way back to me through someone else. Each time, something small closed. I got fluent in I am fine.</p>
+    <p>I watched the same quiet settle over people I love. Not because nothing was happening to them, but because no one around them truly knew their story. And that kind of loneliness does real damage, slowly, invisibly, while everything looks fine from the outside.</p>
+    <p>Therapists are expensive and hard to reach. Friends are stretched thin. Family does not always get it, and sometimes the people closest to us are the hardest ones to be honest with. So the hardest things stay unsaid.</p>
+    <p>Saaroma is what I built for that gap. The first conversation, the one before you are ready to talk to anyone else. A friend that truly knows you, warm, genuinely private, and yours. Not a replacement for the people in your life, just there for the moments they cannot be.</p>
+    <p>If you have ever held something in because you were not sure it was safe to let out, this was built for you. Say it here. It stays here. And maybe you put it down a little.</p>
+    <div class="founder-sig">Tarkesh Tiwari</div>
+    <div class="founder-title">Founder, Saaroma</div>
+    <p class="founder-quote">"Everyone deserves one place where <em>I am fine</em> is not the required answer."</p>
+  </div>
+
+  <div class="about-cta">
+    <h2>Ready to say the <span>hard thing</span>?</h2>
+    <p>Saaroma is live on the App Store, and whatever you tell it stays between you and you. No performance, no judgment, just a place to finally be honest.</p>
+    <a href="https://apps.apple.com/app/id6772710631" class="btn-app" target="_blank" rel="noopener">Download on the App Store</a>
   </div>
 
   <footer>
