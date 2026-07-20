@@ -42,15 +42,18 @@ nav { display: flex; align-items: center; justify-content: space-between; paddin
 .btn-outline { display: inline-flex; align-items: center; background: transparent; color: var(--text-sec); font-family: 'DM Sans', sans-serif; font-weight: 500; font-size: 14px; padding: 13px 26px; border-radius: 100px; text-decoration: none; border: 1px solid var(--border); transition: all .2s; }
 .btn-outline:hover { border-color: var(--gold); color: var(--gold); transform: translateY(-2px); }
 .store-row { display: flex; gap: 18px; align-items: center; justify-content: center; flex-wrap: wrap; }
-.btn-soon { display: inline-flex; align-items: center; gap: 9px; background: rgba(232,184,75,.08); color: var(--gold); font-family: 'DM Sans', sans-serif; font-weight: 700; font-size: 14px; padding: 13px 24px; border-radius: 100px; border: 1px solid rgba(232,184,75,.3); cursor: default; }
-.btn-soon .dot { width: 7px; height: 7px; border-radius: 50%; background: var(--gold); animation: pulse 2s ease-in-out infinite; }
+.btn-app { display: inline-flex; align-items: center; gap: 9px; background: var(--gold); color: var(--bg); font-family: 'DM Sans', sans-serif; font-weight: 700; font-size: 14px; padding: 13px 26px; border-radius: 100px; text-decoration: none; border: 1px solid var(--gold); transition: all .2s; }
+.btn-app:hover { transform: translateY(-2px); box-shadow: 0 8px 24px rgba(232,184,75,.28); }
 .dl-row { display: flex; gap: 20px; align-items: stretch; justify-content: center; flex-wrap: wrap; }
 .qr-slot { display: flex; flex-direction: column; align-items: center; gap: 14px; background: rgba(22,16,40,.6); border: 1px solid rgba(255,255,255,.08); border-radius: 18px; padding: 24px 30px; backdrop-filter: blur(14px); }
-.qr-ph { width: 116px; height: 116px; border-radius: 14px; border: 1.5px dashed rgba(232,184,75,.4); background: rgba(232,184,75,.05); display: flex; align-items: center; justify-content: center; font-size: 30px; opacity: .85; }
 .qr-img { width: 116px; height: 116px; border-radius: 14px; display: block; }
 .qr-label { text-align: center; }
 .qr-platform { font-size: 15px; font-weight: 700; color: var(--text-primary); }
 .qr-status { font-size: 12px; font-weight: 400; color: var(--gold); margin-top: 4px; }
+.qr-slot.soon { align-self: center; padding: 18px 22px; background: rgba(22,16,40,.35); opacity: .8; }
+.qr-slot.soon .play-badge { width: 52px; height: 52px; border-radius: 13px; border: 1px solid rgba(255,255,255,.10); background: rgba(255,255,255,.04); display: flex; align-items: center; justify-content: center; font-size: 20px; color: var(--text-muted); }
+.qr-slot.soon .qr-platform { font-size: 13px; color: var(--text-sec); }
+.qr-slot.soon .qr-status { color: var(--text-muted); }
 .strip { display: flex; align-items: center; justify-content: center; gap: 28px; padding: 18px 48px; margin-top: 56px; border-top: 1px solid rgba(42,30,66,.4); border-bottom: 1px solid rgba(42,30,66,.4); }
 .strip-item { font-size: 12px; font-weight: 600; color: var(--text-muted); letter-spacing: .8px; text-transform: uppercase; }
 .strip-dot { width: 3px; height: 3px; border-radius: 50%; background: var(--gold); opacity: .5; }
@@ -117,10 +120,10 @@ footer { padding: 40px 48px; border-top: 1px solid var(--border); display: flex;
 
   <section class="hero">
     <div class="hero-pill">Your AI friend</div>
-    <h1>Finally, someone you can <span>be real with</span></h1>
-    <p class="hero-sub">Saaroma hears you out like a friend who has been there, gives it to you straight when it helps, and helps you find a little calm. What you say here stays here.</p>
+    <h1>A friend in your pocket who truly listens, <span>never judges, and never tells.</span></h1>
+    <p class="hero-sub">Saaroma &mdash; your private AI companion. Chat, journal, breathe.</p>
     <div class="hero-btns">
-      <span class="btn-soon"><span class="dot"></span>Coming soon to the App Store</span>
+      <a href="https://apps.apple.com/app/id6772710631" class="btn-app" target="_blank" rel="noopener">Download on the App Store</a>
       <a href="about.html" class="btn-outline">Our story</a>
     </div>
     <div class="strip">
@@ -178,16 +181,15 @@ footer { padding: 40px 48px; border-top: 1px solid var(--border); display: flex;
 
   <section class="cta">
     <h2>Ready to feel <span>heard</span>?</h2>
-    <p>Saaroma is coming to the App Store soon, with Android to follow. Scan to download the moment the codes go live.</p>
+    <p>Saaroma is live on the App Store. Scan the code or tap to download. Android is coming soon.</p>
     <div class="dl-row">
       <div class="qr-slot">
-        <!-- At launch, swap the .qr-ph below for: <img class="qr-img" src="appstore-qr.png" alt="Scan to download Saaroma on the App Store"> -->
-        <div class="qr-ph">📲</div>
-        <div class="qr-label"><div class="qr-platform">App Store</div><div class="qr-status">Coming soon</div></div>
+        <a href="https://apps.apple.com/app/id6772710631" target="_blank" rel="noopener"><img class="qr-img" src="appstore-qr.png" alt="Scan to download Saaroma on the App Store"></a>
+        <div class="qr-label"><div class="qr-platform">App Store</div><div class="qr-status">Available now</div></div>
       </div>
-      <div class="qr-slot">
-        <!-- At launch, swap the .qr-ph below for: <img class="qr-img" src="googleplay-qr.png" alt="Scan to download Saaroma on Google Play"> -->
-        <div class="qr-ph">📲</div>
+      <div class="qr-slot soon">
+        <!-- When the Google Play listing is public, swap the .play-badge below for: <img class="qr-img" src="googleplay-qr.png" alt="Scan to download Saaroma on Google Play"> -->
+        <div class="play-badge">&#9654;</div>
         <div class="qr-label"><div class="qr-platform">Google Play</div><div class="qr-status">Coming soon</div></div>
       </div>
     </div>

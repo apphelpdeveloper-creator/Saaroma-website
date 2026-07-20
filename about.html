@@ -83,8 +83,8 @@ nav { display: flex; align-items: center; justify-content: space-between; paddin
 .about-cta p { font-size: 16px; font-weight: 300; color: var(--text-sec); margin-bottom: 36px; line-height: 1.7; max-width: 480px; margin-left: auto; margin-right: auto; }
 .btn-gold { display: inline-flex; align-items: center; gap: 8px; background: var(--gold); color: #060409; font-family: 'DM Sans', sans-serif; font-weight: 700; font-size: 14px; padding: 13px 26px; border-radius: 100px; text-decoration: none; border: none; cursor: pointer; transition: all .2s; }
 .btn-gold:hover { background: var(--gold-soft); transform: translateY(-2px); box-shadow: 0 8px 28px rgba(232,184,75,.28); }
-.btn-soon { display: inline-flex; align-items: center; gap: 9px; background: rgba(232,184,75,.08); color: var(--gold); font-family: 'DM Sans', sans-serif; font-weight: 700; font-size: 14px; padding: 13px 24px; border-radius: 100px; border: 1px solid rgba(232,184,75,.3); }
-.btn-soon .dot { width: 7px; height: 7px; border-radius: 50%; background: var(--gold); }
+.btn-app { display: inline-flex; align-items: center; gap: 9px; background: var(--gold); color: var(--bg); font-family: 'DM Sans', sans-serif; font-weight: 700; font-size: 14px; padding: 13px 26px; border-radius: 100px; text-decoration: none; border: 1px solid var(--gold); transition: all .2s; }
+.btn-app:hover { transform: translateY(-2px); box-shadow: 0 8px 24px rgba(232,184,75,.28); }
 
 footer { padding: 40px 48px; border-top: 1px solid var(--border); display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 20px; }
 .footer-logo { font-size: 20px; font-weight: 700; color: var(--gold); }
@@ -216,8 +216,8 @@ footer { padding: 40px 48px; border-top: 1px solid var(--border); display: flex;
 
   <div class="about-cta">
     <h2>Ready to say the <span>hard thing</span>?</h2>
-    <p>Saaroma is almost here, and whatever you tell it stays between you and you. No performance, no judgment, just a place to finally be honest.</p>
-    <span class="btn-soon"><span class="dot"></span>Coming soon to the App Store</span>
+    <p>Saaroma is live on the App Store, and whatever you tell it stays between you and you. No performance, no judgment, just a place to finally be honest.</p>
+    <a href="https://apps.apple.com/app/id6772710631" class="btn-app" target="_blank" rel="noopener">Download on the App Store</a>
   </div>
 
   <footer>
