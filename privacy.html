@@ -8,59 +8,12 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=DM+Sans:opsz,wght@9..40,300;9..40,400;9..40,500;9..40,600;9..40,700&display=swap" rel="stylesheet">
-<style>
-*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-:root {
-  --bg: #060409; --surface: #0f0a1a; --surface-alt: #161028;
-  --border: #2a1e42; --gold: #e8b84b; --gold-soft: #d4a43c;
-  --text-primary: #f4f0e8; --text-sec: #b8a8d4; --text-muted: #7a6a8a;
-}
-html { scroll-behavior: smooth; }
-body { font-family: 'DM Sans', sans-serif; background: var(--bg); color: var(--text-primary); overflow-x: hidden; min-height: 100vh; }
-.bg-mesh { position: fixed; inset: 0; z-index: 0; background: radial-gradient(ellipse 90% 55% at 15% 8%, rgba(123,47,190,.16) 0%, transparent 60%), radial-gradient(ellipse 70% 45% at 85% 85%, rgba(45,16,88,.22) 0%, transparent 60%), radial-gradient(ellipse 60% 40% at 50% 50%, rgba(30,21,48,.8) 0%, var(--bg) 70%); }
-.stars { position: fixed; inset: 0; z-index: 0; pointer-events: none; }
-.star { position: absolute; width: 1.5px; height: 1.5px; border-radius: 50%; background: var(--text-primary); animation: twinkle var(--dur) ease-in-out infinite alternate; opacity: var(--op); }
-@keyframes twinkle { to { opacity: calc(var(--op) * .25); transform: scale(.5); } }
-.content { position: relative; z-index: 1; }
-@keyframes fadeUp { from { opacity: 0; transform: translateY(20px); } to { opacity: 1; transform: translateY(0); } }
-nav { display: flex; align-items: center; justify-content: space-between; padding: 22px 48px; border-bottom: 1px solid rgba(42,30,66,.5); backdrop-filter: blur(14px); position: sticky; top: 0; z-index: 100; background: rgba(6,4,9,.72); }
-.nav-logo { font-size: 22px; font-weight: 700; color: var(--gold); text-decoration: none; }
-.nav-links { display: flex; gap: 28px; list-style: none; }
-.nav-links a { color: var(--text-sec); text-decoration: none; font-size: 14px; font-weight: 500; transition: color .2s; }
-.nav-links a:hover, .nav-links a.active { color: var(--gold); }
-.hero { padding: 100px 48px 60px; max-width: 760px; margin: 0 auto; text-align: center; }
-.sec-label { font-size: 11px; font-weight: 700; letter-spacing: 1.8px; text-transform: uppercase; color: var(--gold); margin-bottom: 20px; display: block; }
-.hero h1 { font-size: clamp(34px, 5.5vw, 58px); font-weight: 700; line-height: 1.1; margin-bottom: 20px; animation: fadeUp .7s ease both; }
-.hero p { font-size: clamp(15px, 2vw, 17px); font-weight: 300; color: var(--text-sec); line-height: 1.85; animation: fadeUp .7s .1s ease both; }
-.body { max-width: 760px; margin: 60px auto; padding: 0 48px 80px; }
-.section-card { background: rgba(232,184,75,.04); border: 1px solid rgba(232,184,75,.12); border-radius: 20px; padding: 36px 40px; margin-bottom: 24px; }
-.section-card h2 { font-size: 18px; font-weight: 700; margin-bottom: 16px; color: var(--text-primary); }
-.section-card p { font-size: 14px; font-weight: 300; color: var(--text-sec); line-height: 1.9; margin-bottom: 12px; }
-.section-card p:last-child { margin: 0; }
-.section-card ul { list-style: none; display: flex; flex-direction: column; gap: 10px; margin-top: 4px; }
-.section-card ul li { display: flex; align-items: flex-start; gap: 10px; font-size: 14px; font-weight: 300; color: var(--text-sec); line-height: 1.6; }
-.section-card ul li::before { content: '✦'; color: var(--gold); font-size: 9px; margin-top: 5px; flex-shrink: 0; }
-.highlight-card { background: rgba(232,184,75,.06); border: 1px solid rgba(232,184,75,.2); border-radius: 20px; padding: 36px 40px; margin-bottom: 24px; }
-.highlight-card h2 { font-size: 18px; font-weight: 700; margin-bottom: 16px; color: var(--gold); }
-.highlight-card p { font-size: 14px; font-weight: 300; color: var(--text-sec); line-height: 1.9; margin-bottom: 12px; }
-.highlight-card p:last-child { margin: 0; }
-footer { padding: 40px 48px; border-top: 1px solid var(--border); display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 20px; }
-.footer-logo { font-size: 20px; font-weight: 700; color: var(--gold); }
-.footer-tag { font-size: 12px; color: var(--text-muted); margin-top: 3px; }
-.footer-links { display: flex; gap: 22px; list-style: none; flex-wrap: wrap; }
-.footer-links a { font-size: 13px; color: var(--text-muted); text-decoration: none; transition: color .2s; }
-.footer-links a:hover { color: var(--gold); }
-.footer-copy { font-size: 12px; color: var(--text-muted); }
-@media (max-width: 768px) {
-  nav { padding: 18px 20px; } .nav-links { display: none; }
-  .hero, .body { padding-left: 20px; padding-right: 20px; }
-  footer { padding: 28px 20px; flex-direction: column; text-align: center; }
-}
-</style>
+<link rel="stylesheet" href="saaroma.css">
 </head>
 <body>
+<div id="veil"></div>
 <div class="bg-mesh"></div>
-<div class="stars" id="stars"></div>
+<canvas id="galaxy"></canvas>
 <div class="content">
   <nav>
     <a href="index.html" class="nav-logo">Saaroma</a>
@@ -74,19 +27,19 @@ footer { padding: 40px 48px; border-top: 1px solid var(--border); display: flex;
     </ul>
   </nav>
 
-  <div class="hero">
-    <span class="sec-label">Privacy</span>
-    <h1>What you share here stays here.</h1>
-    <p>Saaroma is built on one principle. Your private space should stay private, even from us. This page explains, in plain words, what we keep, what we genuinely cannot see, and how you stay in control.</p>
+  <div class="legal-hero">
+    <span class="eyebrow" data-reveal>Privacy</span>
+    <h1 data-reveal>What you share here stays here.</h1>
+    <p data-reveal>Saaroma is built on one principle. Your private space should stay private, even from us. This page explains, in plain words, what we keep, what we genuinely cannot see, and how you stay in control.</p>
   </div>
 
-  <div class="body">
-    <div class="highlight-card">
+  <div class="doc">
+    <div class="highlight-card" data-reveal>
       <h2>The short version</h2>
       <p>Your journal, your moods, and your chats live on your device. The long term memory Saaroma builds about you is locked with a key that only you hold, so even we cannot read it. We do not sell or share your personal information, and you can erase everything at any time.</p>
     </div>
 
-    <div class="section-card">
+    <div class="section-card" data-reveal>
       <h2>What stays on your device</h2>
       <p>Most of what you put into Saaroma never leaves your phone. It is kept in encrypted storage on your device.</p>
       <ul>
@@ -97,31 +50,31 @@ footer { padding: 40px 48px; border-top: 1px solid var(--border); display: flex;
       </ul>
     </div>
 
-    <div class="highlight-card">
+    <div class="highlight-card" data-reveal>
       <h2>Your long term memory, and why even we cannot read it</h2>
       <p>So Saaroma can remember you across sessions, and bring your history back if you get a new phone, it builds a private long term memory of what matters to you. This is the one personal thing we store in the cloud, and we store it in a form we are unable to open.</p>
       <p>It is encrypted on your device, end to end, with a key that is created on your phone and never leaves it. Only the locked, unreadable version is ever uploaded. We cannot read it. No one at Saaroma can. If you set up a new phone, your recovery key is what unlocks it again, and only you have that key.</p>
     </div>
 
-    <div class="section-card">
+    <div class="section-card" data-reveal>
       <h2>How your replies are written</h2>
       <p>When you chat, your message is sent to OpenAI to write a response. To keep replies personal, your device unlocks what is needed from your memory and sends it along with your message. Saaroma also uses Anthropic to write short memory summaries and gentle check ins.</p>
       <p>Your name and phone number are never shared with OpenAI or Anthropic. They process your text only to produce a reply. None of it is used to advertise to you, to build a profile, or for any purpose beyond answering you well.</p>
     </div>
 
-    <div class="section-card">
+    <div class="section-card" data-reveal>
       <h2>Signing in</h2>
       <p>You sign in with your phone number or email, verified by a one time code through Google Firebase Authentication. That is what your account is tied to, and it is kept separate from your journal and your memory.</p>
     </div>
 
-    <div class="section-card">
+    <div class="section-card" data-reveal>
       <h2>The companies that help run Saaroma</h2>
-      <p><strong style="color:var(--text-primary)">OpenAI</strong> writes your chat replies from the text your device sends. Your name and number are never shared. See <a href="https://openai.com/privacy" style="color:var(--gold);" target="_blank">openai.com/privacy</a>.</p>
-      <p><strong style="color:var(--text-primary)">Anthropic</strong> writes short memory summaries and check ins. Your name and number are never shared. See <a href="https://www.anthropic.com/privacy" style="color:var(--gold);" target="_blank">anthropic.com/privacy</a>.</p>
-      <p><strong style="color:var(--text-primary)">Google Firebase</strong> handles sign in, holds the encrypted memory that only you can unlock, and collects anonymous crash reports so we can fix problems. Firebase is ISO 27001, SOC 1, SOC 2, and SOC 3 certified. See <a href="https://policies.google.com/privacy" style="color:var(--gold);" target="_blank">policies.google.com/privacy</a>.</p>
+      <p><strong>OpenAI</strong> writes your chat replies from the text your device sends. Your name and number are never shared. See <a href="https://openai.com/privacy" target="_blank">openai.com/privacy</a>.</p>
+      <p><strong>Anthropic</strong> writes short memory summaries and check ins. Your name and number are never shared. See <a href="https://www.anthropic.com/privacy" target="_blank">anthropic.com/privacy</a>.</p>
+      <p><strong>Google Firebase</strong> handles sign in, holds the encrypted memory that only you can unlock, and collects anonymous crash reports so we can fix problems. Firebase is ISO 27001, SOC 1, SOC 2, and SOC 3 certified. See <a href="https://policies.google.com/privacy" target="_blank">policies.google.com/privacy</a>.</p>
     </div>
 
-    <div class="section-card">
+    <div class="section-card" data-reveal>
       <h2>You are in control</h2>
       <ul>
         <li>Clear your chat history any time from the chat screen</li>
@@ -131,25 +84,25 @@ footer { padding: 40px 48px; border-top: 1px solid var(--border); display: flex;
       </ul>
     </div>
 
-    <div class="section-card">
+    <div class="section-card" data-reveal>
       <h2>What we never do</h2>
       <p>We never sell your information. We never share it with advertisers. We do not show ads, we do not track you across other apps, and we do not build a marketing profile of who you are. The private things you tell Saaroma are not a product.</p>
     </div>
 
-    <div class="section-card">
+    <div class="section-card" data-reveal>
       <h2>How long we keep things</h2>
       <p>Anything on your device is gone the moment you delete your account or uninstall the app. The encrypted memory in the cloud stays only so you can restore it, and it is removed when you delete your account, as covered in "You are in control" above. You can ask us to delete everything at any time.</p>
     </div>
 
-    <div class="section-card">
+    <div class="section-card" data-reveal>
       <h2>Security</h2>
       <p>Everything kept on your device uses AES-256 encrypted storage, and everything that travels over the internet uses HTTPS. Your long term memory has the extra end to end encryption described above, so the copy we hold in the cloud is one we cannot read.</p>
     </div>
 
-    <div class="highlight-card">
+    <div class="highlight-card" data-reveal>
       <h2>Questions about your privacy</h2>
-      <p>This is our full privacy policy, and it always lives at <a href="https://saaroma.ai/privacy.html" style="color:var(--gold);">saaroma.ai/privacy.html</a></p>
-      <p>For any question or data request, write to us at <a href="mailto:support@saaroma.ai" style="color:var(--gold);">support@saaroma.ai</a></p>
+      <p>This is our full privacy policy, and it always lives at <a href="https://saaroma.ai/privacy.html">saaroma.ai/privacy.html</a></p>
+      <p>For any question or data request, write to us at <a href="mailto:support@saaroma.ai">support@saaroma.ai</a></p>
       <p>We reply within 7 days.</p>
     </div>
   </div>
@@ -169,13 +122,6 @@ footer { padding: 40px 48px; border-top: 1px solid var(--border); display: flex;
     <div class="footer-copy">© 2026 Saaroma. All rights reserved.</div>
   </footer>
 </div>
-<script>
-  const s = document.getElementById('stars');
-  for (let i = 0; i < 70; i++) {
-    const el = document.createElement('div'); el.className = 'star';
-    el.style.cssText = `left:${Math.random()*100}%;top:${Math.random()*55}%;--op:${.15+Math.random()*.6};--dur:${3+Math.random()*4}s;animation-delay:${Math.random()*5}s`;
-    s.appendChild(el);
-  }
-</script>
+<script src="saaroma.js" defer></script>
 </body>
 </html>

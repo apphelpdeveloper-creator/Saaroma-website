@@ -8,59 +8,15 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=DM+Sans:opsz,wght@9..40,300;9..40,400;9..40,500;9..40,600;9..40,700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="saaroma.css">
 <style>
-*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-:root {
-  --bg: #060409; --surface: #0f0a1a; --surface-alt: #161028;
-  --border: #2a1e42; --gold: #e8b84b; --gold-soft: #d4a43c;
-  --text-primary: #f4f0e8; --text-sec: #b8a8d4; --text-muted: #7a6a8a;
-}
-html { scroll-behavior: smooth; }
-body { font-family: 'DM Sans', sans-serif; background: var(--bg); color: var(--text-primary); overflow-x: hidden; min-height: 100vh; }
-.bg-mesh { position: fixed; inset: 0; z-index: 0; background: radial-gradient(ellipse 90% 55% at 15% 8%, rgba(123,47,190,.16) 0%, transparent 60%), radial-gradient(ellipse 70% 45% at 85% 85%, rgba(45,16,88,.22) 0%, transparent 60%), radial-gradient(ellipse 60% 40% at 50% 50%, rgba(30,21,48,.8) 0%, var(--bg) 70%); }
-.stars { position: fixed; inset: 0; z-index: 0; pointer-events: none; }
-.star { position: absolute; width: 1.5px; height: 1.5px; border-radius: 50%; background: var(--text-primary); animation: twinkle var(--dur) ease-in-out infinite alternate; opacity: var(--op); }
-@keyframes twinkle { to { opacity: calc(var(--op) * .25); transform: scale(.5); } }
-.content { position: relative; z-index: 1; }
-@keyframes fadeUp { from { opacity: 0; transform: translateY(20px); } to { opacity: 1; transform: translateY(0); } }
-nav { display: flex; align-items: center; justify-content: space-between; padding: 22px 48px; border-bottom: 1px solid rgba(42,30,66,.5); backdrop-filter: blur(14px); position: sticky; top: 0; z-index: 100; background: rgba(6,4,9,.72); }
-.nav-logo { font-size: 22px; font-weight: 700; color: var(--gold); text-decoration: none; }
-.nav-links { display: flex; gap: 28px; list-style: none; }
-.nav-links a { color: var(--text-sec); text-decoration: none; font-size: 14px; font-weight: 500; transition: color .2s; }
-.nav-links a:hover, .nav-links a.active { color: var(--gold); }
-.hero { padding: 100px 48px 60px; max-width: 760px; margin: 0 auto; text-align: center; }
-.sec-label { font-size: 11px; font-weight: 700; letter-spacing: 1.8px; text-transform: uppercase; color: var(--gold); margin-bottom: 20px; display: block; }
-.hero h1 { font-size: clamp(34px, 5.5vw, 58px); font-weight: 700; line-height: 1.1; margin-bottom: 20px; animation: fadeUp .7s ease both; }
-.hero p { font-size: clamp(15px, 2vw, 17px); font-weight: 300; color: var(--text-sec); line-height: 1.85; animation: fadeUp .7s .1s ease both; }
-.body { max-width: 760px; margin: 60px auto; padding: 0 48px 80px; }
-.section-card { background: rgba(232,184,75,.04); border: 1px solid rgba(232,184,75,.12); border-radius: 20px; padding: 36px 40px; margin-bottom: 24px; }
-.section-card h2 { font-size: 18px; font-weight: 700; margin-bottom: 16px; color: var(--text-primary); }
-.section-card p { font-size: 14px; font-weight: 300; color: var(--text-sec); line-height: 1.9; margin-bottom: 12px; }
-.section-card p:last-child { margin: 0; }
-.section-card ul { list-style: none; display: flex; flex-direction: column; gap: 10px; margin-top: 4px; }
-.section-card ul li { display: flex; align-items: flex-start; gap: 10px; font-size: 14px; font-weight: 300; color: var(--text-sec); line-height: 1.6; }
-.section-card ul li::before { content: '✦'; color: var(--gold); font-size: 9px; margin-top: 5px; flex-shrink: 0; }
-.highlight-card { background: rgba(220,80,80,.04); border: 1px solid rgba(220,80,80,.15); border-radius: 20px; padding: 36px 40px; margin-bottom: 24px; }
-.highlight-card h2 { font-size: 18px; font-weight: 700; margin-bottom: 16px; color: #e07070; }
-.highlight-card p { font-size: 14px; font-weight: 300; color: var(--text-sec); line-height: 1.9; margin-bottom: 12px; }
-.highlight-card p:last-child { margin: 0; }
-footer { padding: 40px 48px; border-top: 1px solid var(--border); display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 20px; }
-.footer-logo { font-size: 20px; font-weight: 700; color: var(--gold); }
-.footer-tag { font-size: 12px; color: var(--text-muted); margin-top: 3px; }
-.footer-links { display: flex; gap: 22px; list-style: none; flex-wrap: wrap; }
-.footer-links a { font-size: 13px; color: var(--text-muted); text-decoration: none; transition: color .2s; }
-.footer-links a:hover { color: var(--gold); }
-.footer-copy { font-size: 12px; color: var(--text-muted); }
-@media (max-width: 768px) {
-  nav { padding: 18px 20px; } .nav-links { display: none; }
-  .hero, .body { padding-left: 20px; padding-right: 20px; }
-  footer { padding: 28px 20px; flex-direction: column; text-align: center; }
-}
+/* Terms of Service — all components are shared (legal-hero, doc, section-card, highlight-card). No page-unique rules. */
 </style>
 </head>
 <body>
+<div id="veil"></div>
 <div class="bg-mesh"></div>
-<div class="stars" id="stars"></div>
+<canvas id="galaxy"></canvas>
 <div class="content">
   <nav>
     <a href="index.html" class="nav-logo">Saaroma</a>
@@ -74,24 +30,24 @@ footer { padding: 40px 48px; border-top: 1px solid var(--border); display: flex;
     </ul>
   </nav>
 
-  <div class="hero">
-    <span class="sec-label">Legal</span>
-    <h1>Terms of Service</h1>
-    <p>These are the terms for using Saaroma. By creating an account or using the app, you agree to them. We have kept them in plain language so you can actually read them.</p>
+  <div class="legal-hero">
+    <span class="eyebrow" data-reveal>Legal</span>
+    <h1 data-reveal>Terms of Service</h1>
+    <p data-reveal>These are the terms for using Saaroma. By creating an account or using the app, you agree to them. We have kept them in plain language so you can actually read them.</p>
   </div>
 
-  <div class="body">
-    <div class="section-card">
+  <div class="doc">
+    <div class="section-card" data-reveal>
       <h2>What Saaroma is</h2>
-      <p>Saaroma is an AI wellness companion, a private space for talking, reflecting, journaling, and short guided practice. It is not a medical service, not therapy, and not a crisis or emergency service, and it is not a substitute for professional care. Our full disclaimer explains what Saaroma can and cannot do, in plain language, at <a href="https://saaroma.ai/disclaimer.html" style="color:var(--gold);">saaroma.ai/disclaimer.html</a>.</p>
+      <p>Saaroma is an AI wellness companion, a private space for talking, reflecting, journaling, and short guided practice. It is not a medical service, not therapy, and not a crisis or emergency service, and it is not a substitute for professional care. Our full disclaimer explains what Saaroma can and cannot do, in plain language, at <a href="https://saaroma.ai/disclaimer.html" class="gold">saaroma.ai/disclaimer.html</a>.</p>
     </div>
 
-    <div class="section-card">
+    <div class="section-card" data-reveal>
       <h2>Who can use Saaroma</h2>
       <p>You need to be 18 or older to use Saaroma. By creating an account, you confirm that you are. It is one account per person, and your account is yours alone, not for transferring or sharing.</p>
     </div>
 
-    <div class="section-card">
+    <div class="section-card" data-reveal>
       <h2>Using it fairly</h2>
       <ul>
         <li>Do not use Saaroma to harm yourself or anyone else</li>
@@ -101,41 +57,41 @@ footer { padding: 40px 48px; border-top: 1px solid var(--border); display: flex;
       </ul>
     </div>
 
-    <div class="section-card">
+    <div class="section-card" data-reveal>
       <h2>Subscription</h2>
       <p>Saaroma is a paid subscription, offered monthly or yearly. Billing is handled by the app store you downloaded from — Apple's App Store on iPhone, or Google Play on Android — at the price shown there. Your subscription renews on its own at the end of each period unless you cancel before the renewal date.</p>
-      <p><strong style="color:var(--text-primary)">Cancelling.</strong> You can cancel any time. It takes effect at the end of the period you have already paid for, and you keep full access until then.</p>
+      <p><strong>Cancelling.</strong> You can cancel any time. It takes effect at the end of the period you have already paid for, and you keep full access until then.</p>
       <ul>
-        <li><strong style="color:var(--text-primary)">On iPhone:</strong> Settings &rarr; your Apple Account &rarr; Subscriptions.</li>
-        <li><strong style="color:var(--text-primary)">On Android:</strong> Play Store &rarr; Payments &amp; subscriptions &rarr; Subscriptions.</li>
+        <li><strong>On iPhone:</strong> Settings &rarr; your Apple Account &rarr; Subscriptions.</li>
+        <li><strong>On Android:</strong> Play Store &rarr; Payments &amp; subscriptions &rarr; Subscriptions.</li>
       </ul>
-      <p><strong style="color:var(--text-primary)">Auto renewal.</strong> Your subscription renews automatically at the price shown at the time, and the store sends you a reminder before an annual renewal.</p>
-      <p><strong style="color:var(--text-primary)">Price changes.</strong> If a price ever changes, we will tell you at least 30 days before, and you can cancel before it takes effect.</p>
+      <p><strong>Auto renewal.</strong> Your subscription renews automatically at the price shown at the time, and the store sends you a reminder before an annual renewal.</p>
+      <p><strong>Price changes.</strong> If a price ever changes, we will tell you at least 30 days before, and you can cancel before it takes effect.</p>
     </div>
 
-    <div class="highlight-card">
+    <div class="highlight-card" data-reveal>
       <h2>Refunds</h2>
       <p>Because your subscription is billed by the app store, refunds are handled by that store under its own policies, not by Saaroma directly &mdash; we cannot grant or deny a store refund on your behalf. If you were charged in error or would like to request a refund, here is where to go:</p>
       <ul>
-        <li><strong style="color:var(--text-primary)">App Store (iPhone):</strong> request a refund at <a href="https://reportaproblem.apple.com" style="color:var(--gold);" target="_blank" rel="noopener">reportaproblem.apple.com</a> or from your App Store purchase history. Apple decides these.</li>
-        <li><strong style="color:var(--text-primary)">Google Play (Android):</strong> request a refund from your Google Play order history or through <a href="https://support.google.com/googleplay/answer/2479637" style="color:var(--gold);" target="_blank" rel="noopener">Google Play's refund process</a>. Google decides these.</li>
+        <li><strong>App Store (iPhone):</strong> request a refund at <a href="https://reportaproblem.apple.com" class="gold" target="_blank" rel="noopener">reportaproblem.apple.com</a> or from your App Store purchase history. Apple decides these.</li>
+        <li><strong>Google Play (Android):</strong> request a refund from your Google Play order history or through <a href="https://support.google.com/googleplay/answer/2479637" class="gold" target="_blank" rel="noopener">Google Play's refund process</a>. Google decides these.</li>
       </ul>
-      <p>If you cancel, you keep access until the end of the period you have already paid for. If you are unsure where to start, email us at <a href="mailto:support@saaroma.ai" style="color:var(--gold);">support@saaroma.ai</a> and we will point you to the right place.</p>
+      <p>If you cancel, you keep access until the end of the period you have already paid for. If you are unsure where to start, email us at <a href="mailto:support@saaroma.ai" class="gold">support@saaroma.ai</a> and we will point you to the right place.</p>
     </div>
 
-    <div class="section-card">
+    <div class="section-card" data-reveal>
       <h2>What we can and cannot promise</h2>
       <p>Saaroma is provided as it is. We cannot promise particular outcomes, that you will feel better, or that every AI response will be perfect. To the fullest extent the law allows, Saaroma and its team are not liable for damages that come from using the app.</p>
     </div>
 
-    <div class="section-card">
+    <div class="section-card" data-reveal>
       <h2>Changes to these terms</h2>
       <p>We may update these terms from time to time. If we do, we will let you know by email or in the app at least 14 days before the change takes effect. If you keep using Saaroma after that, it means you accept the updated terms.</p>
     </div>
 
-    <div class="section-card">
+    <div class="section-card" data-reveal>
       <h2>Contact</h2>
-      <p>Any questions about these terms? Write to us at <a href="mailto:support@saaroma.ai" style="color:var(--gold);">support@saaroma.ai</a>. We reply within 7 days.</p>
+      <p>Any questions about these terms? Write to us at <a href="mailto:support@saaroma.ai" class="gold">support@saaroma.ai</a>. We reply within 7 days.</p>
     </div>
   </div>
 
@@ -154,13 +110,6 @@ footer { padding: 40px 48px; border-top: 1px solid var(--border); display: flex;
     <div class="footer-copy">© 2026 Saaroma. All rights reserved.</div>
   </footer>
 </div>
-<script>
-  const s = document.getElementById('stars');
-  for (let i = 0; i < 70; i++) {
-    const el = document.createElement('div'); el.className = 'star';
-    el.style.cssText = `left:${Math.random()*100}%;top:${Math.random()*55}%;--op:${.15+Math.random()*.6};--dur:${3+Math.random()*4}s;animation-delay:${Math.random()*5}s`;
-    s.appendChild(el);
-  }
-</script>
+<script src="saaroma.js" defer></script>
 </body>
 </html>
