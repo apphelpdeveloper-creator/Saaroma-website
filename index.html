@@ -492,31 +492,41 @@ footer { padding: 40px 48px; border-top: 1px solid var(--border); display: flex;
   /* ---------- feature slider ---------- */
   var slider = document.getElementById('slider');
   if (slider) {
-    var chapters = slider.querySelectorAll('.chapter');
+    var chapters = Array.prototype.slice.call(slider.querySelectorAll('.chapter'));
     var dotsWrap = document.getElementById('dots');
+    var n = chapters.length;
+    var idx = 0;
     var dots = [];
     chapters.forEach(function (c, i) {
       var d = document.createElement('span'); d.className = 'dot' + (i === 0 ? ' active' : '');
-      d.addEventListener('click', function () { scrollToIdx(i); });
+      d.addEventListener('click', function () { goTo(i); });
       dotsWrap.appendChild(d); dots.push(d);
     });
-    function currentIdx() {
-      var w = slider.clientWidth;
-      return Math.round(slider.scrollLeft / (chapters[0].offsetWidth + 24));
+    function updateDots() { dots.forEach(function (d, i) { d.classList.toggle('active', i === idx); }); }
+    // Center chapter [i] using the LIVE rect delta (robust to padding and to the
+    // end chapters clamping), and track idx as explicit state so an arrow always
+    // advances exactly one chapter. (The old code derived idx from scrollLeft with
+    // a fixed divisor, which mis-mapped the clamped snap positions and left the
+    // slider stuck on the second chapter — the "arrows do nothing" bug.)
+    function goTo(i) {
+      idx = Math.max(0, Math.min(n - 1, i));
+      var c = slider.getBoundingClientRect(), t = chapters[idx].getBoundingClientRect();
+      slider.scrollTo({
+        left: slider.scrollLeft + ((t.left + t.width / 2) - (c.left + c.width / 2)),
+        behavior: reduce ? 'auto' : 'smooth'
+      });
+      updateDots();
     }
-    function scrollToIdx(i) {
-      i = Math.max(0, Math.min(chapters.length - 1, i));
-      var left = chapters[i].offsetLeft - (slider.clientWidth - chapters[i].offsetWidth) / 2;
-      slider.scrollTo({ left: left, behavior: reduce ? 'auto' : 'smooth' });
-    }
-    function sync() {
-      var i = currentIdx();
-      dots.forEach(function (d, k) { d.classList.toggle('active', k === i); });
+    // Keep idx honest when the user swipes/drags: derive from scroll progress.
+    function syncFromScroll() {
+      var max = slider.scrollWidth - slider.clientWidth;
+      idx = max > 0 ? Math.round(slider.scrollLeft / max * (n - 1)) : 0;
+      updateDots();
     }
     var tick;
-    slider.addEventListener('scroll', function () { window.clearTimeout(tick); tick = window.setTimeout(sync, 60); }, { passive: true });
-    document.getElementById('prev').addEventListener('click', function () { scrollToIdx(currentIdx() - 1); });
-    document.getElementById('next').addEventListener('click', function () { scrollToIdx(currentIdx() + 1); });
+    slider.addEventListener('scroll', function () { window.clearTimeout(tick); tick = window.setTimeout(syncFromScroll, 80); }, { passive: true });
+    document.getElementById('prev').addEventListener('click', function () { goTo(idx - 1); });
+    document.getElementById('next').addEventListener('click', function () { goTo(idx + 1); });
   }
 
   /* ---------- living galaxy canvas (hero + ambient) ---------- */
