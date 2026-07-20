@@ -40,7 +40,7 @@ nav { display: flex; align-items: center; justify-content: space-between; paddin
 
 /* ---- BEAT 1 : hero ---- */
 .hero { min-height: 92vh; display: flex; flex-direction: column; align-items: center; justify-content: center; text-align: center; padding: 90px 24px 60px; position: relative; }
-.hero h1 { font-size: clamp(42px,7.6vw,86px); font-weight: 700; line-height: 1.07; max-width: 15ch; }
+.hero h1 { font-size: clamp(30px,7.2vw,86px); font-weight: 700; line-height: 1.08; max-width: 15ch; overflow-wrap: break-word; }
 .hero h1 .l1, .hero h1 .l2 { display: inline; }
 .hero h1 span.g { color: var(--gold); }
 .hero-sub { font-size: clamp(15px,2.2vw,20px); font-weight: 300; color: var(--text-sec); max-width: 540px; line-height: 1.7; margin: 26px auto 0; }
@@ -189,6 +189,9 @@ footer { padding: 40px 48px; border-top: 1px solid var(--border); display: flex;
 }
 @media (max-width: 768px) {
   nav { padding: 18px 20px; } .nav-links { display: none; }
+  .hero { padding: 84px 20px 56px; }
+  .hero h1 { font-size: clamp(28px, 8vw, 46px); }
+  .hero-sub { font-size: 15px; }
   .section, .promise-band, .cta, .commitment-band, .helps-head { padding-left: 20px; padding-right: 20px; }
   .slider { padding-left: 20px; padding-right: 20px; }
   .commitment-card { flex-direction: column; gap: 20px; padding: 28px; text-align: center; }
