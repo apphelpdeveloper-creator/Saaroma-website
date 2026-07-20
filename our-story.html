@@ -3,8 +3,8 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>About Saaroma | Built to sit with you</title>
-<meta name="description" content="How Saaroma is built: a year of quiet work behind an AI companion made to listen first, understand your world, and keep every word private.">
+<title>Our Story | Saaroma</title>
+<meta name="description" content="The story behind Saaroma. Built for everyone who was told you can talk to me anytime, and never quite found the moment.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=DM+Sans:opsz,wght@9..40,300;9..40,400;9..40,500;9..40,600;9..40,700&display=swap" rel="stylesheet">
@@ -22,6 +22,7 @@ body { font-family: 'DM Sans', sans-serif; background: var(--bg); color: var(--t
 .stars { position: fixed; inset: 0; z-index: 0; pointer-events: none; }
 .star { position: absolute; width: 1.5px; height: 1.5px; border-radius: 50%; background: var(--text-primary); animation: twinkle var(--dur) ease-in-out infinite alternate; opacity: var(--op); }
 @keyframes twinkle { to { opacity: calc(var(--op) * .25); transform: scale(.5); } }
+@media (prefers-reduced-motion: reduce) { *, *::before, *::after { animation: none !important; } }
 .content { position: relative; z-index: 1; }
 
 nav { display: flex; align-items: center; justify-content: space-between; padding: 22px 48px; border-bottom: 1px solid rgba(42,30,66,.5); backdrop-filter: blur(14px); position: sticky; top: 0; z-index: 100; background: rgba(6,4,9,.72); }
@@ -58,13 +59,6 @@ nav { display: flex; align-items: center; justify-content: space-between; paddin
 .pull-quote p { font-size: 18px; font-weight: 400; color: var(--text-primary); line-height: 1.7; font-style: italic; margin: 0; }
 .pull-quote cite { display: block; margin-top: 12px; font-size: 12px; color: var(--text-muted); font-style: normal; letter-spacing: .8px; text-transform: uppercase; font-weight: 600; }
 
-/* Timeline */
-.timeline { margin: 48px 0; }
-.timeline-item { display: flex; gap: 24px; margin-bottom: 36px; }
-.timeline-dot { flex-shrink: 0; width: 44px; height: 44px; border-radius: 50%; background: rgba(232,184,75,.1); border: 1px solid rgba(232,184,75,.3); display: flex; align-items: center; justify-content: center; font-size: 18px; margin-top: 2px; }
-.timeline-content h3 { font-size: 17px; font-weight: 700; margin-bottom: 6px; }
-.timeline-content p { font-size: 14px; font-weight: 300; color: var(--text-sec); line-height: 1.75; margin: 0; }
-
 /* Founder note */
 .founder-note { background: rgba(22,16,40,.6); border: 1px solid rgba(255,255,255,.08); border-radius: 20px; padding: 40px; backdrop-filter: blur(14px); margin: 64px 48px; max-width: 820px; margin-left: auto; margin-right: auto; position: relative; overflow: hidden; }
 .founder-note::before { content: '\201C'; position: absolute; top: -20px; left: 24px; font-size: 160px; color: rgba(232,184,75,.08); font-family: Georgia, serif; line-height: 1; pointer-events: none; }
@@ -81,8 +75,6 @@ nav { display: flex; align-items: center; justify-content: space-between; paddin
 .about-cta h2 { font-size: clamp(28px, 4vw, 46px); font-weight: 700; margin-bottom: 16px; }
 .about-cta h2 span { color: var(--gold); }
 .about-cta p { font-size: 16px; font-weight: 300; color: var(--text-sec); margin-bottom: 36px; line-height: 1.7; max-width: 480px; margin-left: auto; margin-right: auto; }
-.btn-gold { display: inline-flex; align-items: center; gap: 8px; background: var(--gold); color: #060409; font-family: 'DM Sans', sans-serif; font-weight: 700; font-size: 14px; padding: 13px 26px; border-radius: 100px; text-decoration: none; border: none; cursor: pointer; transition: all .2s; }
-.btn-gold:hover { background: var(--gold-soft); transform: translateY(-2px); box-shadow: 0 8px 28px rgba(232,184,75,.28); }
 .btn-app { display: inline-flex; align-items: center; gap: 9px; background: var(--gold); color: var(--bg); font-family: 'DM Sans', sans-serif; font-weight: 700; font-size: 14px; padding: 13px 26px; border-radius: 100px; text-decoration: none; border: 1px solid var(--gold); transition: all .2s; }
 .btn-app:hover { transform: translateY(-2px); box-shadow: 0 8px 24px rgba(232,184,75,.28); }
 
@@ -111,8 +103,8 @@ footer { padding: 40px 48px; border-top: 1px solid var(--border); display: flex;
   <nav>
     <a href="index.html" class="nav-logo">Saaroma</a>
     <ul class="nav-links">
-      <li><a href="about.html" class="active">About</a></li>
-      <li><a href="our-story.html">Our Story</a></li>
+      <li><a href="about.html">About</a></li>
+      <li><a href="our-story.html" class="active">Our Story</a></li>
       <li><a href="how-it-works.html">How it works</a></li>
       <li><a href="terms.html">Terms</a></li>
       <li><a href="privacy.html">Privacy</a></li>
@@ -121,52 +113,68 @@ footer { padding: 40px 48px; border-top: 1px solid var(--border); display: flex;
   </nav>
 
   <div class="about-hero">
-    <span class="sec-label">About Saaroma</span>
-    <h1>We spent a year on the part <em>you cannot see.</em></h1>
-    <p class="lead">Most AI apps are a clever prompt and a launch date. We wanted something that could sit with a person, not just answer them. That took a year of slow, unglamorous work. This is the part you cannot see &mdash; and it is the part that makes Saaroma feel like a friend, not a feature.</p>
+    <span class="sec-label">Our Story</span>
+    <h1>Everyone says <em>you can talk to me anytime</em></h1>
+    <p class="lead">And still, the moment to actually open up never quite arrives. Saaroma began in that gap, the strange distance between being surrounded by people and having nowhere to put the things that are hard to say.</p>
   </div>
 
-  <!-- How Saaroma is built -->
+  <!-- Stats -->
+  <div class="stats-strip">
+    <div class="stat-cell">
+      <div class="stat-number">1 in 5</div>
+      <div class="stat-label">adults feel lonely on any given day</div>
+      <div class="stat-source">Gallup, 2024</div>
+    </div>
+    <div class="stat-cell">
+      <div class="stat-number">69%</div>
+      <div class="stat-label">say they needed more emotional support than they got this past year</div>
+      <div class="stat-source">APA Stress in America, 2025</div>
+    </div>
+    <div class="stat-cell">
+      <div class="stat-number">61%</div>
+      <div class="stat-label">of adults aged 18 to 22 feel seriously lonely, more than any other age group</div>
+      <div class="stat-source">Cigna Loneliness Index</div>
+    </div>
+  </div>
+
+  <!-- Story -->
   <div class="story">
     <div class="story-section">
-      <div class="timeline">
-        <div class="timeline-item">
-          <div class="timeline-dot">📚</div>
-          <div class="timeline-content">
-            <h3>Reading, so it never has to quote</h3>
-            <p>We sourced and worked through dozens of books on emotional wellbeing, stress, conflict, mindfulness, and how people actually change. Not so Saaroma could recite them, but so it could absorb that wisdom and use it the way a well read friend does, naturally and in your own language.</p>
-          </div>
-        </div>
-        <div class="timeline-item">
-          <div class="timeline-dot">🧠</div>
-          <div class="timeline-content">
-            <h3>A personality, not a script</h3>
-            <p>We did not want another chatbot. So Saaroma has three ways of showing up: being with you when you just need to be heard, keeping things light when that is what the moment wants, and helping you think it through when you are ready. It reads which one you need and chooses for you.</p>
-          </div>
-        </div>
-        <div class="timeline-item">
-          <div class="timeline-dot">🔒</div>
-          <div class="timeline-content">
-            <h3>A memory only you can read</h3>
-            <p>Saaroma remembers what matters to you, the patterns and the things you keep circling back to, so it can pick up where you left off. And that memory is locked with a key only you hold, so no one, not even us, can ever read it. The fear of it getting out is the exact fear we built this to remove.</p>
-          </div>
-        </div>
-        <div class="timeline-item">
-          <div class="timeline-dot">🌍</div>
-          <div class="timeline-content">
-            <h3>Built for real lives</h3>
-            <p>Family expectations, cultural weight, work that follows you home, the quiet guilt of feeling far from people. Saaroma understands that context, so you never have to explain your whole background before you can feel understood.</p>
-          </div>
-        </div>
-      </div>
+      <h2>The hard part was never the empty room.<br><em>It was having no one to tell.</em></h2>
+      <p>Most of us know how to be alone. What quietly wears people down is something different: having no one who truly knows your story. It can happen in a full house, a busy office, a crowded group chat. Everything looks fine from the outside, while the realest things go unsaid.</p>
     </div>
+
+    <div class="pull-quote">
+      <p>"Isolation is being by yourself. Loneliness is not liking it. What is missing is the feeling of closeness and trust, the company of people who truly know you, even when you are surrounded by others."</p>
+      <cite>U.S. Surgeon General Dr. Vivek Murthy, 2023 Advisory on Loneliness</cite>
+    </div>
+
+    <div class="story-section">
+      <h2>Clarity almost never comes from advice.<br><em>It comes from being heard.</em></h2>
+      <p>People rarely go quiet because they are short on good advice. They go quiet because they have nowhere to say the thing out loud, without it being fixed, judged, or repeated later.</p>
+      <p>Most apps rush past the listening. Before you have finished the sentence, they are already solving. Saaroma is built the other way around: it hears you first, fully. The tools are there, but they come later, and only when you are ready for them.</p>
+      <p><strong>And underneath all of it sits one quiet fear. What if I say this and it gets out.</strong> That fear is the reason so many of us keep the hardest things to ourselves. So we built Saaroma around the opposite of that fear.</p>
+    </div>
+  </div>
+
+  <!-- A Note from the Founder -->
+  <div class="founder-note">
+    <span class="founder-label">A note from the founder</span>
+    <p>Somewhere along the way I understood the difference between being alone and being lonely. Isolation is just being by yourself. Loneliness is something else, it can find you in a full house, in a busy office, at a table of friends. It is the absence of being truly known. You can be surrounded by people and still have no one to say the real thing to.</p>
+    <p>I knew that gap from the inside. For years, kind people told me, I am here, you can talk to me anytime. They meant it. But anytime is a strange promise. There is always a busier week on their end, a heavier day, a reason to say I am good instead of the real thing. And the few times I did say the real thing, it sometimes traveled quietly and found its way back to me through someone else. Each time, something small closed. I got fluent in I am fine.</p>
+    <p>I watched the same quiet settle over people I love. Not because nothing was happening to them, but because no one around them truly knew their story. And that kind of loneliness does real damage, slowly, invisibly, while everything looks fine from the outside.</p>
+    <p>Therapists are expensive and hard to reach. Friends are stretched thin. Family does not always get it, and sometimes the people closest to us are the hardest ones to be honest with. So the hardest things stay unsaid.</p>
+    <p>Saaroma is what I built for that gap. The first conversation, the one before you are ready to talk to anyone else. A friend that truly knows you, warm, genuinely private, and yours. Not a replacement for the people in your life, just there for the moments they cannot be.</p>
+    <p>If you have ever held something in because you were not sure it was safe to let out, this was built for you. Say it here. It stays here. And maybe you put it down a little.</p>
+    <div class="founder-sig">Tarkesh Tiwari</div>
+    <div class="founder-title">Founder, Saaroma</div>
+    <p class="founder-quote">"Everyone deserves one place where <em>I am fine</em> is not the required answer."</p>
   </div>
 
   <div class="about-cta">
     <h2>Ready to say the <span>hard thing</span>?</h2>
     <p>Saaroma is live on the App Store, and whatever you tell it stays between you and you. No performance, no judgment, just a place to finally be honest.</p>
     <a href="https://apps.apple.com/app/id6772710631" class="btn-app" target="_blank" rel="noopener">Download on the App Store</a>
-    <p style="margin:24px 0 0;"><a href="our-story.html" style="color:var(--gold);font-weight:600;text-decoration:none;">Read the story of why we built Saaroma →</a></p>
   </div>
 
   <footer>
