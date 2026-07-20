@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Our Story | Saaroma</title>
+<meta name="description" content="Why we built Saaroma: a private place to be heard, without judgment and without your words ever being told.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:opsz,wght@9..40,300;9..40,400;9..40,500;9..40,600;9..40,700&display=swap" rel="stylesheet">
+<style>
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+:root {
+  --bg: #060409; --surface: #0f0a1a; --surface-alt: #161028;
+  --border: #2a1e42; --gold: #e8b84b; --gold-soft: #d4a43c;
+  --text-primary: #f4f0e8; --text-sec: #b8a8d4; --text-muted: #7a6a8a;
+}
+html { scroll-behavior: smooth; }
+body { font-family: 'DM Sans', sans-serif; background: var(--bg); color: var(--text-primary); overflow-x: hidden; min-height: 100vh; }
+.bg-mesh { position: fixed; inset: 0; z-index: 0; background: radial-gradient(ellipse 90% 55% at 15% 8%, rgba(123,47,190,.16) 0%, transparent 60%), radial-gradient(ellipse 70% 45% at 85% 85%, rgba(45,16,88,.22) 0%, transparent 60%), radial-gradient(ellipse 60% 40% at 50% 50%, rgba(30,21,48,.8) 0%, var(--bg) 70%); }
+.stars { position: fixed; inset: 0; z-index: 0; pointer-events: none; }
+.star { position: absolute; width: 1.5px; height: 1.5px; border-radius: 50%; background: var(--text-primary); animation: twinkle var(--dur) ease-in-out infinite alternate; opacity: var(--op); }
+@keyframes twinkle { to { opacity: calc(var(--op) * .25); transform: scale(.5); } }
+@keyframes fadeUp { from { opacity: 0; transform: translateY(20px); } to { opacity: 1; transform: translateY(0); } }
+@media (prefers-reduced-motion: reduce) { *, *::before, *::after { animation: none !important; } }
+.content { position: relative; z-index: 1; }
+
+nav { display: flex; align-items: center; justify-content: space-between; padding: 22px 48px; border-bottom: 1px solid rgba(42,30,66,.5); backdrop-filter: blur(14px); position: sticky; top: 0; z-index: 100; background: rgba(6,4,9,.72); }
+.nav-logo { font-size: 22px; font-weight: 700; color: var(--gold); text-decoration: none; }
+.nav-links { display: flex; gap: 28px; list-style: none; }
+.nav-links a { color: var(--text-sec); text-decoration: none; font-size: 14px; font-weight: 500; transition: color .2s; }
+.nav-links a:hover, .nav-links a.active { color: var(--gold); }
+
+.hero { padding: 100px 48px 40px; max-width: 760px; margin: 0 auto; text-align: center; }
+.sec-label { font-size: 11px; font-weight: 700; letter-spacing: 1.8px; text-transform: uppercase; color: var(--gold); margin-bottom: 20px; display: block; }
+.hero h1 { font-size: clamp(34px, 5.5vw, 58px); font-weight: 700; line-height: 1.12; margin-bottom: 20px; animation: fadeUp .7s ease both; }
+.hero p { font-size: clamp(15px, 2vw, 18px); font-weight: 300; color: var(--text-sec); line-height: 1.85; animation: fadeUp .7s .1s ease both; }
+
+.body { max-width: 720px; margin: 40px auto; padding: 0 48px 90px; }
+.body p { font-size: 16px; font-weight: 300; color: var(--text-sec); line-height: 1.95; margin-bottom: 22px; }
+.body p strong { color: var(--text-primary); font-weight: 600; }
+.pull { font-size: clamp(20px, 3vw, 26px); font-weight: 600; line-height: 1.4; color: var(--text-primary); margin: 40px 0; padding-left: 22px; border-left: 2px solid var(--gold); }
+.note-card { background: rgba(232,184,75,.06); border: 1px solid rgba(232,184,75,.2); border-radius: 18px; padding: 28px 32px; margin-top: 44px; }
+.note-card h2 { font-size: 16px; font-weight: 700; color: var(--gold); margin-bottom: 10px; }
+.note-card p { font-size: 14px; margin: 0; line-height: 1.85; }
+
+footer { padding: 40px 48px; border-top: 1px solid var(--border); display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 20px; }
+.footer-logo { font-size: 20px; font-weight: 700; color: var(--gold); }
+.footer-tag { font-size: 12px; color: var(--text-muted); margin-top: 3px; }
+.footer-links { display: flex; gap: 22px; list-style: none; flex-wrap: wrap; }
+.footer-links a { font-size: 13px; color: var(--text-muted); text-decoration: none; transition: color .2s; }
+.footer-links a:hover { color: var(--gold); }
+.footer-copy { font-size: 12px; color: var(--text-muted); }
+
+@media (max-width: 768px) {
+  nav { padding: 18px 20px; } .nav-links { display: none; }
+  .hero, .body { padding-left: 20px; padding-right: 20px; }
+  footer { padding: 28px 20px; flex-direction: column; text-align: center; }
+}
+</style>
+</head>
+<body>
+<div class="bg-mesh"></div>
+<div class="stars" id="stars"></div>
+<div class="content">
+
+  <nav>
+    <a href="index.html" class="nav-logo">Saaroma</a>
+    <ul class="nav-links">
+      <li><a href="about.html">About</a></li>
+      <li><a href="our-story.html" class="active">Our Story</a></li>
+      <li><a href="how-it-works.html">How it works</a></li>
+      <li><a href="terms.html">Terms</a></li>
+      <li><a href="privacy.html">Privacy</a></li>
+      <li><a href="disclaimer.html">Disclaimer</a></li>
+    </ul>
+  </nav>
+
+  <div class="hero">
+    <span class="sec-label">Our Story</span>
+    <h1>Why we built Saaroma</h1>
+    <p>Most of us know how to be alone. What quietly wears us down is something else &mdash; having no one who truly knows our story.</p>
+  </div>
+
+  <div class="body">
+    <p>It can happen in a full house, a busy office, a crowded group chat. Everything looks fine from the outside, while the realest things go unsaid. Not because we have no one, but because being fully honest with the people close to us can cost something &mdash; a worry, a judgment, a story repeated somewhere it should not be.</p>
+
+    <p class="pull">We wanted one place where &ldquo;I&rsquo;m fine&rdquo; is not the required answer.</p>
+
+    <p>So we built Saaroma: a friend in your pocket who truly listens, never judges, and never tells. A calm, private space that remembers what matters to you, sits with the heavy things, and helps you find a little perspective and a little peace &mdash; on your terms, at 2am or any hour.</p>
+
+    <p>Privacy is not a feature we added later. It is the whole reason Saaroma exists. Your journal stays on your device, your long-term memory is encrypted so only you can read it &mdash; <strong>not even us</strong> &mdash; and nothing you say is ever sold, studied, or told.</p>
+
+    <div class="note-card">
+      <h2>More of the story, soon</h2>
+      <p>This is the short version. The fuller story &mdash; where Saaroma began and the people behind it &mdash; is on its way. In the meantime, you can read <a href="about.html" style="color:var(--gold);">what Saaroma is about</a>, or reach us any time at <a href="mailto:support@saaroma.ai" style="color:var(--gold);">support@saaroma.ai</a>.</p>
+    </div>
+  </div>
+
+  <footer>
+    <div><div class="footer-logo">Saaroma</div><div class="footer-tag">Peace, Perspective, Practice</div></div>
+    <ul class="footer-links">
+      <li><a href="about.html">About</a></li>
+      <li><a href="our-story.html">Our Story</a></li>
+      <li><a href="how-it-works.html">How it works</a></li>
+      <li><a href="terms.html">Terms of Service</a></li>
+      <li><a href="privacy.html">Privacy Policy</a></li>
+      <li><a href="disclaimer.html">Disclaimer</a></li>
+      <li><a href="delete.html">Delete Account</a></li>
+      <li><a href="mailto:support@saaroma.ai">Contact</a></li>
+    </ul>
+    <div class="footer-copy">© 2026 Saaroma. All rights reserved.</div>
+  </footer>
+</div>
+<script>
+  const s = document.getElementById('stars');
+  for (let i = 0; i < 70; i++) {
+    const el = document.createElement('div'); el.className = 'star';
+    el.style.cssText = `left:${Math.random()*100}%;top:${Math.random()*55}%;--op:${.15+Math.random()*.6};--dur:${3+Math.random()*4}s;animation-delay:${Math.random()*5}s`;
+    s.appendChild(el);
+  }
+</script>
+</body>
+</html>
