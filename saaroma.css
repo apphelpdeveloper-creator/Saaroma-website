@@ -75,8 +75,8 @@ nav { display: flex; align-items: center; justify-content: space-between; paddin
 .section-card p { font-size: var(--fs-small); font-weight: 300; color: var(--text-sec); line-height: 1.9; margin-bottom: 12px; }
 .section-card p:last-child { margin: 0; }
 .section-card ul { list-style: none; display: flex; flex-direction: column; gap: 10px; margin-top: 6px; }
-.section-card ul li { display: flex; align-items: flex-start; gap: 10px; font-size: var(--fs-small); font-weight: 300; color: var(--text-sec); line-height: 1.65; }
-.section-card ul li::before { content: '\2726'; color: var(--gold); font-size: 9px; margin-top: 6px; flex-shrink: 0; }
+.section-card ul li { position: relative; padding-left: 20px; font-size: var(--fs-small); font-weight: 300; color: var(--text-sec); line-height: 1.65; }
+.section-card ul li::before { content: '\2726'; color: var(--gold); font-size: 9px; position: absolute; left: 0; top: 7px; }
 .section-card strong { color: var(--text-primary); font-weight: 600; }
 
 .honest-card { background: rgba(232,184,75,.06); border: 1px solid rgba(232,184,75,.2); border-radius: 20px; padding: var(--s4) clamp(24px,3.5vw,44px); margin-bottom: var(--s4); }
@@ -89,8 +89,8 @@ nav { display: flex; align-items: center; justify-content: space-between; paddin
 .highlight-card p { font-size: var(--fs-small); font-weight: 300; color: var(--text-sec); line-height: 1.9; margin-bottom: 12px; }
 .highlight-card p:last-child { margin: 0; }
 .highlight-card ul { list-style: none; display: flex; flex-direction: column; gap: 10px; margin: 6px 0 12px; }
-.highlight-card ul li { display: flex; align-items: flex-start; gap: 10px; font-size: var(--fs-small); font-weight: 300; color: var(--text-sec); line-height: 1.65; }
-.highlight-card ul li::before { content: '\2726'; color: var(--warn); font-size: 9px; margin-top: 6px; flex-shrink: 0; }
+.highlight-card ul li { position: relative; padding-left: 20px; font-size: var(--fs-small); font-weight: 300; color: var(--text-sec); line-height: 1.65; }
+.highlight-card ul li::before { content: '\2726'; color: var(--warn); font-size: 9px; position: absolute; left: 0; top: 7px; }
 .highlight-card strong { color: var(--text-primary); font-weight: 600; }
 
 /* do / don't grid (disclaimer) */

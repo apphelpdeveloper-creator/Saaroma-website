@@ -122,10 +122,16 @@
 
 @media (max-width: 900px) {
   .answer, .promise-inner { grid-template-columns: 1fr; gap: var(--s4); }
-  .chapter { grid-template-columns: 1fr; gap: var(--s3); text-align: center; align-content: center; }
+  /* On phones the pinned hold fights a thumb — let the chapters be a normal stacked scroll. */
+  .pin-wrap { height: auto; }
+  .pin-stage { position: static; height: auto; display: block; }
+  .pin-head { padding: var(--s5) var(--edge) var(--s2); }
+  .chapter { position: static; opacity: 1 !important; transform: none !important; grid-template-columns: 1fr; gap: var(--s3); text-align: center; align-content: center; padding: var(--s5) var(--edge); }
   .chapter .stage { min-height: 170px; }
   .chapter p { margin: 0 auto; }
-  .pin-wrap { height: 300vh; }
+  .pin-rail { display: none; }
+  .constel .edge { stroke-dashoffset: 0; } .constel .node.t { opacity: 1; }
+  .ring-wrap .ring-fill { stroke-dashoffset: 130; } .ring-num { opacity: 1; }
   .commitment-card { flex-direction: column; text-align: center; gap: 20px; padding: 28px; }
 }
 
@@ -422,7 +428,8 @@
     }
     var ticking = false;
     function onScroll(){ if(!ticking){ ticking=true; requestAnimationFrame(function(){ paint(); ticking=false; }); } }
-    if (reduce){ chapters.forEach(function(ch){ ch.style.opacity=1; }); if(constel)constel.classList.add('draw'); if(ring)ring.classList.add('draw'); }
+    var isMobile = window.matchMedia('(max-width: 900px)').matches;
+    if (reduce || isMobile){ chapters.forEach(function(ch){ ch.style.opacity=1; }); if(constel)constel.classList.add('draw'); if(ring)ring.classList.add('draw'); }
     else { window.addEventListener('scroll', onScroll, {passive:true}); window.addEventListener('resize', paint, {passive:true}); paint(); }
   }
 })();
