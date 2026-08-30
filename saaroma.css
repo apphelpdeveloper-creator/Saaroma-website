@@ -52,6 +52,14 @@ nav { display: flex; align-items: center; justify-content: space-between; paddin
 .nav-links a:hover, .nav-links a.active { color: var(--gold); }
 .nav-links a:hover::after, .nav-links a.active::after { transform: scaleX(1); }
 
+/* BetaList featured badge — sits top right of the header, aligned with the nav.
+   display:flex + line-height:0 removes the inline line-box descender slack, so
+   the anchor is exactly the badge's 54px and the header grows by the minimum
+   15.5px rather than 24.4px. margin-left:auto groups it with .nav-links on the
+   right without altering the existing logo/links rules. */
+.nav-badge { display: flex; line-height: 0; flex: 0 0 auto; margin-left: 30px; }
+.nav-badge img { display: block; }
+
 /* reveal on scroll */
 [data-reveal] { opacity: 0; transform: translateY(30px); transition: opacity .9s var(--ease), transform .9s var(--ease); }
 [data-reveal].in { opacity: 1; transform: none; }
@@ -125,6 +133,7 @@ footer { padding: var(--s4) var(--edge); border-top: 1px solid var(--border); di
 @media (max-width: 900px) { .do-dont { grid-template-columns: 1fr; } }
 @media (max-width: 768px) {
   .nav-links { display: none; }
+  .nav-badge { margin-left: auto; }
   footer { flex-direction: column; text-align: center; }
 }
 
