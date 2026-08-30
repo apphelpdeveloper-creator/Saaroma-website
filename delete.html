@@ -59,6 +59,7 @@ select option { background: var(--surface); color: var(--text-primary); }
 .recovery a:hover { text-decoration: underline; }
 </style>
 <noscript><style>[data-reveal]{opacity:1!important;transform:none!important;} #galaxy,#veil{display:none!important;}</style></noscript>
+<link rel="stylesheet" href="saaroma-fx.css?v=1">
 </head>
 <body>
 <div id="veil"></div>
@@ -138,14 +139,14 @@ select option { background: var(--surface); color: var(--text-primary); }
         </div>
         <div class="warn">⚠️ Deleting your account is permanent after the 7-day recovery window. All journal entries, chat history, and personal data will be removed. This cannot be undone.</div>
         <button type="submit" class="btn-danger" id="submit-btn">Submit deletion request</button>
-        <a href="/" class="btn-cancel">Cancel, keep my account</a>
+        <a href="index.html" class="btn-cancel">Cancel, keep my account</a>
       </form>
 
       <div class="success" id="success">
         <div class="success-icon">✦</div>
         <div class="success-title">Request received</div>
         <p class="success-body">We have received your deletion request. We will process it within 30 days and send confirmation to your contact details.</p>
-        <a href="/" class="btn-cancel" style="max-width:200px;margin:0 auto;">Return home</a>
+        <a href="index.html" class="btn-cancel" style="max-width:200px;margin:0 auto;">Return home</a>
       </div>
     </div>
 
@@ -208,5 +209,6 @@ select option { background: var(--surface); color: var(--text-primary); }
     }
   });
 </script>
+<script src="saaroma-fx.js?v=1" defer></script>
 </body>
 </html>

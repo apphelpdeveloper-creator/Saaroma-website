@@ -9,6 +9,7 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=DM+Sans:opsz,wght@9..40,300;9..40,400;9..40,500;9..40,600;9..40,700&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="saaroma.css?v=2">
+<link rel="stylesheet" href="saaroma-fx.css?v=1">
 </head>
 <body>
 <div id="veil"></div>
@@ -36,23 +37,32 @@
   <div class="doc">
     <div class="highlight-card" data-reveal>
       <h2>The short version</h2>
-      <p>Your journal, your moods, and your chats live on your device. The long term memory Saaroma builds about you is locked with a key that only you hold, so even we cannot read it. We do not sell or share your personal information, and you can erase everything at any time.</p>
+      <p>Your chat history lives on your phone and is never uploaded. What we do back up is locked with a key that only you hold, so even we cannot read it. We do not sell or share your personal information, and you can erase everything at any time.</p>
     </div>
 
     <div class="section-card" data-reveal>
-      <h2>What stays on your device</h2>
-      <p>Most of what you put into Saaroma never leaves your phone. It is kept in encrypted storage on your device.</p>
+      <h2>What is kept on your phone</h2>
+      <p>All of this is kept in encrypted storage on your device.</p>
       <ul>
         <li>Your name or nickname, your companion's name, your age range and profession</li>
         <li>Your journal entries and mood ratings</li>
-        <li>Your chat history</li>
         <li>Your practice activity</li>
       </ul>
+      <p>Some of it is also backed up, encrypted, so you can get it back on a new phone. The next section explains exactly what that means.</p>
+    </div>
+
+    <div class="highlight-card" data-reveal>
+      <h2>What leaves your phone, and what nobody can read</h2>
+      <p>When you talk to Saaroma, your words go to our server and on to the AI that answers you. They have to. That is how you get a reply.</p>
+      <p>We do not keep them. Nothing you say is stored on our servers. Your chat history is never uploaded to the cloud at all. It lives on your phone.</p>
+      <p>What we do back up is your journal, your moods, your practice sessions, your weekly reads and your long term memory. All of it is encrypted on your phone before it leaves, with a key that stays in your phone's secure storage and never reaches us.</p>
+      <p>So the backup exists, and it is unreadable. Not by us, not by anyone with access to our systems. If you lose your phone and sign in again, it comes back. If someone took our entire database tomorrow, they would get noise.</p>
+      <p>That is the honest version. Your words travel. Your key does not.</p>
     </div>
 
     <div class="highlight-card" data-reveal>
       <h2>Your long term memory, and why even we cannot read it</h2>
-      <p>So Saaroma can remember you across sessions, and bring your history back if you get a new phone, it builds a private long term memory of what matters to you. This is the one personal thing we store in the cloud, and we store it in a form we are unable to open.</p>
+      <p>So Saaroma can remember you across sessions, and bring your history back if you get a new phone, it builds a private long term memory of what matters to you. We store it in a form we are unable to open.</p>
       <p>It is encrypted on your device, end to end, with a key that is created on your phone and never leaves it. Only the locked, unreadable version is ever uploaded. We cannot read it. No one at Saaroma can. If you set up a new phone, your recovery key is what unlocks it again, and only you have that key.</p>
     </div>
 
@@ -71,7 +81,7 @@
       <h2>The companies that help run Saaroma</h2>
       <p><strong>OpenAI</strong> writes your chat replies from the text your device sends. Your name and number are never shared. See <a href="https://openai.com/privacy" target="_blank">openai.com/privacy</a>.</p>
       <p><strong>Anthropic</strong> writes short memory summaries and check ins. Your name and number are never shared. See <a href="https://www.anthropic.com/privacy" target="_blank">anthropic.com/privacy</a>.</p>
-      <p><strong>Google Firebase</strong> handles sign in, holds the encrypted memory that only you can unlock, and collects anonymous crash reports so we can fix problems. Firebase is ISO 27001, SOC 1, SOC 2, and SOC 3 certified. See <a href="https://policies.google.com/privacy" target="_blank">policies.google.com/privacy</a>.</p>
+      <p><strong>Google Firebase</strong> handles sign in, holds your encrypted backup, which only you can unlock, and collects anonymous crash reports so we can fix problems. Firebase is ISO 27001, SOC 1, SOC 2, and SOC 3 certified. See <a href="https://policies.google.com/privacy" target="_blank">policies.google.com/privacy</a>.</p>
     </div>
 
     <div class="section-card" data-reveal>
@@ -80,7 +90,7 @@
         <li>Clear your chat history any time from the chat screen</li>
         <li>Delete your account from the menu, which erases everything, on your device and the encrypted copy in the cloud</li>
         <li>After you ask to delete, there is a 7 day window to change your mind, then it is gone for good</li>
-        <li>Email support@saaroma.ai any time with a privacy question or a data request</li>
+        <li>Email <a href="mailto:support@saaroma.ai">support@saaroma.ai</a> any time with a privacy question or a data request</li>
       </ul>
     </div>
 
@@ -91,12 +101,12 @@
 
     <div class="section-card" data-reveal>
       <h2>How long we keep things</h2>
-      <p>Anything on your device is gone the moment you delete your account or uninstall the app. The encrypted memory in the cloud stays only so you can restore it, and it is removed when you delete your account, as covered in "You are in control" above. You can ask us to delete everything at any time.</p>
+      <p>Anything on your device is gone the moment you delete your account or uninstall the app. The encrypted backup in the cloud stays only so you can restore it, and it is removed when you delete your account, as covered in "You are in control" above. You can ask us to delete everything at any time.</p>
     </div>
 
     <div class="section-card" data-reveal>
       <h2>Security</h2>
-      <p>Everything kept on your device uses AES-256 encrypted storage, and everything that travels over the internet uses HTTPS. Your long term memory has the extra end to end encryption described above, so the copy we hold in the cloud is one we cannot read.</p>
+      <p>Everything kept on your device uses AES-256 encrypted storage, and everything that travels over the internet uses HTTPS. Everything we back up has the extra end to end encryption described above, so the copy we hold in the cloud is one we cannot read.</p>
     </div>
 
     <div class="highlight-card" data-reveal>
@@ -123,5 +133,6 @@
   </footer>
 </div>
 <script src="saaroma.js?v=2" defer></script>
+<script src="saaroma-fx.js?v=1" defer></script>
 </body>
 </html>

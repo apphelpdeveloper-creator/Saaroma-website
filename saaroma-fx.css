@@ -1,0 +1,161 @@
+/* ============================================================
+   SAAROMA FX — advanced graphics + transitions layer
+   Purely additive: no copy, no fonts, no layout changes.
+   ============================================================ */
+
+/* --- layered ambient canvases ------------------------------ */
+#aurora {
+  position: fixed; inset: 0; width: 100%; height: 100%; z-index: 1; pointer-events: none;
+  opacity: 0; transition: opacity 1.6s cubic-bezier(.22,.7,.24,1);
+  mix-blend-mode: screen;
+  -webkit-mask-image: radial-gradient(120% 85% at 50% 45%, rgba(0,0,0,.18) 0%, rgba(0,0,0,.45) 38%, #000 78%);
+  mask-image: radial-gradient(120% 85% at 50% 45%, rgba(0,0,0,.18) 0%, rgba(0,0,0,.45) 38%, #000 78%);
+}
+#aurora.on { opacity: .8; }
+
+/* let the shader read through the site's static mesh */
+.bg-mesh { opacity: .8 !important; }
+
+#fx-grain {
+  position: fixed; inset: -120px; z-index: 2; pointer-events: none;
+  opacity: .05; mix-blend-mode: overlay;
+  background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='160' height='160'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='.85' numOctaves='3'/></filter><rect width='160' height='160' filter='url(%23n)'/></svg>");
+  animation: fxGrain 900ms steps(3) infinite;
+}
+@keyframes fxGrain {
+  0%   { transform: translate(0,0); }
+  33%  { transform: translate(-14px, 8px); }
+  66%  { transform: translate(9px, -12px); }
+  100% { transform: translate(0,0); }
+}
+
+#fx-vignette {
+  position: fixed; inset: 0; z-index: 2; pointer-events: none;
+  background: radial-gradient(ellipse 120% 90% at 50% 45%, transparent 45%, rgba(3,2,6,.42) 100%);
+}
+
+/* cursor spotlight — warm gold light that trails the pointer */
+#fx-spot {
+  position: fixed; top: 0; left: 0; width: 620px; height: 620px; z-index: 1;
+  margin: -310px 0 0 -310px; pointer-events: none; opacity: 0;
+  transition: opacity .8s ease;
+  background: radial-gradient(circle, rgba(232,184,75,.10) 0%, rgba(123,47,190,.07) 38%, transparent 68%);
+  will-change: transform;
+}
+#fx-spot.on { opacity: 1; }
+
+/* --- scroll progress --------------------------------------- */
+#fx-progress {
+  position: fixed; top: 0; left: 0; height: 2px; width: 100%; z-index: 200;
+  transform: scaleX(0); transform-origin: 0 50%;
+  background: linear-gradient(90deg, rgba(232,184,75,0), #e8b84b 35%, #f6dfa0 60%, #7b2fbe);
+  box-shadow: 0 0 18px rgba(232,184,75,.55);
+  pointer-events: none;
+}
+
+/* --- headline word reveal ---------------------------------- */
+.fx-line { display: block; }
+.fx-w {
+  display: inline-block;
+  opacity: 0;
+  transform: translateY(.5em) rotate(2deg);
+  transition: opacity .95s cubic-bezier(.22,.7,.24,1),
+              transform .95s cubic-bezier(.22,.7,.24,1),
+              filter .95s cubic-bezier(.22,.7,.24,1);
+  will-change: transform, opacity, filter;
+}
+.fx-in .fx-w { opacity: 1; transform: none; }
+
+/* --- gold shimmer sweep across accented words -------------- */
+.fx-shimmer {
+  background: linear-gradient(100deg, #e8b84b 0%, #e8b84b 38%, #fff3cf 50%, #e8b84b 62%, #e8b84b 100%);
+  background-size: 260% 100%;
+  -webkit-background-clip: text; background-clip: text;
+  -webkit-text-fill-color: transparent; color: transparent;
+  animation: fxSheen 6.5s cubic-bezier(.5,0,.5,1) infinite;
+}
+@keyframes fxSheen {
+  0%, 62% { background-position: 160% 0; }
+  100%    { background-position: -60% 0; }
+}
+
+/* --- 3D tilt cards with moving glare ----------------------- */
+.fx-tilt {
+  transform-style: preserve-3d;
+  transition: transform .5s cubic-bezier(.22,.7,.24,1), box-shadow .5s cubic-bezier(.22,.7,.24,1);
+  will-change: transform;
+  position: relative;
+}
+.fx-tilt.fx-live { transition: transform .12s linear, box-shadow .4s ease; }
+.fx-tilt::after {
+  content: ''; position: absolute; inset: 0; border-radius: inherit;
+  pointer-events: none; opacity: 0; transition: opacity .45s ease;
+  background:
+    radial-gradient(420px circle at var(--fx-x, 50%) var(--fx-y, 0%), rgba(255,255,255,.10), transparent 60%),
+    radial-gradient(240px circle at var(--fx-x, 50%) var(--fx-y, 0%), rgba(232,184,75,.14), transparent 65%);
+}
+.fx-tilt:hover::after { opacity: 1; }
+.fx-tilt:hover { box-shadow: 0 34px 90px rgba(0,0,0,.55), 0 0 0 1px rgba(232,184,75,.22); }
+
+/* animated conic edge on hover for premium surfaces */
+.fx-edge::before {
+  content: ''; position: absolute; inset: -1px; border-radius: inherit; padding: 1px;
+  background: conic-gradient(from var(--fx-a, 0deg), transparent 0 62%, rgba(232,184,75,.75) 76%, rgba(123,47,190,.6) 88%, transparent 100%);
+  -webkit-mask: linear-gradient(#000 0 0) content-box, linear-gradient(#000 0 0);
+  -webkit-mask-composite: xor; mask-composite: exclude;
+  opacity: 0; transition: opacity .5s ease; pointer-events: none;
+  animation: fxSpin 5s linear infinite;
+}
+.fx-edge:hover::before { opacity: 1; }
+@keyframes fxSpin { to { --fx-a: 360deg; } }
+@property --fx-a { syntax: '<angle>'; initial-value: 0deg; inherits: false; }
+
+/* --- magnetic buttons -------------------------------------- */
+.fx-mag {
+  position: relative;
+  transition: transform .45s cubic-bezier(.22,.7,.24,1), box-shadow .45s ease, filter .45s ease;
+  will-change: transform;
+}
+.fx-mag:hover { filter: saturate(1.08) brightness(1.05); box-shadow: 0 18px 48px rgba(232,184,75,.28); }
+
+/* --- link underline sweep (nav + footer + inline) ---------- */
+.fx-link { position: relative; }
+.fx-link::before {
+  content: ''; position: absolute; left: 0; right: 0; bottom: -2px; height: 1px;
+  background: linear-gradient(90deg, transparent, #e8b84b, transparent);
+  transform: scaleX(0); transform-origin: 50% 50%;
+  transition: transform .55s cubic-bezier(.22,.7,.24,1);
+}
+.fx-link:hover::before { transform: scaleX(1); }
+
+/* --- parallax layers --------------------------------------- */
+[data-fx-parallax] { will-change: transform; }
+
+/* --- section entrance: soft rise + light bloom ------------- */
+.fx-rise {
+  opacity: 0; transform: translateY(38px) scale(.99);
+  transition: opacity 1.05s cubic-bezier(.22,.7,.24,1),
+              transform 1.05s cubic-bezier(.22,.7,.24,1),
+              filter 1.05s cubic-bezier(.22,.7,.24,1);
+}
+.fx-rise.fx-in { opacity: 1; transform: none; }
+
+/* --- enhanced page transition veil ------------------------- */
+#fx-veil {
+  position: fixed; inset: 0; z-index: 9998; pointer-events: none; opacity: 0;
+  background:
+    radial-gradient(ellipse 70% 50% at 50% 50%, rgba(123,47,190,.35), transparent 70%),
+    #060409;
+  transition: opacity .5s cubic-bezier(.22,.7,.24,1);
+}
+#fx-veil.on { opacity: 1; }
+
+/* --- reduced motion ---------------------------------------- */
+@media (prefers-reduced-motion: reduce) {
+  #aurora, #fx-grain, #fx-spot, #fx-progress, #fx-veil { display: none !important; }
+  .fx-w, .fx-rise { opacity: 1 !important; transform: none !important; filter: none !important; }
+  .fx-shimmer { animation: none; }
+}
+
+/* keep decorative layers under content */
+.content { position: relative; z-index: 3; }
