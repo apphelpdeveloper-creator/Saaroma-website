@@ -10,6 +10,19 @@
   var body = document.body;
   var EASE = 'cubic-bezier(.22,.7,.24,1)';
 
+
+  function fxScroller() {
+    var b = document.body;
+    var ov = getComputedStyle(b).overflowY;
+    if ((ov === 'auto' || ov === 'scroll') && b.scrollHeight > b.clientHeight + 4) return b;
+    return document.scrollingElement || document.documentElement;
+  }
+  function fxScrollTop() { return fxScroller().scrollTop; }
+  function fxOnScroll(fn) {
+    document.addEventListener('scroll', fn, { passive: true, capture: true });
+    window.addEventListener('scroll', fn, { passive: true });
+  }
+
   function el(tag, id) { var n = document.createElement(tag); if (id) n.id = id; return n; }
 
   /* ---------------------------------------------------------
@@ -100,9 +113,9 @@
       tx = e.clientX / window.innerWidth;
       ty = 1 - e.clientY / window.innerHeight;
     }, { passive: true });
-    window.addEventListener('scroll', function () {
-      var h = document.body.scrollHeight - window.innerHeight;
-      tsp = h > 0 ? (window.pageYOffset || 0) / h : 0;
+    fxOnScroll(function () {
+      var h = fxScroller().scrollHeight - fxScroller().clientHeight;
+      tsp = h > 0 ? fxScrollTop() / h : 0;
     }, { passive: true });
     document.addEventListener('visibilitychange', function () {
       run = !document.hidden;
@@ -135,11 +148,11 @@
     var barRaf;
     function prog() {
       barRaf = 0;
-      var h = document.documentElement.scrollHeight - window.innerHeight;
-      var p = h > 0 ? Math.min(1, (window.pageYOffset || 0) / h) : 0;
+      var h = fxScroller().scrollHeight - fxScroller().clientHeight;
+      var p = h > 0 ? Math.min(1, fxScrollTop() / h) : 0;
       bar.style.transform = 'scaleX(' + p.toFixed(4) + ')';
     }
-    window.addEventListener('scroll', function () { if (!barRaf) barRaf = requestAnimationFrame(prog); }, { passive: true });
+    fxOnScroll(function () { if (!barRaf) barRaf = requestAnimationFrame(prog); }, { passive: true });
     prog();
 
     if (reduce || window.matchMedia('(hover: none)').matches) return;
@@ -303,13 +316,13 @@
     var raf = 0;
     function upd() {
       raf = 0;
-      var y = window.pageYOffset || 0;
+      var y = fxScrollTop();
       layers.forEach(function (l) {
         l.node.style.transform = 'translate3d(0,' + (y * l.k).toFixed(1) + 'px,0)';
         l.node.style.opacity = String(Math.max(0, 1 - y / (window.innerHeight * 1.15)));
       });
     }
-    window.addEventListener('scroll', function () { if (!raf) raf = requestAnimationFrame(upd); }, { passive: true });
+    fxOnScroll(function () { if (!raf) raf = requestAnimationFrame(upd); }, { passive: true });
   }
 
   /* ---------------------------------------------------------
@@ -358,4 +371,175 @@
   } else {
     boot();
   }
+})();
+
+/* ============================================================
+   SAAROMA FX v2 — bespoke cursor + calm scroll choreography
+   Additive only: no copy, font, or layout changes.
+   ============================================================ */
+(function () {
+  'use strict';
+  var reduce = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  var coarse = window.matchMedia && window.matchMedia('(hover: none), (pointer: coarse)').matches;
+  var root = document.documentElement;
+
+  function mk(id) { var n = document.createElement('div'); n.id = id; return n; }
+  function onScroll(fn) {
+    document.addEventListener('scroll', fn, { passive: true, capture: true });
+    window.addEventListener('scroll', fn, { passive: true });
+  }
+
+  /* which element actually scrolls (this site scrolls <body>) */
+  function scroller() {
+    var b = document.body;
+    var ov = getComputedStyle(b).overflowY;
+    if ((ov === 'auto' || ov === 'scroll') && b.scrollHeight > b.clientHeight + 4) return b;
+    return document.scrollingElement || document.documentElement;
+  }
+
+  /* ---------- 1. bespoke cursor ---------- */
+  function cursor() {
+    if (reduce || coarse) return;
+    var trail = mk('fx-cur-trail'), ring = mk('fx-cur-ring'), dot = mk('fx-cur');
+    document.body.appendChild(trail);
+    document.body.appendChild(ring);
+    document.body.appendChild(dot);
+    root.classList.add('fx-cursor-on');
+
+    var mxp = innerWidth / 2, myp = innerHeight / 2, rx = mxp, ry = myp, tx = mxp, ty = myp;
+
+    addEventListener('pointermove', function (e) {
+      mxp = e.clientX; myp = e.clientY;
+      if (!root.classList.contains('fx-cursor-live')) root.classList.add('fx-cursor-live');
+      var t = e.target;
+      var isLink = t.closest && t.closest('a, button, [role="button"], .btn-app, .btn-danger, .btn-cancel, .glass, .mode-card, .memory-card, .section-card, .step, .stat-cell');
+      var isText = !isLink && t.closest && t.closest('p, li, h1, h2, h3, blockquote');
+      root.classList.toggle('fx-cur-link', !!isLink);
+      root.classList.toggle('fx-cur-text', !isLink && !!isText);
+    }, { passive: true });
+    addEventListener('pointerdown', function () { root.classList.add('fx-cur-down'); }, { passive: true });
+    addEventListener('pointerup', function () { root.classList.remove('fx-cur-down'); }, { passive: true });
+
+    (function loop() {
+      rx += (mxp - rx) * 0.16; ry += (myp - ry) * 0.16;
+      tx += (mxp - tx) * 0.06; ty += (myp - ty) * 0.06;
+      dot.style.transform = 'translate3d(' + mxp + 'px,' + myp + 'px,0)';
+      ring.style.transform = 'translate3d(' + rx.toFixed(1) + 'px,' + ry.toFixed(1) + 'px,0)';
+      trail.style.transform = 'translate3d(' + tx.toFixed(1) + 'px,' + ty.toFixed(1) + 'px,0)';
+      requestAnimationFrame(loop);
+    })();
+  }
+
+  /* ---------- 2. inertial smooth scroll — the calm ---------- */
+  function smoothScroll() {
+    if (reduce || coarse) return;
+    var sc = scroller();
+    var target = sc.scrollTop, current = target, running = false;
+    function max() { return Math.max(0, sc.scrollHeight - sc.clientHeight); }
+    function tick() {
+      current += (target - current) * 0.09;
+      if (Math.abs(target - current) < 0.4) { current = target; running = false; }
+      sc.scrollTop = current;
+      if (running) requestAnimationFrame(tick);
+    }
+    addEventListener('wheel', function (e) {
+      if (e.ctrlKey) return;
+      e.preventDefault();
+      target = Math.min(max(), Math.max(0, target + e.deltaY * (e.deltaMode === 1 ? 22 : 1)));
+      if (!running) { running = true; requestAnimationFrame(tick); }
+    }, { passive: false });
+    (sc === document.body ? sc : window).addEventListener('scroll', function () {
+      if (!running) { target = current = sc.scrollTop; }
+    }, { passive: true });
+    addEventListener('resize', function () { target = current = sc.scrollTop; }, { passive: true });
+  }
+
+  /* ---------- 3. scroll-linked choreography ---------- */
+  var BLOCK = 'h1,h2,h3,h4,p,li,blockquote,figure,img,.glass,.card,.section-card,.highlight-card,.mode-card,.memory-card,.honest-card,.do-card,.dont-card,.stat-cell,.step,.chat,.crisis-note,.founder-note,.pull-quote,.timeline-item,.qr,.store-badges';
+  function choreography() {
+    if (reduce) return;
+    var scope = document.querySelector('.content') || document.body;
+    var nodes = scope.querySelectorAll(BLOCK);
+    var counters = [], blocks = [];
+
+    Array.prototype.forEach.call(nodes, function (n) {
+      if (n.closest('header, footer, nav, .site-header, .site-footer')) return;
+      if (n.classList.contains('fx-rise') || n.hasAttribute('data-fx-split') || n.hasAttribute('data-reveal')) return;
+      if (n.closest('.fx-seq')) return;
+      if (n.querySelector && n.querySelector('[data-fx-split], .fx-rise, .fx-seq')) return;
+      if (!n.textContent.trim() && !/^(IMG|FIGURE|CANVAS|SVG)$/.test(n.tagName)) return;
+      var grp = n.closest('section, article, .doc, .card, .glass') || scope;
+      var gi = counters.findIndex(function (g) { return g.el === grp; });
+      if (gi < 0) { counters.push({ el: grp, i: 0 }); gi = counters.length - 1; }
+      if (getComputedStyle(n).position === 'static') n.style.position = 'relative';
+      n.classList.add('fx-seq');
+      if (counters[gi].i > 0) n.classList.add('fx-bloom');
+      n.dataset.fxIdx = String(counters[gi].i++);
+      if (n.getBoundingClientRect().top > innerHeight * 0.9) {
+        n.style.opacity = '0';
+        n.style.transform = 'translate3d(0,28px,0) scale(.99)';
+      }
+      blocks.push(n);
+    });
+    if (!blocks.length) return;
+
+    var active = [];
+    var io = new IntersectionObserver(function (es) {
+      es.forEach(function (e) {
+        var k = active.indexOf(e.target);
+        if (e.isIntersecting) { if (k < 0) active.push(e.target); }
+        else if (k >= 0) active.splice(k, 1);
+      });
+    }, { rootMargin: '25% 0px 25% 0px' });
+    blocks.forEach(function (n) { io.observe(n); });
+
+    function ease(t) { return t < 0 ? 0 : t > 1 ? 1 : 1 - Math.pow(1 - t, 3); }
+    function lock(n) {
+      n.classList.add('fx-settled', 'fx-locked');
+      n.style.opacity = '1';
+      n.style.transform = 'none';
+      io.unobserve(n);
+    }
+    // safety sweep: anything resting inside the viewport is always fully readable
+    var sweepT;
+    function sweep() {
+      var vh = innerHeight;
+      blocks.forEach(function (n) {
+        if (n.classList.contains('fx-locked')) return;
+        var r = n.getBoundingClientRect();
+        if (r.top < vh * 0.95 && r.bottom > 0) lock(n);
+      });
+    }
+    onScroll(function () { clearTimeout(sweepT); sweepT = setTimeout(sweep, 220); });
+    setTimeout(sweep, 1200);
+    setInterval(sweep, 700);
+    function frame() {
+      var vh = innerHeight;
+      for (var i = 0; i < active.length; i++) {
+        var n = active[i];
+        if (n.classList.contains('fx-locked')) { active.splice(i--, 1); continue; }
+        var r = n.getBoundingClientRect();
+        var idx = parseFloat(n.dataset.fxIdx || '0');
+        var start = vh * 0.99 - Math.min(idx, 4) * 16;
+        var span = Math.min(vh * 0.18, 170) + Math.min(r.height * 0.12, 60);
+        var p = ease((start - r.top) / span);
+        if (p >= 0.999 || r.top < vh * 0.55) { lock(n); active.splice(i--, 1); continue; }
+        n.style.opacity = p.toFixed(3);
+        n.style.transform = 'translate3d(0,' + ((1 - p) * 28).toFixed(2) + 'px,0) scale(' + (0.99 + p * 0.01).toFixed(4) + ')';
+        if (p > 0.9 && !n.classList.contains('fx-settled')) n.classList.add('fx-settled');
+      }
+      requestAnimationFrame(frame);
+    }
+    requestAnimationFrame(frame);
+
+    setTimeout(function () {
+      blocks.forEach(function (n) {
+        if (!n.style.opacity) { n.classList.add('fx-seq-static'); n.style.opacity = '1'; n.style.transform = 'none'; }
+      });
+    }, 2500);
+  }
+
+  function boot2() { cursor(); smoothScroll(); choreography(); }
+  if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', boot2);
+  else boot2();
 })();

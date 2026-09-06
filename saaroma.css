@@ -121,6 +121,29 @@ nav { display: flex; align-items: center; justify-content: space-between; paddin
 .closing { font-size: 16px; font-weight: 300; color: var(--text-sec); line-height: 1.9; text-align: center; max-width: 640px; margin: 0 auto; }
 .closing strong { color: var(--text-primary); font-weight: 600; }
 
+/* pricing */
+.pricing h2 { font-size: var(--fs-h2); font-weight: 700; line-height: var(--lh-head); letter-spacing: -.6px; margin-top: var(--s2); }
+.price-grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 20px; margin-top: var(--s5); }
+.price-card { min-width: 0; display: flex; flex-direction: column; }
+.price-featured { border-color: rgba(232,184,75,.35); }
+.price-name { font-size: var(--fs-eyebrow); font-weight: 700; letter-spacing: 2.4px; text-transform: uppercase; color: var(--text-muted); }
+.price-featured .price-name { color: var(--gold); }
+.price-amount { font-size: clamp(20px, 2.6vw, 30px); font-weight: 700; letter-spacing: -.4px; line-height: 1.2; margin-top: var(--s2); }
+.price-amount small { font-size: var(--fs-small); font-weight: 300; color: var(--text-sec); letter-spacing: 0; }
+.price-offer { font-size: var(--fs-small); font-weight: 500; color: var(--gold); line-height: 1.6; margin-top: var(--s1); }
+.price-list { list-style: none; display: flex; flex-direction: column; gap: 10px; margin-top: var(--s3); }
+.price-list li { position: relative; padding-left: 20px; font-size: var(--fs-small); font-weight: 300; color: var(--text-sec); line-height: 1.65; }
+.price-list li::before { content: '\2726'; color: var(--gold); font-size: 9px; position: absolute; left: 0; top: 7px; }
+.price-note { max-width: 640px; margin: var(--s5) auto 0; text-align: center; font-size: var(--fs-small); font-weight: 300; color: var(--text-muted); line-height: 1.8; }
+@media (max-width: 560px) {
+  .price-grid { gap: 12px; margin-top: var(--s4); }
+  .price-card.glass { padding: 18px 14px; border-radius: 14px; }
+  .price-amount { font-size: 19px; }
+  .price-amount small { font-size: 12px; display: block; }
+  .price-offer, .price-list li { font-size: 12.5px; }
+  .price-list { gap: 8px; margin-top: var(--s2); }
+}
+
 /* footer */
 footer { padding: var(--s4) var(--edge); border-top: 1px solid var(--border); display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 20px; }
 .footer-logo { font-size: 20px; font-weight: 700; color: var(--gold); }
