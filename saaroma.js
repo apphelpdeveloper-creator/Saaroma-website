@@ -54,7 +54,7 @@
     var stars = [], glints = [], mx = -9999, my = -9999, running = true, raf, gather = 0, targetGather = 0;
     function mobile() { return window.innerWidth < 760; }
     function build() {
-      W = cv.clientWidth; H = cv.clientHeight;
+      W = window.innerWidth; H = window.innerHeight;
       cv.width = W * dpr; cv.height = H * dpr; ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
       var count = Math.min(mobile() ? 60 : 120, Math.round(W * H / 13000));
       stars = [];
@@ -95,4 +95,8 @@
     document.addEventListener('visibilitychange', function () { if (document.hidden) { running = false; cancelAnimationFrame(raf); } else if (!running) { running = true; raf = requestAnimationFrame(frame); } });
     build(); raf = requestAnimationFrame(frame);
   }
+
+  /* phone menu: outside the canvas guard so it works with reduced motion too */
+  var tg = document.querySelector('.nav-toggle'), nv = document.querySelector('nav');
+  if (tg && nv) tg.addEventListener('click', function () { var o = nv.classList.toggle('open'); tg.setAttribute('aria-expanded', o ? 'true' : 'false'); });
 })();

@@ -8,7 +8,7 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=DM+Sans:opsz,wght@9..40,300;9..40,400;9..40,500;9..40,600;9..40,700&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="saaroma.css?v=5">
+<link rel="stylesheet" href="saaroma.css?v=6">
 <style>
 /* ---- homepage-only ---- */
 .hero { min-height: 100svh; display: flex; flex-direction: column; align-items: center; justify-content: center; text-align: center; padding: var(--s6) var(--edge) var(--s5); position: relative; }
@@ -51,7 +51,7 @@
 /* scroll-pinned chapters */
 .pin-wrap { position: relative; height: 340vh; }
 .pin-stage { position: sticky; top: 0; height: 100svh; overflow: hidden; display: flex; flex-direction: column; }
-.pin-head { padding: var(--s5) var(--edge) 0; max-width: 1180px; margin: 0 auto; width: 100%; }
+.pin-head { padding: calc(var(--s5) + 60px) var(--edge) 0; max-width: 1180px; margin: 0 auto; width: 100%; }
 .pin-head .sec-title { max-width: 620px; }
 .pin-view { flex: 1; position: relative; }
 .chapter { position: absolute; inset: 0; display: grid; grid-template-columns: 1fr 1fr; gap: var(--s6); align-items: center; max-width: 1180px; margin: 0 auto; padding: 0 var(--edge); left: 0; right: 0; opacity: 0; will-change: opacity, transform; }
@@ -96,7 +96,7 @@
 .promise-inner h2 { font-size: var(--fs-h2); font-weight: 700; line-height: var(--lh-head); letter-spacing: -.6px; margin: var(--s2) 0 var(--s3); }
 .promise-inner p { font-size: 15px; font-weight: 300; color: var(--text-sec); line-height: 1.85; }
 .tick-list { list-style: none; display: flex; flex-direction: column; gap: 12px; margin-top: var(--s3); }
-.tick-list li { display: flex; align-items: flex-start; gap: 10px; font-size: var(--fs-small); font-weight: 300; color: var(--text-sec); line-height: 1.6; }
+.tick-list li { display: flex; align-items: flex-start; gap: 10px; font-size: var(--fs-small); font-weight: 400; color: var(--text-sec); line-height: 1.6; }
 .tick-list li::before { content: '\2736'; color: var(--gold); font-size: 9px; margin-top: 5px; flex-shrink: 0; }
 .policy-link { color: var(--gold); font-size: var(--fs-small); font-weight: 600; text-decoration: none; display: inline-block; margin-top: var(--s3); }
 .policy-link:hover { text-decoration: underline; }
@@ -170,6 +170,7 @@
       <li><a href="privacy.html">Privacy</a></li>
       <li><a href="disclaimer.html">Disclaimer</a></li>
     </ul>
+    <button class="nav-toggle" type="button" aria-label="Open menu" aria-expanded="false"><span></span><span></span><span></span></button>
     <a class="nav-badge" target="_blank" rel="noopener" href="https://betalist.com/startups/saaroma?utm_campaign=badge-saaroma&utm_medium=badge&utm_source=badge-featured">
       <img loading="lazy" alt="Saaroma - Find calm with a private AI companion for chatting, journaling, and breath | BetaList" width="156" height="54" style="width: 156px; height: 54px" src="https://betalist.com/badges/featured?id=183509&theme=dark">
     </a>
@@ -185,7 +186,7 @@
   <!-- BEAT 2 : THE PROBLEM -->
   <section class="problem">
     <div class="eyebrow" data-reveal>The quiet hours</div>
-    <h2 data-reveal>It&rsquo;s 2am, and your mind <span class="g">won&rsquo;t stop.</span></h2>
+    <h2 data-reveal>It&rsquo;s 2am, and your mind <span class="g">won&rsquo;t&nbsp;stop.</span></h2>
     <p data-reveal>There is so much you would say, if there were someone to tell. Someone who would not flinch, would not judge, and would never repeat a word of it.</p>
   </section>
 
@@ -198,11 +199,11 @@
       <div class="mini">
         <div class="mini-row" data-reveal>
           <div class="mini-ic">&#127757;</div>
-          <div><div class="mini-t">No backstory needed</div><div class="mini-b">Saaroma gets family pressure, career stress, and the weight that comes with different cultures, without you having to explain the backstory first.</div></div>
+          <div><div class="mini-t">No backstory needed</div><div class="mini-b">Saaroma gets family pressure, career stress, and the weight that comes with different cultures.</div></div>
         </div>
         <div class="mini-row" data-reveal>
           <div class="mini-ic">&#128211;</div>
-          <div><div class="mini-t">Somewhere to put it down</div><div class="mini-b">Write about your day and track how you feel. It saves as you type, and your journal stays on your device.</div></div>
+          <div><div class="mini-t">Somewhere to put it down</div><div class="mini-b">Write about your day and track how you feel. It saves as you type, encrypted so only you hold the key.</div></div>
         </div>
       </div>
     </div>
@@ -231,7 +232,7 @@
           <div>
             <div class="ch-label">Breathe</div>
             <h3>A minute to come back down.</h3>
-            <p>Four short sessions (a one minute reset, a breathing pause, grounding, and one small action) to bring you back to yourself.</p>
+            <p>Four short sessions (a one minute reset, a breathing pause, grounding, and one small action) to bring you back down.</p>
           </div>
         </div>
         <div class="chapter" data-ch="1">
@@ -256,7 +257,7 @@
               <svg class="ring-svg" width="176" height="176" viewBox="0 0 176 176" aria-hidden="true">
                 <circle class="ring-track" cx="88" cy="88" r="75"></circle><circle class="ring-fill" cx="88" cy="88" r="75"></circle>
               </svg>
-              <div class="ring-num"><b>7.5</b><small>this week</small></div>
+              <div class="ring-num"><b>Up 2</b><small>this week</small></div>
             </div>
           </div>
           <div>
@@ -289,7 +290,7 @@
         <h2 data-reveal>What you share here stays yours</h2>
         <p data-reveal>Saaroma is built on one principle. The private things you say should stay private, even from us.</p>
         <ul class="tick-list" data-reveal>
-          <li>Your journal and mood notes stay on your device</li>
+          <li>Your journal and mood notes are encrypted, and only you hold the key</li>
           <li>Your long term memory is encrypted end to end, so only you can read it, not even us</li>
           <li>To write a reply, your messages go to OpenAI and Anthropic. Your name and number are never shared with them.</li>
           <li>We never sell or share your personal information, and there are no ads</li>
@@ -306,7 +307,7 @@
         <div class="glass" data-reveal>
           <div class="feat-icon">&#128274;</div>
           <div class="feat-title">Yours alone</div>
-          <div class="feat-body">Your long term memory is encrypted so only you can read it, not even us. No selling your information, no ads, and no profile built about you.</div>
+          <div class="feat-body">No profile is ever built about you. What you carry stays yours, on your terms.</div>
         </div>
       </div>
     </div>
@@ -377,7 +378,7 @@
   </footer>
 </div>
 
-<script src="saaroma.js?v=4" defer></script>
+<script src="saaroma.js?v=5" defer></script>
 <script>
 (function () {
   'use strict';
