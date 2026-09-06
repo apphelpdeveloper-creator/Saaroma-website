@@ -539,7 +539,7 @@
     }, 2500);
   }
 
-  function boot2() { cursor(); smoothScroll(); choreography(); }
+  function boot2() { choreography(); }
   if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', boot2);
   else boot2();
 })();
