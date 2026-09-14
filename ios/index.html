@@ -3,19 +3,59 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Saaroma</title>
+<title>Saaroma for iPhone</title>
 <meta name="robots" content="noindex">
-<meta http-equiv="refresh" content="0;url=https://apps.apple.com/app/apple-store/id6772710631?pt=128915609&amp;ct=meta-ad1-why&amp;mt=8">
-<script>location.replace("https://apps.apple.com/app/apple-store/id6772710631?pt=128915609&ct=meta-ad1-why&mt=8");</script>
-<link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500&display=swap" rel="stylesheet">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:opsz,wght@9..40,300;9..40,400;9..40,500;9..40,600;9..40,700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@500&display=swap" rel="stylesheet">
 <style>
-  html, body { margin: 0; height: 100%; background: #060409; }
-  body { display: flex; align-items: center; justify-content: center; font-family: "DM Sans", system-ui, sans-serif; }
-  a { color: #e8b84b; font-size: 18px; font-weight: 500; text-decoration: none; padding: 16px; }
-  a:hover { text-decoration: underline; }
+  html, body { margin: 0; min-height: 100%; background: #060409; }
+  body {
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    padding: 32px 20px;
+    box-sizing: border-box;
+    font-family: "DM Sans", system-ui, sans-serif;
+  }
+  h1 {
+    margin: 0 0 16px;
+    font-family: "Cormorant Garamond", Georgia, serif;
+    font-weight: 500;
+    font-size: 56px;
+    color: #e8b84b;
+  }
+  p {
+    margin: 0 0 40px;
+    font-size: 18px;
+    line-height: 1.5;
+    color: #f4f0e8;
+  }
+  .cta {
+    display: inline-block;
+    background: #e8b84b;
+    color: #1a1208;
+    font-family: "DM Sans", system-ui, sans-serif;
+    font-weight: 600;
+    font-size: 18px;
+    text-decoration: none;
+    padding: 18px 36px;
+    border-radius: 999px;
+  }
+  .cta:hover { filter: brightness(1.06); }
 </style>
 </head>
 <body>
-<a href="https://apps.apple.com/app/apple-store/id6772710631?pt=128915609&amp;ct=meta-ad1-why&amp;mt=8">Open Saaroma on the App Store</a>
+<h1>Saaroma</h1>
+<p>Listens like a friend. Guides like a mentor.</p>
+<a class="cta" href="https://apps.apple.com/app/apple-store/id6772710631?pt=128915609&amp;ct=meta-ad1-why&amp;mt=8">Get Saaroma on the App Store</a>
+<script>
+  if (/iPhone|iPad|iPod/.test(navigator.userAgent) && location.href.indexOf("?stay") === -1) {
+    location.replace("https://apps.apple.com/app/apple-store/id6772710631?pt=128915609&ct=meta-ad1-why&mt=8");
+  }
+</script>
 </body>
 </html>
